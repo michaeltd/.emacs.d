@@ -2,10 +2,9 @@
 #+author: michaeltd
 #+date: <2019-12-22 Sun>
 
-* [[load path]]
+* [[lisp][load path]]
 
 Add [[lisp][lisp]] & [[site-lisp][site-lisp]] to load path
-Shamelessly stollen from centaur emacs
 
 #+BEGIN_SRC emacs-lisp
 
