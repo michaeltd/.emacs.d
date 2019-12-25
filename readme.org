@@ -5,4 +5,3 @@
 
 yet another .emacs.d
 
-[[file:assets/emacs.png]]
