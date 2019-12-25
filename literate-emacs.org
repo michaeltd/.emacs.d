@@ -85,7 +85,6 @@ An extensible emacs startup screen showing you what’s most important.
 (use-package dashboard
   :ensure t
   :config 
-
   (dashboard-setup-startup-hook))
 
 ;; emacs --daemon
@@ -162,5 +161,42 @@ An extensible emacs startup screen showing you what’s most important.
 (setq dashboard-set-init-info t)
 
 ;; end dashboard
+
+#+END_SRC
+
+
+* [[mode-line]]
+
+#+BEGIN_SRC emacs-lisp
+
+;; – Enable the display of the current time, see DisplayTime
+(display-time-mode 1)
+;; '(display-time-format "%H:%M") ;; in custom.el
+;; – Enable or disable the display of the current line number, see also LineNumbers 
+(line-number-mode 1) 
+;; – Enable or disable the display of the current column number
+(column-number-mode 1) 
+;; (for Emacs 22 and up) – Enable or disable the current buffer size, Emacs 22 and later, see size-indication-mode
+(size-indication-mode 1)
+;; – Enable or disable laptop battery information, see DisplayBatteryMode.
+(display-battery-mode 1)
+
+;; (when (version<= "26.0.50" emacs-version )
+;;     (global-display-line-numbers-mode))
+
+;; (setq 
+;;  mode-line-format
+;;     (list
+;; 	;; value of `mode-name'
+;; 	"%m: "
+;; 	;; value of current buffer name
+;; 	"buffer %b, "
+;; 	;; value of current line number
+;; 	"line %l "
+;; 	;; value of current column number
+;; 	"column %c "
+;; 	"-- user: "
+;; 	;; value of user
+;; 	(getenv "USER")))
 
 #+END_SRC
