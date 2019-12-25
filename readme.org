@@ -20,3 +20,8 @@ yet another .emacs.d
 (concat "<p align='center'><a href='literate-emacs.org'><img src='assets/emacs.png'/></a></p>")
 
 #+END_SRC
+
+#+RESULTS:
+#+BEGIN_export html
+<p align='center'><a href='literate-emacs.org'><img src='assets/emacs.png'/></a></p>
+#+END_export
