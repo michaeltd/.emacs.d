@@ -1,7 +1,8 @@
-#+title: .emacs.d
-#+author: michaeltd
-#+date: <2019-12-24 Tue>
+#+TITLE: .emacs.d
+#+AUTHOR: michaeltd
+#+DATE: <2019-12-24 Tue>
+
+yet another .emacs.d
 
 [[file:assets/emacs.png]]
 
-yet another .emacs.d
