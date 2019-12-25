@@ -76,96 +76,89 @@ An extensible emacs startup screen showing you what’s most important.
 
 #+BEGIN_SRC emacs-lisp
 
-  ;; dashboard
+;; dashboard
 
-  (require 'dashboard)
-  (dashboard-setup-startup-hook)
-  ;; Or if you use use-package
-  (use-package dashboard
-    :ensure t
-    :config 
-    (dashboard-setup-startup-hook))
+(require 'dashboard)
+(dashboard-setup-startup-hook)
+;; Or if you use use-package
+(use-package dashboard
+  :ensure t
+  :config 
+  (dashboard-setup-startup-hook))
 
-  ;; emacs --daemon
-  (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
+;; emacs --daemon
+(setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
 
-  ;; Set the title
-  ;; (setq dashboard-banner-logo-title "Welcome to Emacs Dashboard")
-  (setq dashboard-banner-logo-title "M-x butterfly")
-  ;; Set the banner
-  (setq dashboard-startup-banner 'logo)
-  ;; Value can be
-  ;; 'official which displays the official emacs logo
-  ;; 'logo which displays an alternative emacs logo
-  ;; 1, 2 or 3 which displays one of the text banners
-  ;; "path/to/your/image.png" which displays whatever image you would prefer
+;; Set the title
 
-  ;; Content is not centered by default. To center, set
-  (setq dashboard-center-content t)
+;; (setq dashboard-banner-logo-title "Welcome to Emacs Dashboard")
+(setq dashboard-banner-logo-title "M-x butterfly")
+;; Set the banner
+(setq dashboard-startup-banner 'logo)
+;; Value can be
+;; 'official which displays the official emacs logo
+;; 'logo which displays an alternative emacs logo
+;; 1, 2 or 3 which displays one of the text banners
+;; "path/to/your/image.png" which displays whatever image you would prefer
 
-  ;; To disable shortcut "jump" indicators for each section, set
-  (setq dashboard-show-shortcuts nil)
+;; Content is not centered by default. To center, set
+(setq dashboard-center-content t)
 
-  ;;To customize which widgets are displayed, you can use the following snippet
-  (setq dashboard-items '((recents  . 4)))
+;; To disable shortcut "jump" indicators for each section, set
+(setq dashboard-show-shortcuts nil)
 
-  ;;To add icons to the widget headings and their items:
+;;To customize which widgets are displayed, you can use the following snippet
+(setq dashboard-items '((recents  . 4)))
 
-  (setq dashboard-set-heading-icons t)
-  (setq dashboard-set-file-icons t)
+;;To add icons to the widget headings and their items:
 
-  ;;To modify heading icons with another icon from all-the-icons octicons:
+(setq dashboard-set-heading-icons t)
+(setq dashboard-set-file-icons t)
 
-  (dashboard-modify-heading-icons '((recents . "file-text")
-		      (bookmarks . "book")))
+;;To modify heading icons with another icon from all-the-icons octicons:
 
-  ;;To show navigator below the banner:
+(dashboard-modify-heading-icons '((recents . "file-text")
+    (bookmarks . "book")))
 
-  (setq dashboard-set-navigator t)
+;;To show navigator below the banner:
 
-  ;;To customize the buttons of the navigator like this:
+(setq dashboard-set-navigator t)
 
-  ;; (setq dashboard-navigator-buttons
-  ;;       `(;; line1
-  ;;         ((,(all-the-icons-octicon "mark-github" :height 1.1 :v-adjust 0.0)
-  ;;          "Homepage"
-  ;;          "Browse homepage"
-  ;;          (lambda (&rest _) (browse-url "homepage")))
-  ;;         ("★" "Star" "Show stars" (lambda (&rest _) (show-stars)) warning)
-  ;;         ("?" "" "?/h" #'show-help nil "<" ">"))
-  ;;          ;; line 2
-  ;;         ((,(all-the-icons-faicon "linkedin" :height 1.1 :v-adjust 0.0)
-  ;;           "Linkedin"
-  ;;           ""
-  ;;           (lambda (&rest _) (browse-url "homepage")))
-  ;;          ("⚑" nil "Show flags" (lambda (&rest _) (message "flag")) error))))
+;;To customize the buttons of the navigator like this:
 
-  ;; Format: "(icon title help action face prefix suffix)"
-  (setq dashboard-navigator-buttons
-      `(;; line1
-          ((,(all-the-icons-faicon "cloud" :height 1.1 :v-adjust 0.0)
-	  "Web"
-	  "Browse webpage"
-	  (lambda (&rest _) (browse-url "https://michaeltd.netlify.com/")))
-	  (,(all-the-icons-octicon "mark-github" :height 1.1 :v-adjust 0.0)
-	  "Github"
-	  "Browse github"
-	  (lambda (&rest _) (browse-url "https://github.com/michaeltd/")))
-	  (,(all-the-icons-faicon "twitter" :height 1.1 :v-adjust 0.0)
-	  "Twitter"
-	  "Browse twitter"
-	  (lambda (&rest _) (browse-url "https://twitter.com/tsouchlarakismd/")))
-	  (,(all-the-icons-faicon "linkedin" :height 1.1 :v-adjust 0.0)
-	  "Linkedin"
-	  "Browse linkedin"
-	  (lambda (&rest _) (browse-url "https://www.linkedin.com/in/michaeltd/"))))))
+;; (setq dashboard-navigator-buttons
+;;       `(;; line1
+;;         ((,(all-the-icons-octicon "mark-github" :height 1.1 :v-adjust 0.0)
+;;          "Homepage"
+;;          "Browse homepage"
+;;          (lambda (&rest _) (browse-url "homepage")))
+;;         ("★" "Star" "Show stars" (lambda (&rest _) (show-stars)) warning)
+;;         ("?" "" "?/h" #'show-help nil "<" ">"))
+;;          ;; line 2
+;;         ((,(all-the-icons-faicon "linkedin" :height 1.1 :v-adjust 0.0)
+;;           "Linkedin"
+;;           ""
+;;           (lambda (&rest _) (browse-url "homepage")))
+;;          ("⚑" nil "Show flags" (lambda (&rest _) (message "flag")) error))))
 
-  ;;
-  ;; To show info about the packages loaded and the init time:
+;; Format: "(icon title help action face prefix suffix)"
+(setq dashboard-navigator-buttons
+    `(;; line1
+        ((,(all-the-icons-faicon "cloud" :height 1.1 :v-adjust 0.0) "Web" "Browse webpage"
+	    (lambda (&rest _) (browse-url "https://michaeltd.netlify.com/")))
+	(,(all-the-icons-octicon "mark-github" :height 1.1 :v-adjust 0.0) "Github" "Browse github"
+	    (lambda (&rest _) (browse-url "https://github.com/michaeltd/")))
+	(,(all-the-icons-faicon "twitter" :height 1.1 :v-adjust 0.0) "Twitter" "Browse twitter"
+	    (lambda (&rest _) (browse-url "https://twitter.com/tsouchlarakismd/")))
+	(,(all-the-icons-faicon "linkedin" :height 1.1 :v-adjust 0.0) "Linkedin" "Browse linkedin"
+	    (lambda (&rest _) (browse-url "https://www.linkedin.com/in/michaeltd/"))))))
 
-  (setq dashboard-set-init-info t)
+;;
+;; To show info about the packages loaded and the init time:
 
-  ;; end dashboard
+(setq dashboard-set-init-info t)
+
+;; end dashboard
 
 #+END_SRC
 
@@ -174,34 +167,15 @@ An extensible emacs startup screen showing you what’s most important.
 
 #+BEGIN_SRC emacs-lisp
 
-;; – Enable the display of the current time, see DisplayTime
+;; Enable the display of the current time, see DisplayTime
 (display-time-mode 1)
-;; '(display-time-format "%H:%M") ;; in custom.el
-;; – Enable or disable the display of the current line number, see also LineNumbers 
+;; Enable or disable the display of the current line number, see also LineNumbers 
 (line-number-mode 1) 
-;; – Enable or disable the display of the current column number
+;; Enable or disable the display of the current column number
 (column-number-mode 1) 
 ;; (for Emacs 22 and up) – Enable or disable the current buffer size, Emacs 22 and later, see size-indication-mode
 (size-indication-mode 1)
-;; – Enable or disable laptop battery information, see DisplayBatteryMode.
+;; Enable or disable laptop battery information, see DisplayBatteryMode.
 (display-battery-mode 1)
-
-;; (when (version<= "26.0.50" emacs-version )
-;;     (global-display-line-numbers-mode))
-
-;; (setq 
-;;  mode-line-format
-;;     (list
-;; 	;; value of `mode-name'
-;; 	"%m: "
-;; 	;; value of current buffer name
-;; 	"buffer %b, "
-;; 	;; value of current line number
-;; 	"line %l "
-;; 	;; value of current column number
-;; 	"column %c "
-;; 	"-- user: "
-;; 	;; value of user
-;; 	(getenv "USER")))
 
 #+END_SRC
