@@ -2,6 +2,6 @@
 #+author: michaeltd
 #+date: <2019-12-24 Tue>
 
-file:assets/emacs.png
+[[file:assets/emacs.png]]
 
 yet another .emacs.d
