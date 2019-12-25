@@ -92,9 +92,10 @@ An extensible emacs startup screen showing you what’s most important.
 ;; Set the title
 
 ;; (setq dashboard-banner-logo-title "Welcome to Emacs Dashboard")
-(setq dashboard-banner-logo-title "M-x butterfly")
+;; (setq dashboard-banner-logo-title "M-x butterfly")
+(setq dashboard-banner-logo-title "Welcome to the church of Emacs")
 ;; Set the banner
-(setq dashboard-startup-banner 'logo)
+(setq dashboard-startup-banner "~/.emacs.d/assets/gnu.png")
 ;; Value can be
 ;; 'official which displays the official emacs logo
 ;; 'logo which displays an alternative emacs logo
