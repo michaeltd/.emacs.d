@@ -1,8 +1,21 @@
 #+TITLE: .emacs.d
 #+AUTHOR: michaeltd
 #+DATE: <2019-12-24 Tue>
+#+HTML: <p align="center"> <img src="emacs-logo.png" width=150 height=150/> </p> <p align="center"> <a href="https://www.gnu.org/software/emacs/"> <img src="https://img.shields.io/badge/GNU%20Emacs-26.1-b48ead.svg?style=plastic"/></a> <a href="https://orgmode.org/"><img src="https://img.shields.io/badge/org--mode-9.3-489a9f.svg?style=plastic"/></a> </p> <p align="center"> <img src="emacs-birthday-present.png" width=200 height=250/> </p>
+
+#+BEGIN_SRC emacs-lisp :tangle no :exports results :wrap "export html" :results replace
+(concat
+"<p align=\"center\">
+        <a href=\"https://www.gnu.org/software/emacs/\">
+        <img src=\"https://img.shields.io/badge/GNU%20Emacs-" emacs-version "-b48ead.svg?style=plastic\"/></a>
+        <a href=\"https://orgmode.org/\"><img src=\"https://img.shields.io/badge/org--mode-" org-version "-489a9f.svg?style=plastic\"/></a>
+</p>")
+#+END_SRC
+
+#+BEGIN_CENTER
+*Abstract*
+#+END_CENTER
 
 yet another .emacs.d
 
 [[file:assets/emacs.png]]
-
