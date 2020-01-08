@@ -95,7 +95,8 @@ An extensible emacs startup screen showing you what’s most important.
   ;; (setq dashboard-banner-logo-title "M-x butterfly")
   (setq dashboard-banner-logo-title "Welcome to the church of Emacs")
   ;; Set the banner
-  (setq dashboard-startup-banner "~/.emacs.d/assets/gnu.png")
+  ;;(setq dashboard-startup-banner "~/.emacs.d/assets/gnu.png")
+  (setq dashboard-startup-banner 'logo)
   ;; Value can be
   ;; 'official which displays the official emacs logo
   ;; 'logo which displays an alternative emacs logo
@@ -213,3 +214,21 @@ An extensible emacs startup screen showing you what’s most important.
 
 #+END_SRC
 
+
+* org-babel
+
+#+BEGIN_SRC emacs-lisp
+
+;; Org-Babel tangle
+(require 'ob-tangle)
+
+;; Setup Babel languages. Can now do Literate Programming
+(org-babel-do-load-languages 'org-babel-load-languages
+'((python . t)
+(shell . t)
+(emacs-lisp . t)
+(ledger . t)
+(ditaa . t)
+(js . t)
+(C . t)))
+#+END_SRC
