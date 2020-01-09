@@ -203,7 +203,7 @@ An extensible emacs startup screen showing you what’s most important.
 #+END_SRC
 
 
-* [[mode-line]]
+* [[https://www.emacswiki.org/emacs/ModeLineConfiguration][mode-line]]
 
 #+BEGIN_SRC emacs-lisp
 
