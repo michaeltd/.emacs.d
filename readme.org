@@ -221,7 +221,7 @@ An extensible emacs startup screen showing you what’s most important.
 #+END_SRC
 
 
-* org-babel
+* [[https://orgmode.org/worg/org-contrib/babel/][org-babel]]
 
 #+BEGIN_SRC emacs-lisp
 ;; Org-Babel tangle
