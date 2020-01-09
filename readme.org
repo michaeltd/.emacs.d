@@ -2,8 +2,9 @@
 #+author: michaeltd
 #+date: <2019-12-24 Tue>
 #+html: <p align="center"><img src="assets/emacs-logo.png"/></p><p align="center"><a href="readme.org"><img src="assets/emacs.png"/></a></p>
-
+#+BEGIN_COMMENT
 <p align="center"><a href="https://www.gnu.org/software/emacs/"><img src="https://img.shields.io/badge/GNU%20Emacs-26.1-b48ead.svg?style=plastic"/></a> <a href="https://orgmode.org/"><img src="https://img.shields.io/badge/org--mode-9.3-489a9f.svg?style=plastic"/></a></p>
+#+END_COMMENT
 
 yet another .emacs.d
 
