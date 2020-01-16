@@ -223,18 +223,20 @@ An extensible emacs startup screen showing you what’s most important.
 * [[https://orgmode.org/worg/org-contrib/babel/][org-babel]]
 
 #+BEGIN_SRC emacs-lisp
-;; Org-Babel tangle
-(require 'ob-tangle)
 
-;; Setup Babel languages. Can now do Literate Programming
-(org-babel-do-load-languages 'org-babel-load-languages
-'((python . t)
-(shell . t)
-(emacs-lisp . t)
-(ledger . t)
-(ditaa . t)
-(js . t)
-(C . t)))
+  ;; Org-Babel tangle
+  (require 'ob-tangle)
+
+  ;; Setup Babel languages. Can now do Literate Programming
+  (org-babel-do-load-languages 'org-babel-load-languages
+    '((python . t)
+      (shell . t)
+      (emacs-lisp . t)
+      (ledger . t)
+      (ditaa . t)
+      (js . t)
+      (C . t)))
+
 #+END_SRC
 
 
@@ -255,8 +257,8 @@ An extensible emacs startup screen showing you what’s most important.
 #+BEGIN_SRC emacs-lisp
 
   ;; exwm :)
-  (require 'exwm)
-  (require 'exwm-config)
-  (exwm-config-default)
+  ;; (require 'exwm)
+  ;; (require 'exwm-config)
+  ;; (exwm-config-default)
 
 #+END_SRC
