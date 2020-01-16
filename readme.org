@@ -243,9 +243,20 @@ An extensible emacs startup screen showing you what’s most important.
 #+BEGIN_SRC emacs-lisp
 
   ;; (require 'ido)
-  ;;    (setq ido-enable-flex-matching t)
-  ;;    (setq ido-everywhere t)
-  ;;    (ido-mode t)
+  ;;     (setq ido-enable-flex-matching t)
+  ;;     (setq ido-everywhere t)
+  ;;     (ido-mode t)
 
 #+END_SRC
 
+
+* [[https://github.com/ch11ng/exwm/][exwm]]
+
+#+BEGIN_SRC emacs-lisp
+
+  ;; exwm :)
+  (require 'exwm)
+  (require 'exwm-config)
+  (exwm-config-default)
+
+#+END_SRC
