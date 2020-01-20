@@ -344,12 +344,12 @@ An extensible emacs startup screen showing you what’s most important.
     ;; Setup Babel languages. Can now do Literate Programming
     (org-babel-do-load-languages 'org-babel-load-languages
         '((python . t)
-            (shell . t)
-	    (emacs-lisp . t)
-	    (ledger . t)
-	    (ditaa . t)
-	    (js . t)
-	    (C . t)))
+          (shell . t)
+	  (emacs-lisp . t)
+	  (ledger . t)
+	  (ditaa . t)
+	  (js . t)
+	  (C . t)))
 
 #+END_SRC
 
