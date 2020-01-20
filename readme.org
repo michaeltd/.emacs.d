@@ -32,20 +32,6 @@ Add [[lisp][lisp]] & [[site-lisp][site-lisp]] to load path
 #+END_SRC
 
 
-* [[themes][themes]]
-
-#+BEGIN_SRC emacs-lisp
-
-(setq custom-safe-themes t)
-  (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-;;  (load-theme 'doom-one t)
-;;  (load-theme 'dracula t)
-;;  (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
-;;  (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
-
-#+END_SRC
-
-
 * [[https://sanemacs.com/][sanemacs]]
 
 A minimal Emacs config that does just enough and nothing more.
@@ -95,8 +81,8 @@ A minimal Emacs config that does just enough and nothing more.
 (setq linum-format "%4d ")                ; Prettify line number format
 (add-hook 'prog-mode-hook                 ; Show line numbers in programming modes
           (if (fboundp 'display-line-numbers-mode)
-              #'display-line-numbers-mode
-            #'linum-mode))
+	  #'display-line-numbers-mode
+	  #'linum-mode))
 
 ;;(use-package undo-tree                    ; Enable undo-tree, sane undo/redo behavior
 ;;  :init (global-undo-tree-mode))
@@ -108,7 +94,7 @@ A minimal Emacs config that does just enough and nothing more.
 ;;; Offload the custom-set-variables to a separate file
 ;;; This keeps your init.el neater and you have the option
 ;;; to gitignore your custom.el if you see fit.
-;;(setq custom-file "~/.emacs.d/custom.el")
+;(setq custom-file "~/.emacs.d/custom.el")
 (setq custom-file "/dev/null")
 (unless (file-exists-p custom-file)
   (write-region "" nil custom-file))
@@ -149,9 +135,10 @@ Required by [[emacs-dashboard]]
 
 #+BEGIN_SRC emacs-lisp
 
-;; all the icons
-(require 'all-the-icons)
-(use-package all-the-icons :ensure t)
+    ;; all the icons
+
+    (require 'all-the-icons)
+    (use-package all-the-icons :ensure t)
 
 #+END_SRC
 
@@ -301,22 +288,68 @@ An extensible emacs startup screen showing you what’s most important.
 #+END_SRC
 
 
+* [[https://github.com/hlissner/emacs-doom-themes][doom-themes]] setup
+
+#+BEGIN_SRC emacs-lisp
+
+    (require 'doom-themes)
+
+    ;; Global settings (defaults)
+    (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+
+    ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each
+    ;; theme may have their own settings.
+    ;; (load-theme 'doom-vibrant t)
+
+    ;; Enable flashing mode-line on errors
+    (doom-themes-visual-bell-config)
+
+    ;; Enable custom neotree theme
+    (doom-themes-neotree-config)  ; all-the-icons fonts must be installed!
+
+
+    ;; or for treemacs users
+    (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+    (doom-themes-treemacs-config)
+  
+    ;; Corrects (and improves) org-mode's native fontification.
+    (doom-themes-org-config)
+
+#+END_SRC
+
+
+* [[themes][themes]]
+
+#+BEGIN_SRC emacs-lisp
+
+    (setq custom-safe-themes t)
+        (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+	(load-theme 'spacemacs-dark t)
+;;      (load-theme 'dracula t)
+;;	(load-theme 'doom-one t)
+;;      (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
+;;      (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
+
+#+END_SRC
+
+
 * [[https://orgmode.org/worg/org-contrib/babel/][org-babel]]
 
 #+BEGIN_SRC emacs-lisp
 
-  ;; Org-Babel tangle
-  (require 'ob-tangle)
+    ;; Org-Babel tangle
+    (require 'ob-tangle)
 
-  ;; Setup Babel languages. Can now do Literate Programming
-  (org-babel-do-load-languages 'org-babel-load-languages
-    '((python . t)
-      (shell . t)
-      (emacs-lisp . t)
-      (ledger . t)
-      (ditaa . t)
-      (js . t)
-      (C . t)))
+    ;; Setup Babel languages. Can now do Literate Programming
+    (org-babel-do-load-languages 'org-babel-load-languages
+        '((python . t)
+            (shell . t)
+	    (emacs-lisp . t)
+	    (ledger . t)
+	    (ditaa . t)
+	    (js . t)
+	    (C . t)))
 
 #+END_SRC
 
