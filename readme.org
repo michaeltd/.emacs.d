@@ -344,7 +344,19 @@ An extensible emacs startup screen showing you what’s most important.
 ;;     (add-to-list 'default-frame-alist '(font .  ))
 ;;     (set-face-attribute 'default t :font "Ubuntu Mono Regular-10" )
 ;; To change the default font for the current frame, as well as future frames, put either of these in your init file:
-     (set-face-attribute 'default nil :font "SourceCodePro" )
+;;     (set-face-attribute 'default nil :font "DejaVuSansMono" )
+;;     (set-face-attribute 'default nil :font "DroidSansMonoDottedforPowerline" )
+;;     (set-face-attribute 'default nil :font "FantasqueSansMono" )
+;;     (set-face-attribute 'default nil :font "FiraMono" )
+     (set-face-attribute 'default nil :font "Hack" )
+;;     (set-face-attribute 'default nil :font "LiberationMonoforPowerline" )
+;;     (set-face-attribute 'default nil :font "LiberationMonoforPowerline" )
+;;     (set-face-attribute 'default nil :font "Monospace" )
+
+;;     (set-face-attribute 'default nil :font "SourceCodePro" )
+;;     (set-face-attribute 'default nil :font "SpaceMono" )
+;;     (set-face-attribute 'default nil :font "ShareTechMono" )
+
 ;;     (set-frame-font FONT nil t)
 ;; where FONT is a string naming the font you want, for example, "Droid Sans Mono-10".
 ;; This should work on all platforms. As of Emacs 23, all of your system fonts including TrueType are available to Emacs.
