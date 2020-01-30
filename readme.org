@@ -412,3 +412,11 @@ An extensible emacs startup screen showing you what’s most important.
   ;; (exwm-config-default)
 
 #+END_SRC
+
+* TODO [[https://www.reddit.com/r/emacs/comments/erzwaf/help_me_break_the_emacs_loop/][help me break the emacs loop]]
+
+  - Whichkey 
+  - Ivy 
+  - Swiper 
+  - Hydra 
+  - Dired-peep
