@@ -325,7 +325,7 @@ An extensible emacs startup screen showing you what’s most important.
 
     (setq custom-safe-themes t)
         (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-	(load-theme 'jazz t)
+	(load-theme 'tomorrow-night-paradise t)
 ;;	(load-theme 'doom-lazersynth t)
 ;;      (load-theme 'dracula t)
 ;;	(load-theme 'doom-one t)
@@ -412,6 +412,7 @@ An extensible emacs startup screen showing you what’s most important.
   ;; (exwm-config-default)
 
 #+END_SRC
+
 
 * TODO [[https://www.reddit.com/r/emacs/comments/erzwaf/help_me_break_the_emacs_loop/][help me break the emacs loop]]
 
