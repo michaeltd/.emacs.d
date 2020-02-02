@@ -421,3 +421,5 @@ An extensible emacs startup screen showing you what’s most important.
   - Swiper 
   - Hydra 
   - Dired-peep
+  - mini-modeline
+  - ibuffer
