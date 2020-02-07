@@ -169,7 +169,7 @@ An extensible emacs startup screen showing you what’s most important.
   (setq dashboard-banner-logo-title "Welcome to the church of Emacs")
   ;; Set the banner
   ;; (setq dashboard-startup-banner "~/.emacs.d/assets/gnu.png")
-  (setq dashboard-startup-banner 'logo)
+  (setq dashboard-startup-banner 3)
   ;; Value can be
   ;; 'official which displays the official emacs logo
   ;; 'logo which displays an alternative emacs logo
@@ -325,7 +325,7 @@ An extensible emacs startup screen showing you what’s most important.
 
     (setq custom-safe-themes t)
         (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-	(load-theme 'doom-outrun-electric t)
+;;	(load-theme 'doom-outrun-electric t)
 ;;	(load-theme 'jazz t)
 ;;	(load-theme 'tomorrow-night-paradise t)
 ;;	(load-theme 'doom-lazersynth t)
