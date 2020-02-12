@@ -24,7 +24,7 @@ Add [[lisp][lisp]] & [[site-lisp][site-lisp]] to load path
   "Add subdirectories to `load-path'."
   (let ((default-directory
           (expand-file-name "site-lisp" user-emacs-directory)))
-    (normal-top-level-add-subdirs-to-load-path)))
+      (normal-top-level-add-subdirs-to-load-path)))
 
 (advice-add #'package-initialize :after #'update-load-path)
 (advice-add #'package-initialize :after #'add-subdirs-to-load-path)
@@ -170,8 +170,8 @@ An extensible emacs startup screen showing you what’s most important.
   ;; (setq dashboard-banner-logo-title "M-x butterfly")
   (setq dashboard-banner-logo-title "Welcome to the church of Emacs")
   ;; Set the banner
-  ;; (setq dashboard-startup-banner "~/.emacs.d/assets/gnu.png")
-  (setq dashboard-startup-banner 3)
+  (setq dashboard-startup-banner "~/.emacs.d/assets/gnu.png")
+  ;; (setq dashboard-startup-banner 'logo)
   ;; Value can be
   ;; 'official which displays the official emacs logo
   ;; 'logo which displays an alternative emacs logo
@@ -327,10 +327,10 @@ An extensible emacs startup screen showing you what’s most important.
 
     (setq custom-safe-themes t)
         (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-;;	(load-theme 'doom-outrun-electric t)
-;;	jazz tomorrow-night-paradise doom-lazersynth dracula doom-one
-;;      (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
-;;      (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
+	;; jazz tomorrow-night-paradise dracula doom-lazersynth doom-dracula doom-one
+	(load-theme 'doom-outrun-electric t)
+	;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
+	;; (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
 
 #+END_SRC
 
@@ -345,10 +345,10 @@ An extensible emacs startup screen showing you what’s most important.
 ;;     (add-to-list 'default-frame-alist '(font .  ))
 ;;     (set-face-attribute 'default t :font "Ubuntu Mono Regular-10" )
 ;; To change the default font for the current frame, as well as future frames, put either of these in your init file:
-     (set-face-attribute 'default nil :font "Hack" )
+     (set-face-attribute 'default nil :font "SourceCodePro" )
 ;;     "DejaVuSansMono" "DroidSansMonoDottedforPowerline" "FantasqueSansMono" 
-;;     "FiraMono" "LiberationMonoforPowerline" "LiberationMonoforPowerline" 
-;;     "Monospace" "SourceCodePro" "SpaceMono" "ShareTechMono" 
+;;     "FiraMono" "LiberationMonoforPowerline" "Monospace" "SourceCodePro" 
+;;     "SpaceMono" "ShareTechMono" Hack UbuntuMono
 ;;     (set-frame-font FONT nil t)
 ;; where FONT is a string naming the font you want, for example, "Droid Sans Mono-10".
 ;; This should work on all platforms. As of Emacs 23, all of your system fonts including TrueType are available to Emacs.
@@ -379,6 +379,33 @@ An extensible emacs startup screen showing you what’s most important.
 	  (ditaa . t)
 	  (js . t)
 	  (C . t)))
+
+#+END_SRC
+
+
+* [[https://github.com/rust-lang/rust-mode][rust-mode]]
+
+#+BEGIN_SRC emacs-lisp
+
+    (add-to-list 'load-path "~/.emacs.d/lisp/rust-mode/")
+    (autoload 'rust-mode "rust-mode" nil t)
+    (require 'rust-mode)
+
+#+END_SRC
+
+
+
+* [[https://github.com/immerrr/lua-mode][lua-mode]]
+
+#+BEGIN_SRC emacs-lisp
+
+    ;;;; This snippet enables lua-mode
+    ;; This line is not necessary, if lua-mode.el is already on your load-path
+    (add-to-list 'load-path "~/.emacs.d/lisp/lua-mode")
+
+    (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+    (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+    (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
 
 #+END_SRC
 
