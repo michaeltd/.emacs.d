@@ -4,44 +4,32 @@
 #+startup: overview
 #+property: header-args :comments yes :results silent
 #+html: <p align="center"><img src="assets/emacs-logo.png"/></p><p align="center"><a href="readme.org"><img src="assets/emacs.png"/></a></p>
-
 yet another .emacs.d
-
 * Init
-
 ** [[lisp][load path]]
+Add [[lisp][lisp]] & [[site-lisp][site-lisp]] to load path
+#+BEGIN_SRC emacs-lisp
+;; Load path
+;; Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
+(defun update-load-path (&rest _)
+  "Update `load-path'."
+  (push (expand-file-name "site-lisp" user-emacs-directory) load-path)
+  (push (expand-file-name "lisp" user-emacs-directory) load-path))
 
- Add [[lisp][lisp]] & [[site-lisp][site-lisp]] to load path
+(defun add-subdirs-to-load-path (&rest _)
+  "Add subdirectories to `load-path'."
+  (let ((default-directory
+    (expand-file-name "site-lisp" user-emacs-directory)))
+    (normal-top-level-add-subdirs-to-load-path)))
 
- #+BEGIN_SRC emacs-lisp
+(advice-add #'package-initialize :after #'update-load-path)
+(advice-add #'package-initialize :after #'add-subdirs-to-load-path)
 
- ;; Load path
- ;; Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
- (defun update-load-path (&rest _)
-   "Update `load-path'."
-   (push (expand-file-name "site-lisp" user-emacs-directory) load-path)
-   (push (expand-file-name "lisp" user-emacs-directory) load-path))
-
- (defun add-subdirs-to-load-path (&rest _)
-   "Add subdirectories to `load-path'."
-   (let ((default-directory
-           (expand-file-name "site-lisp" user-emacs-directory)))
-       (normal-top-level-add-subdirs-to-load-path)))
-
- (advice-add #'package-initialize :after #'update-load-path)
- (advice-add #'package-initialize :after #'add-subdirs-to-load-path)
-
- (update-load-path)
-
- #+END_SRC
-
-
+(update-load-path)
+#+END_SRC
 ** [[https://sanemacs.com/][sanemacs]]
-
  A minimal Emacs config that does just enough and nothing more.
-
  #+BEGIN_SRC emacs-lisp
-
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;;; Sanemacs version 0.2.5 ;;;
  ;;; https://sanemacs.com   ;;;
@@ -129,40 +117,25 @@ yet another .emacs.d
  ;;; Your configuration goes below this line.
  ;;; use-package is already loaded and ready to go!
  ;;; use-package docs: https://github.com/jwiegley/use-package
-
  #+END_SRC
-
-
 * Looks
-
 ** [[https://github.com/domtronn/all-the-icons.el][all-the-icons]]
-
  Required by [[emacs-dashboard]]
-
  #+BEGIN_SRC emacs-lisp
-
      ;; all the icons
-
      (require 'all-the-icons)
      (use-package all-the-icons :ensure t)
-
  #+END_SRC
-
-
 ** [[https://github.com/emacs-dashboard/emacs-dashboard][emacs-dashboard]]
-
  An extensible emacs startup screen showing you what’s most important.
-
  #+BEGIN_SRC emacs-lisp
-
    ;; dashboard
-
    (require 'dashboard)
    (dashboard-setup-startup-hook)
    ;; Or if you use use-package
    (use-package dashboard
      :ensure t
-     :config 
+     :config
      (dashboard-setup-startup-hook))
 
    ;; emacs --daemon
@@ -174,8 +147,8 @@ yet another .emacs.d
    ;; (setq dashboard-banner-logo-title "M-x butterfly")
    (setq dashboard-banner-logo-title "Welcome to the church of Emacs")
    ;; Set the banner
-   (setq dashboard-startup-banner "~/.emacs.d/assets/gnu.png")
-   ;; (setq dashboard-startup-banner 'logo)
+   ;; (setq dashboard-startup-banner "~/.emacs.d/assets/gnu.png")
+   (setq dashboard-startup-banner 'logo)
    ;; Value can be
    ;; 'official which displays the official emacs logo
    ;; 'logo which displays an alternative emacs logo
@@ -240,15 +213,10 @@ yet another .emacs.d
    (setq dashboard-set-init-info t)
 
    ;; Also, the message can be customized like this:
-
    ;; (setq dashboard-init-info "This is an init message!")
-
    ;; A randomly selected footnote will be displayed. To disable it:
-
    ;; (setq dashboard-set-footer nil)
-
    ;; To customize it and customize its icon;
-
    ;; (setq dashboard-footer "Dashboard is pretty cool!")
    (setq dashboard-footer-icon (all-the-icons-octicon "dashboard"
 						      :height 1.1
@@ -256,218 +224,145 @@ yet another .emacs.d
 						      :face 'font-lock-keyword-face))
 
    ;; Org mode’s agenda
-
    ;; To display today’s agenda items on the dashboard, add agenda to dashboard-items:
-
    ;;(add-to-list 'dashboard-items '(agenda) t)
-
    ;; To show agenda for the upcoming seven days set the variable show-week-agenda-p to t.
-
    ;; (setq show-week-agenda-p t)
-
    ;; Note that setting list-size for the agenda list is intentionally ignored; all agenda items for the current day will be displayed.
-
    ;; To customize which categories from the agenda items should be visible in the dashboard set the dashboard-org-agenda-categories to the list of categories you need.
-
    ;; (setq dashboard-org-agenda-categories '("Tasks" "Appointments"))
-
    ;; end dashboard
-
  #+END_SRC
 
-
 ** [[https://www.emacswiki.org/emacs/ModeLineConfiguration][mode-line]]
-
  #+BEGIN_SRC emacs-lisp
-
  ;; Enable the display of the current time, see DisplayTime
  (display-time-mode 1)
- ;; Enable or disable the display of the current line number, see also LineNumbers 
- (line-number-mode 1) 
+ ;; Enable or disable the display of the current line number, see also LineNumbers
+ (line-number-mode 1)
  ;; Enable or disable the display of the current column number
- (column-number-mode 1) 
+ (column-number-mode 1)
  ;; (for Emacs 22 and up) – Enable or disable the current buffer size, Emacs 22 and later, see size-indication-mode
  (size-indication-mode 1)
  ;; Enable or disable laptop battery information, see DisplayBatteryMode.
  (display-battery-mode 1)
-
  #+END_SRC
-
-
 ** [[https://github.com/hlissner/emacs-doom-themes][doom-themes]] setup
-
  #+BEGIN_SRC emacs-lisp
-
      (require 'doom-themes)
-
      ;; Global settings (defaults)
      (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
          doom-themes-enable-italic t) ; if nil, italics is universally disabled
-
      ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each
      ;; theme may have their own settings.
      ;; (load-theme 'doom-vibrant t)
-
      ;; Enable flashing mode-line on errors
      (doom-themes-visual-bell-config)
-
      ;; Enable custom neotree theme
      (doom-themes-neotree-config)  ; all-the-icons fonts must be installed!
-
-
      ;; or for treemacs users
      (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
      (doom-themes-treemacs-config)
-  
      ;; Corrects (and improves) org-mode's native fontification.
      (doom-themes-org-config)
-
  #+END_SRC
-
-
 ** [[themes][themes]]
-
- #+BEGIN_SRC emacs-lisp
-
-     (setq custom-safe-themes t)
-         (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-	 ;; jazz tomorrow-night-paradise dracula doom-lazersynth doom-dracula doom-one
-	 (load-theme 'doom-outrun-electric t)
-	 ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
-	 ;; (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
-
- #+END_SRC
-
-
-
-** [[https://www.emacswiki.org/emacs/SetFonts][default font]]
-
- #+BEGIN_SRC emacs-lisp
-
- ;; Globally Change the Default Font
- ;; To change the default font for new (non special-display) frames, put either of these in your init file:
- ;;     (add-to-list 'default-frame-alist '(font .  ))
- ;;     (set-face-attribute 'default t :font "Ubuntu Mono Regular-10" )
- ;; To change the default font for the current frame, as well as future frames, put either of these in your init file:
-      (set-face-attribute 'default nil :font "SourceCodePro" )
- ;;     "DejaVuSansMono" "DroidSansMonoDottedforPowerline" "FantasqueSansMono" 
- ;;     "FiraMono" "LiberationMonoforPowerline" "Monospace" "SourceCodePro" 
- ;;     "SpaceMono" "ShareTechMono" Hack UbuntuMono
- ;;     (set-frame-font FONT nil t)
- ;; where FONT is a string naming the font you want, for example, "Droid Sans Mono-10".
- ;; This should work on all platforms. As of Emacs 23, all of your system fonts including TrueType are available to Emacs.
- ;; If you are using a development snapshot for what will become Emacs 24.4 then see Emacs bug #16529.
- ;; (There needs to be an explanation for how to set fonts for particular modes or buffers here. Including a set-face-attribute hook as described above for a particular mode does not work; once you enter that mode the new font is set, but it is applied globally to all other open buffers!)
- ;; Global Fonts, .Xresources, and Emacs Daemon
- ;; I found that the only way to set fonts so that they remain consistent across emacs -nw, emacs23(-gtk), emacsclient -t, emacsclient -c, was to declare them in .Xresources and .emacs. But the declarations can’t conflict with each other. Otherwise, emacs --daemon complains. It doesn’t like (set-face-attribute ‘default nil :font FONT) and the like. For instance, to use Terminus, 9 pixel size across the board, I needed to insert
- ;; Emacs.font: Terminus-9
- ;; (set-default-font “Terminus-9”)
- ;; in my ~/.Xresources and ~/.emacs, respectively.
-
- #+END_SRC
-
-
-* Languages
-
-** [[https://orgmode.org/worg/org-contrib/babel/][org-babel]]
-
- #+BEGIN_SRC emacs-lisp
-
-     ;; Org-Babel tangle
-     (require 'ob-tangle)
-
-     ;; Setup Babel languages. Can now do Literate Programming
-     (org-babel-do-load-languages 'org-babel-load-languages
-         '((python . t)
-           (shell . t)
-	   (emacs-lisp . t)
-	   (ledger . t)
-	   (ditaa . t)
-	   (js . t)
-	   (C . t)))
-
- #+END_SRC
-
-
-** [[https://github.com/rust-lang/rust-mode][rust-mode]]
-
- #+BEGIN_SRC emacs-lisp
-
-     (add-to-list 'load-path "~/.emacs.d/lisp/rust-mode/")
-     (autoload 'rust-mode "rust-mode" nil t)
-     (require 'rust-mode)
-
- #+END_SRC
-
-
-
-** [[https://github.com/immerrr/lua-mode][lua-mode]]
-
- #+BEGIN_SRC emacs-lisp
-
-     ;;;; This snippet enables lua-mode
-     ;; This line is not necessary, if lua-mode.el is already on your load-path
-     (add-to-list 'load-path "~/.emacs.d/lisp/lua-mode")
-
-     (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
-     (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
-     (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
-
- #+END_SRC
-
-
-** emacs [[https://github.com/hvesalai/emacs-scala-mode][scala-mode]] & [[https://github.com/hvesalai/emacs-sbt-mode][sbt-mode]]
-
 #+BEGIN_SRC emacs-lisp
-
-    (use-package scala-mode
-        :interpreter
-	("scala" . scala-mode))
-
-    (use-package sbt-mode
-        :commands sbt-start sbt-command
-	:config
-	;; WORKAROUND: allows using SPACE when in the minibuffer
-	(substitute-key-definition
-	    'minibuffer-complete-word
-	    'self-insert-command
-	    minibuffer-local-completion-map))
-
+  (setq custom-safe-themes t)
+  (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+  ;; jazz tomorrow-night-paradise dracula doom-lazersynth doom-dracula doom-one
+  (load-theme 'doom-outrun-electric t)
+  ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
+  ;; (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
+#+END_SRC
+** [[https://www.emacswiki.org/emacs/SetFonts][default font]]
+#+BEGIN_SRC emacs-lisp
+;; Globally Change the Default Font
+;; To change the default font for new (non special-display) frames, put either of these in your init file:
+;;     (add-to-list 'default-frame-alist '(font .  ))
+;;     (set-face-attribute 'default t :font "Ubuntu Mono Regular-10" )
+;; To change the default font for the current frame, as well as future frames, put either of these in your init file:
+    (set-face-attribute 'default nil :font "DejaVuSansMono" )
+;;     "DejaVuSansMono" "DroidSansMonoDottedforPowerline" "FantasqueSansMono"
+;;     "FiraMono" "LiberationMonoforPowerline" "Monospace" "SourceCodePro"
+;;     "SpaceMono" "ShareTechMono" Hack UbuntuMono IBM3270
+;;     (set-frame-font FONT nil t)
+;; where FONT is a string naming the font you want, for example, "Droid Sans Mono-10".
+;; This should work on all platforms. As of Emacs 23, all of your system fonts including TrueType are available to Emacs.
+;; If you are using a development snapshot for what will become Emacs 24.4 then see Emacs bug #16529.
+;; (There needs to be an explanation for how to set fonts for particular modes or buffers here. Including a set-face-attribute hook as described above for a particular mode does not work; once you enter that mode the new font is set, but it is applied globally to all other open buffers!)
+;; Global Fonts, .Xresources, and Emacs Daemon
+;; I found that the only way to set fonts so that they remain consistent across emacs -nw, emacs23(-gtk), emacsclient -t, emacsclient -c, was to declare them in .Xresources and .emacs. But the declarations can’t conflict with each other. Otherwise, emacs --daemon complains. It doesn’t like (set-face-attribute ‘default nil :font FONT) and the like. For instance, to use Terminus, 9 pixel size across the board, I needed to insert
+;; Emacs.font: Terminus-9
+;; (set-default-font “Terminus-9”)
+;; in my ~/.Xresources and ~/.emacs, respectively.
 #+END_SRC
 
+* Languages
+** [[https://orgmode.org/worg/org-contrib/babel/][org-babel]]
+#+BEGIN_SRC emacs-lisp
+  ;; Org-Babel tangle
+  (require 'ob-tangle)
+  ;; Setup Babel languages. Can now do Literate Programming
+  (org-babel-do-load-languages 'org-babel-load-languages
+    '((python . t)
+      (shell . t)
+      (emacs-lisp . t)
+      (ledger . t)
+      (ditaa . t)
+      (js . t)
+      (C . t)))
+#+END_SRC
+** [[https://github.com/rust-lang/rust-mode][rust-mode]]
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'load-path "~/.emacs.d/lisp/rust-mode/")
+  (autoload 'rust-mode "rust-mode" nil t)
+  (require 'rust-mode)
+#+END_SRC
+** [[https://github.com/immerrr/lua-mode][lua-mode]]
+#+BEGIN_SRC emacs-lisp
+  ;;;; This snippet enables lua-mode
+  ;; This line is not necessary, if lua-mode.el is already on your load-path
+  (add-to-list 'load-path "~/.emacs.d/lisp/lua-mode")
+  (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+  (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+  (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+#+END_SRC
+** emacs [[https://github.com/hvesalai/emacs-scala-mode][scala-mode]] & [[https://github.com/hvesalai/emacs-sbt-mode][sbt-mode]]
+#+BEGIN_SRC emacs-lisp
+  (use-package scala-mode
+    :interpreter
+    ("scala" . scala-mode))
 
+  (use-package sbt-mode
+    :commands sbt-start sbt-command
+    :config
+    ;; WORKAROUND: allows using SPACE when in the minibuffer
+    (substitute-key-definition
+    'minibuffer-complete-word
+    'self-insert-command
+    minibuffer-local-completion-map))
+#+END_SRC
 * Utilities
-
 ** [[https://www.emacswiki.org/emacs/InteractivelyDoThings][ido-mode]]
-
- #+BEGIN_SRC emacs-lisp
-
-   ;; (require 'ido)
-   ;;     (setq ido-enable-flex-matching t)
-   ;;     (setq ido-everywhere t)
-   ;;     (ido-mode t)
-
- #+END_SRC
-
-
+#+BEGIN_SRC emacs-lisp
+;; (require 'ido)
+;;     (setq ido-enable-flex-matching t)
+;;     (setq ido-everywhere t)
+;;     (ido-mode t)
+#+END_SRC
 ** [[https://github.com/ch11ng/exwm/][exwm]]
-
- #+BEGIN_SRC emacs-lisp
-
-   ;; exwm :)
-   ;; (require 'exwm)
-   ;; (require 'exwm-config)
-   ;; (exwm-config-default)
-
- #+END_SRC
-
-
+#+BEGIN_SRC emacs-lisp
+;; exwm :)
+;; (require 'exwm)
+;; (require 'exwm-config)
+;; (exwm-config-default)
+#+END_SRC
 * [[https://www.reddit.com/r/emacs/comments/erzwaf/help_me_break_the_emacs_loop/][help me break the emacs loop]]
-
-  - Whichkey 
-  - Ivy 
-  - Swiper 
-  - Hydra 
+  - Whichkey
+  - Ivy
+  - Swiper
+  - Hydra
   - Dired-peep
   - mini-modeline
   - ibuffer
