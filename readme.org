@@ -148,7 +148,8 @@ Add [[lisp][lisp]] & [[site-lisp][site-lisp]] to load path
    (setq dashboard-banner-logo-title "Welcome to the church of Emacs")
    ;; Set the banner
    ;; (setq dashboard-startup-banner "~/.emacs.d/assets/gnu.png")
-   (setq dashboard-startup-banner 'logo)
+   ;; (setq dashboard-startup-banner "~/.emacs.d/banner.txt")
+      (setq dashboard-startup-banner 4)
    ;; Value can be
    ;; 'official which displays the official emacs logo
    ;; 'logo which displays an alternative emacs logo
