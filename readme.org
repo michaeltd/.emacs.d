@@ -234,10 +234,13 @@ Add [[lisp][lisp]] & [[site-lisp][site-lisp]] to load path
    ;; (setq dashboard-org-agenda-categories '("Tasks" "Appointments"))
    ;; end dashboard
  #+END_SRC
-
+** dired-mode
+#+BEGIN_SRC emacs-lisp
+    (setq dired-listing-switches "-aBhl  --group-directories-first")
+#+END_SRC
 ** mode-line
-*** [[https://www.emacswiki.org/emacs/ModeLineConfiguration][mode-line]]
-#+BEGIN_COMMENT
+   #+BEGIN_COMMENT
+  [[https://www.emacswiki.org/emacs/ModeLineConfiguration][mode-line]]
   #+BEGIN_SRC emacs-lisp
   ;; Enable the display of the current time, see DisplayTime
   (display-time-mode 1)
