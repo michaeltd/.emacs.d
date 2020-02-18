@@ -1,6 +1,7 @@
 #+title: .emacs.d
 #+author: michaeltd
 #+date: <2019-12-24 Tue>
+#+options: toc:t num:nil
 #+startup: overview
 #+property: header-args :comments yes :results silent
 #+html: <p align="center"><img src="assets/emacs-logo.png"/></p><p align="center"><a href="readme.org"><img src="assets/emacs.png"/></a></p>
@@ -239,21 +240,20 @@ Add [[lisp][lisp]] & [[site-lisp][site-lisp]] to load path
     (setq dired-listing-switches "-aBhl  --group-directories-first")
 #+END_SRC
 ** mode-line
-   #+BEGIN_COMMENT
-  [[https://www.emacswiki.org/emacs/ModeLineConfiguration][mode-line]]
-  #+BEGIN_SRC emacs-lisp
-  ;; Enable the display of the current time, see DisplayTime
-  (display-time-mode 1)
-  ;; Enable or disable the display of the current line number, see also LineNumbers
-  (line-number-mode 1)
-  ;; Enable or disable the display of the current column number
-  (column-number-mode 1)
-  ;; (for Emacs 22 and up) – Enable or disable the current buffer size, Emacs 22 and later, see size-indication-mode
-  (size-indication-mode 1)
-  ;; Enable or disable laptop battery information, see DisplayBatteryMode.
-  (display-battery-mode 1)
-  #+END_SRC
- #+END_COMMENT
+*** [[https://www.emacswiki.org/emacs/ModeLineConfiguration][mode-line]]
+ #+BEGIN_SRC emacs-lisp
+ ;; Enable the display of the current time, see DisplayTime
+ (display-time-mode 1)
+ ;; Enable or disable the display of the current line number, see also LineNumbers
+ (line-number-mode 1)
+ ;; Enable or disable the display of the current column number
+ (column-number-mode 1)
+ ;; (for Emacs 22 and up) – Enable or disable the current buffer size, Emacs 22 and later, see size-indication-mode
+ (size-indication-mode 1)
+ ;; Enable or disable laptop battery information, see DisplayBatteryMode.
+ (display-battery-mode 1)
+ #+END_SRC
+
 *** [[https://github.com/seagle0128/doom-modeline][doom-modeline]]
  #+BEGIN_SRC emacs-lisp
      (add-to-list 'load-path "~/.emacs.d/lisp/doom-modeline/")
@@ -403,7 +403,6 @@ Add [[lisp][lisp]] & [[site-lisp][site-lisp]] to load path
      (setq doom-modeline-before-update-env-hook nil)
      (setq doom-modeline-after-update-env-hook nil)
  #+END_SRC
-
 ** [[https://github.com/hlissner/emacs-doom-themes][doom-themes]] setup
  #+BEGIN_SRC emacs-lisp
      (require 'doom-themes)
@@ -427,10 +426,11 @@ Add [[lisp][lisp]] & [[site-lisp][site-lisp]] to load path
 #+BEGIN_SRC emacs-lisp
   (setq custom-safe-themes t)
   (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-      ;; jazz tomorrow-night-paradise dracula doom-lazersynth doom-dracula doom-one
+      ;; jazz tomorrow-night-paradise dracula doom-lazersynth doom-dracula doom-one doom-outrun-electric xresources
       (load-theme 'doom-outrun-electric t)
+      ;; (load-theme 'xresources t)
       ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
-      ;; (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
+      ;;(add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
 #+END_SRC
 ** [[https://www.emacswiki.org/emacs/SetFonts][default font]]
 #+BEGIN_SRC emacs-lisp
