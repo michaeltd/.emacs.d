@@ -514,24 +514,34 @@ Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
 ;; (require 'exwm-config)
 ;; (exwm-config-default)
 #+END_SRC
-** multi-term
-This package is for creating and managing multiple terminal buffers in Emacs.
+** terms
+*** multi-term
+ This package is for creating and managing multiple terminal buffers in Emacs.
+ #+BEGIN_SRC emacs-lisp
+ (when (require 'multi-term nil t)
+   (progn
+     ;; custom
+     ;; (customize-set-variable 'multi-term-program "/usr/local/bin/fish")
+     (customize-set-variable 'multi-term-program "bash")
+
+     ;; focus terminal window after you open dedicated window
+     (customize-set-variable 'multi-term-dedicated-select-after-open-p t)
+
+     ;; the buffer name of term buffer.
+     (customize-set-variable 'multi-term-buffer-name "multi-term")
+
+     ;; binds (C-x) prefix
+     (define-key ctl-x-map (kbd "<C-return>") 'multi-term)
+     (define-key ctl-x-map (kbd "x") 'multi-term-dedicated-toggle)))
+ #+END_SRC
+*** [[https://github.com/akermu/emacs-libvterm][vterm]]
 #+BEGIN_SRC emacs-lisp
-(when (require 'multi-term nil t)
-  (progn
-    ;; custom
-    ;; (customize-set-variable 'multi-term-program "/usr/local/bin/fish")
-    (customize-set-variable 'multi-term-program "bash")
-
-    ;; focus terminal window after you open dedicated window
-    (customize-set-variable 'multi-term-dedicated-select-after-open-p t)
-
-    ;; the buffer name of term buffer.
-    (customize-set-variable 'multi-term-buffer-name "multi-term")
-
-    ;; binds (C-x) prefix
-    (define-key ctl-x-map (kbd "<C-return>") 'multi-term)
-    (define-key ctl-x-map (kbd "x") 'multi-term-dedicated-toggle)))
+    (add-to-list 'load-path "~/git/scrap/emacs-libvterm")
+    (require 'vterm)
+    ;; Or, with use-package:
+    ;; (use-package vterm :load-path "~/git/scrap/emacs-libvterm/")
+    ;; Or, install with melpa
+    ;; (use-package vterm :ensure t)
 #+END_SRC
 * [[https://www.reddit.com/r/emacs/comments/erzwaf/help_me_break_the_emacs_loop/][help me break the emacs loop]]
   - Whichkey
