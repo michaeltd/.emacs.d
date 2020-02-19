@@ -4,7 +4,7 @@
 #+options: toc:nil num:nil
 #+startup: overview
 #+property: header-args :comments yes :results silent
-#+html: <p align="center"><img src="assets/emacs-logo.png"/></p><p align="center"><a href="readme.org"><img src="assets/emacs.png"/></a></p>
+#+html: <p align="center"><img src="assets/emacs-logo.png"/></p><p align="center"><a href="readme.org"><img src="assets/screenshot.png"/></a></p>
 yet another .emacs.d
 * Init
 ** [[file:lisp][load path]]
