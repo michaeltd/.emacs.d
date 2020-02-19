@@ -1,14 +1,14 @@
 #+title: .emacs.d
 #+author: michaeltd
 #+date: <2019-12-24 Tue>
-#+options: toc:t num:nil
+#+options: toc:nil num:nil
 #+startup: overview
 #+property: header-args :comments yes :results silent
 #+html: <p align="center"><img src="assets/emacs-logo.png"/></p><p align="center"><a href="readme.org"><img src="assets/emacs.png"/></a></p>
 yet another .emacs.d
 * Init
-** [[lisp][load path]]
-Add [[lisp][lisp]] & [[site-lisp][site-lisp]] to load path
+** [[file:lisp][load path]]
+Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
 #+BEGIN_SRC emacs-lisp
 ;; Load path
 ;; Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
