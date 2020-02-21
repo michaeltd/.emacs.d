@@ -509,10 +509,10 @@ Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
 #+END_SRC
 ** [[https://github.com/ch11ng/exwm/][exwm]]
 #+BEGIN_SRC emacs-lisp
-;; exwm :)
-;; (require 'exwm)
-;; (require 'exwm-config)
-;; (exwm-config-default)
+    ;; exwm :)
+    (require 'exwm)
+    (require 'exwm-config)
+    (exwm-config-default)
 #+END_SRC
 ** terms
 *** multi-term
