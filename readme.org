@@ -500,6 +500,19 @@ Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
     minibuffer-local-completion-map))
 #+END_SRC
 * Utilities
+** paredit
+#+BEGIN_SRC emacs-lisp
+    (require 'paredit)
+    (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+    (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
+    (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+    (add-hook 'ielm-mode-hook             #'enable-paredit-mode)
+    (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
+    (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+    (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+    (add-hook 'shell-mode-hook            #'enable-paredit-mode)
+    (add-hook 'shell-mode-hook (lambda () (paredit-mode +1)))
+#+END_SRC
 ** [[https://www.emacswiki.org/emacs/InteractivelyDoThings][ido-mode]]
 #+BEGIN_SRC emacs-lisp
 ;; (require 'ido)
@@ -512,7 +525,7 @@ Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
     ;; exwm :)
     (require 'exwm)
     (require 'exwm-config)
-    (exwm-config-default)
+    ;; (exwm-config-default)
 #+END_SRC
 ** terms
 *** multi-term
