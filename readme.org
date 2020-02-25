@@ -515,17 +515,17 @@ Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
 #+END_SRC
 ** [[https://www.emacswiki.org/emacs/InteractivelyDoThings][ido-mode]]
 #+BEGIN_SRC emacs-lisp
-;; (require 'ido)
-;;     (setq ido-enable-flex-matching t)
-;;     (setq ido-everywhere t)
-;;     (ido-mode t)
+  ;; (require 'ido)
+  ;; (setq ido-enable-flex-matching t)
+  ;; (setq ido-everywhere t)
+  ;; (ido-mode t)
 #+END_SRC
 ** [[https://github.com/ch11ng/exwm/][exwm]]
 #+BEGIN_SRC emacs-lisp
     ;; exwm :)
     (require 'exwm)
     (require 'exwm-config)
-    ;; (exwm-config-default)
+    (exwm-config-default)
 #+END_SRC
 ** terms
 *** multi-term
@@ -536,13 +536,10 @@ Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
      ;; custom
      ;; (customize-set-variable 'multi-term-program "/usr/local/bin/fish")
      (customize-set-variable 'multi-term-program "bash")
-
      ;; focus terminal window after you open dedicated window
      (customize-set-variable 'multi-term-dedicated-select-after-open-p t)
-
      ;; the buffer name of term buffer.
      (customize-set-variable 'multi-term-buffer-name "multi-term")
-
      ;; binds (C-x) prefix
      (define-key ctl-x-map (kbd "<C-return>") 'multi-term)
      (define-key ctl-x-map (kbd "x") 'multi-term-dedicated-toggle)))
