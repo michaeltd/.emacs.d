@@ -279,4 +279,3 @@ Emacs Window Manager [+.-]
   All other keyboard shortcuts you'll need are the standard emacs shortcuts.
 
   More on emacs window manager at [[https://github.com/ch11ng/exwm/wiki/EXWM-User-Guide][EXWM wiki]]
-
