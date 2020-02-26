@@ -222,4 +222,4 @@ Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
 
   A: Don't!
 
-  This is my personal .emacs.d/and batteries are not included!
+  This is my personal .emacs.d and batteries are not included!
