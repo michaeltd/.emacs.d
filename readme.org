@@ -14,62 +14,63 @@ yet another .emacs.d
 * Init
 ** some variables
 #+BEGIN_SRC emacs-lisp
-    ;; Font that worked: DejaVuSansMono DroidSansMonoDottedforPowerline
-    ;;                   FantasqueSansMono FiraMono LiberationMonoforPowerline
-    ;;                   Monospace SourceCodePro SpaceMono ShareTechMono
-    ;;                   Hack UbuntuMono IBM3270
-    ;; Themes i can live with: jazz tomorrow-night-paradise dracula 
-    ;;                         doom-lazersynth doom-dracula doom-one 
-    ;;                         doom-outrun-electric xresources modus-vivendi
-    (setq user-full-name "michaeltd"
-        user-mail-address "tsouchlarakis@gmail.com"
-	user-pgp-key "0x01063480")
+;; Font that worked: DejaVuSansMono DroidSansMonoDottedforPowerline
+;;                   FantasqueSansMono FiraMono LiberationMonoforPowerline
+;;                   Monospace SourceCodePro SpaceMono ShareTechMono
+;;                   Hack UbuntuMono IBM3270
+;; Themes i can live with: jazz tomorrow-night-paradise dracula 
+;;                         doom-lazersynth doom-dracula doom-one 
+;;                         doom-outrun-electric xresources modus-vivendi
+(setq user-full-name "michaeltd"
+    user-mail-address "tsouchlarakis@gmail.com"
+    user-pgp-key "0x01063480")
 #+END_SRC
-** package-initialize, update-load-path
-Initialize use-package,
+** update-load-path, package-initialize
 Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
+Initialize use-package,
 #+BEGIN_SRC emacs-lisp
-;; Emacs initialization
-(package-initialize)
-(setq use-package-always-ensure t)
 ;; Load path
 ;; Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
 (defun update-load-path (&rest _)
-    "Update `load-path'."
-    (push (expand-file-name "site-lisp" user-emacs-directory) load-path)
-    (push (expand-file-name "lisp" user-emacs-directory) load-path))
+"Update `load-path'."
+(push (expand-file-name "site-lisp" user-emacs-directory) load-path)
+(push (expand-file-name "lisp" user-emacs-directory) load-path))
 
 (defun add-subdirs-to-load-path (&rest _)
-    "Add subdirectories to `load-path'."
-    (let ((default-directory
-        (expand-file-name "site-lisp" user-emacs-directory)))
-	(normal-top-level-add-subdirs-to-load-path)))
+"Add subdirectories to `load-path'."
+(let ((default-directory
+(expand-file-name "site-lisp" user-emacs-directory)))
+(normal-top-level-add-subdirs-to-load-path)))
 
 (advice-add #'package-initialize :after #'update-load-path)
 (advice-add #'package-initialize :after #'add-subdirs-to-load-path)
 
 (update-load-path)
 
-;; Add package sources
-(unless (assoc-default "melpa" package-archives)
-    (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
-(unless (assoc-default "org" package-archives)
-    (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t))
+;;; Setup package.el
+;; (require 'package)
+;; (setq package-enable-at-startup nil)
 
-;; Use M-x package-refresh-contents to reload the list of packages after adding these for the first time.
-;; Add my elisp directory and other files
+;; ;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+;; (unless (assoc-default "melpa" package-archives)
+;;     (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
+;; (unless (assoc-default "org" package-archives)
+;;     (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t))
 
-;; Sometimes I load files outside the package system. As long as they're in a directory in my load-path, Emacs can find them.
-(unless (package-installed-p 'use-package)
-    (package-install 'use-package))
-(setq use-package-verbose t)
-(setq use-package-always-ensure t)
-(require 'use-package)
-(use-package auto-compile
-    :config (auto-compile-on-load-mode))
-    
-(setq load-prefer-newer t)
+;; (unless package--initialized (package-initialize))
+;; ;;; Setup use-package
+;; (unless (package-installed-p 'use-package)
+;;   (package-refresh-contents)
+;;   (package-install 'use-package))
+;; (eval-when-compile
+;;   (require 'use-package))
+;; (setq use-package-always-ensure t)
 
+;; (setq use-package-verbose t)
+;; (require 'use-package)
+;; (use-package auto-compile
+;;     :config (auto-compile-on-load-mode))
+;; (setq load-prefer-newer t)
 #+END_SRC
 ** [[https://sanemacs.com/][sanemacs]]
 A minimal Emacs config that does just enough and nothing more.
@@ -93,18 +94,23 @@ A minimal Emacs config that does just enough and nothing more.
     (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
 ;;; Setup package.el
-;(require 'package)
-;(setq package-enable-at-startup nil)
-;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-;(unless package--initialized (package-initialize))
+(require 'package)
+(setq package-enable-at-startup nil)
+;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(unless (assoc-default "melpa" package-archives)
+    (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
+(unless (assoc-default "org" package-archives)
+    (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t))
+
+(unless package--initialized (package-initialize))
 
 ;;; Setup use-package
-;(unless (package-installed-p 'use-package)
-;  (package-refresh-contents)
-;  (package-install 'use-package))
-;(eval-when-compile
-;  (require 'use-package))
-;(setq use-package-always-ensure t)
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(eval-when-compile
+  (require 'use-package))
+(setq use-package-always-ensure t)
 
 ;;; Useful Defaults
 (setq-default cursor-type 'bar)           ; Line-style cursor similar to other text editors
