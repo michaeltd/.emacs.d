@@ -154,8 +154,7 @@ A minimal Emacs config that does just enough and nothing more.
 #+END_SRC
 ** [[themes][themes]]
 Themes i can live with: 
-jazz tomorrow-night-paradise dracula doom-lazersynth doom-dracula 
-doom-one doom-outrun-electric xresources modus-vivendi
+jazz tomorrow-night-paradise dracula xresources modus-vivendi
 #+BEGIN_SRC emacs-lisp
 (setq custom-safe-themes t)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
