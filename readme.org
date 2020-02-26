@@ -219,6 +219,7 @@ Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
 #+END_SRC
 * FAQ
   Q: How to install this?
+
   A: Don't!
-  This is my personal .emacs.d/.
-  Batteries are not included!
+
+  This is my personal .emacs.d/and batteries are not included!
