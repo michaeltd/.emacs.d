@@ -7,20 +7,13 @@
 #+html: <p align="center"><img src="assets/emacs-logo.png"/></p><p align="center"><a href="readme.org"><img src="assets/screenshot.png"/></a></p>
 yet another .emacs.d
 * DONE Requirements
-1. Close to vanilla u-xp
+1. Close to vanilla uxp
 2. Slim Load times suitable for ancient hardware such as mine >:'[
 3. Resource efficient eye-candy-ness (eg: No doom-themes, doom-modeline, doom-\star  , spacemacs-\star)
 4. No source packages +(todo)+ for "batteries included" functionality.
 * Init
 ** some variables
 #+BEGIN_SRC emacs-lisp
-;; Font that worked: DejaVuSansMono DroidSansMonoDottedforPowerline
-;;                   FantasqueSansMono FiraMono LiberationMonoforPowerline
-;;                   Monospace SourceCodePro SpaceMono ShareTechMono
-;;                   Hack UbuntuMono IBM3270
-;; Themes i can live with: jazz tomorrow-night-paradise dracula 
-;;                         doom-lazersynth doom-dracula doom-one 
-;;                         doom-outrun-electric xresources modus-vivendi
 (setq user-full-name "michaeltd"
     user-mail-address "tsouchlarakis@gmail.com"
     user-pgp-key "0x01063480")
@@ -161,6 +154,7 @@ A minimal Emacs config that does just enough and nothing more.
 #+END_SRC
 ** [[themes][themes]]
 #+BEGIN_SRC emacs-lisp
+;; Themes i can live with: jazz tomorrow-night-paradise dracula doom-lazersynth doom-dracula doom-one doom-outrun-electric xresources modus-vivendi
 (setq custom-safe-themes t)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'jazz t)
@@ -169,6 +163,7 @@ A minimal Emacs config that does just enough and nothing more.
 #+END_SRC
 ** [[https://www.emacswiki.org/emacs/SetFonts][default font]]
 #+BEGIN_SRC emacs-lisp
+;; Font that worked: DejaVuSansMono DroidSansMonoDottedforPowerline FantasqueSansMono FiraMono LiberationMonoforPowerline Monospace SourceCodePro SpaceMono ShareTechMono Hack UbuntuMono IBM3270
 (set-face-attribute 'default nil :font "SourceCodePro" )
 #+END_SRC
 * Languages
@@ -234,7 +229,7 @@ This package is for creating and managing multiple terminal buffers in Emacs.
 ** exwm
 Emacs Window Manager [+.-]
 #+BEGIN_SRC emacs-lisp
-(use-package exwm :ensure t)
+;(use-package exwm :ensure t)
 ;(require 'exwm)
 ;(require 'exwm-config)
 ;(exwm-config-default)
@@ -268,7 +263,7 @@ Emacs Window Manager [+.-]
   #+BEGIN_SRC ini
   [Desktop Entry]
   Name=Emacs Window Manager
-  Comment=A Window Manager for the emacs OS
+  Comment=A Window Manager for the Emacs OS
   TryExec=emacs --daemon -f exwm-enable
   Exec=/usr/bin/emacs --daemon -f exwm-enable
   Type=Application
