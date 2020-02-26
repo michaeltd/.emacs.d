@@ -216,17 +216,5 @@ Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
 #+BEGIN_SRC emacs-lisp
     (add-to-list 'load-path "~/.emacs.d/lisp/emacs-libvterm")
     (require 'vterm)
-    ;; Or, with use-package:
-    ;; (use-package vterm :load-path "~/.emacs.d/lisp/emacs-libvterm/")
-    ;; Or, install with melpa
-    ;; (use-package vterm :ensure t)
 #+END_SRC
-* [[https://www.reddit.com/r/emacs/comments/erzwaf/help_me_break_the_emacs_loop/][help me break the emacs loop]]
-  - Whichkey
-  - Ivy
-  - Swiper
-  - Hydra
-  - Dired-peep
-  - mini-modeline
-  - ibuffer
 
