@@ -164,7 +164,7 @@ doom-one doom-outrun-electric xresources modus-vivendi
 ;; (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
 #+END_SRC
 ** [[https://www.emacswiki.org/emacs/SetFonts][default font]]
-Font that work: 
+Fonts that work: 
 DejaVuSansMono DroidSansMonoDottedforPowerline FantasqueSansMono 
 FiraMono LiberationMonoforPowerline Monospace SourceCodePro 
 SpaceMono ShareTechMono Hack UbuntuMono IBM3270
