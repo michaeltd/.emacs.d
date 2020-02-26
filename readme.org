@@ -264,8 +264,7 @@ This package is for creating and managing multiple terminal buffers in Emacs.
 ;; (require 'exwm-config)
 ;; (exwm-config-default)
 (use-package exwm :ensure t)
-(require 'exwm-config)
-(require 'exwm-config)
+;;(require 'exwm-config)
 #+END_SRC
 * FAQ
 Q: How to install this?
