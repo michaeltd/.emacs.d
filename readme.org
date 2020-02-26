@@ -6,27 +6,72 @@
 #+property: header-args :comments yes :results silent
 #+html: <p align="center"><img src="assets/emacs-logo.png"/></p><p align="center"><a href="readme.org"><img src="assets/screenshot.png"/></a></p>
 yet another .emacs.d
+* TODO Requirements
+1. Close to vanilla u-xp
+2. Slim Load times suitable for ancient hardware such as mine >:'[
+3. Resource efficient eye-candy-ness (eg: No doom-themes, doom-modeline, doom-anything)
+4. No source packages (todo) for "batteries included" functionality.
 * Init
-** [[file:lisp][load path]]
+** some variables
+#+BEGIN_SRC emacs-lisp
+    ;; Font that worked: DejaVuSansMono DroidSansMonoDottedforPowerline
+    ;;                   FantasqueSansMono FiraMono LiberationMonoforPowerline
+    ;;                   Monospace SourceCodePro SpaceMono ShareTechMono
+    ;;                   Hack UbuntuMono IBM3270
+    ;; Themes i can live with: jazz tomorrow-night-paradise dracula 
+    ;;                         doom-lazersynth doom-dracula doom-one 
+    ;;                         doom-outrun-electric xresources modus-vivendi
+    (setq my-generic-font "SourceCodePro"
+        my-theme 'jazz
+	user-full-name "michaeltd"
+        user-mail-address "tsouchlarakis@gmail.com"
+	user-pgp-key "0x01063480")
+#+END_SRC
+** package-initialize, update-load-path
+Initialize use-package,
 Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
 #+BEGIN_SRC emacs-lisp
+;; Emacs initialization
+(package-initialize)
+(setq use-package-always-ensure t)
 ;; Load path
 ;; Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
 (defun update-load-path (&rest _)
-  "Update `load-path'."
-  (push (expand-file-name "site-lisp" user-emacs-directory) load-path)
-  (push (expand-file-name "lisp" user-emacs-directory) load-path))
+    "Update `load-path'."
+    (push (expand-file-name "site-lisp" user-emacs-directory) load-path)
+    (push (expand-file-name "lisp" user-emacs-directory) load-path))
 
 (defun add-subdirs-to-load-path (&rest _)
-  "Add subdirectories to `load-path'."
-  (let ((default-directory
-    (expand-file-name "site-lisp" user-emacs-directory)))
-    (normal-top-level-add-subdirs-to-load-path)))
+    "Add subdirectories to `load-path'."
+    (let ((default-directory
+        (expand-file-name "site-lisp" user-emacs-directory)))
+	(normal-top-level-add-subdirs-to-load-path)))
 
 (advice-add #'package-initialize :after #'update-load-path)
 (advice-add #'package-initialize :after #'add-subdirs-to-load-path)
 
 (update-load-path)
+
+;; Add package sources
+(unless (assoc-default "melpa" package-archives)
+    (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
+(unless (assoc-default "org" package-archives)
+    (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t))
+
+;; Use M-x package-refresh-contents to reload the list of packages after adding these for the first time.
+;; Add my elisp directory and other files
+
+;; Sometimes I load files outside the package system. As long as they're in a directory in my load-path, Emacs can find them.
+(unless (package-installed-p 'use-package)
+    (package-install 'use-package))
+(setq use-package-verbose t)
+(setq use-package-always-ensure t)
+(require 'use-package)
+(use-package auto-compile
+    :config (auto-compile-on-load-mode))
+    
+(setq load-prefer-newer t)
+
 #+END_SRC
 ** [[https://sanemacs.com/][sanemacs]]
  A minimal Emacs config that does just enough and nothing more.
@@ -50,18 +95,18 @@ Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
    (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
  ;;; Setup package.el
- (require 'package)
- (setq package-enable-at-startup nil)
- (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
- (unless package--initialized (package-initialize))
+ ;(require 'package)
+ ;(setq package-enable-at-startup nil)
+ ;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+ ;(unless package--initialized (package-initialize))
 
  ;;; Setup use-package
- (unless (package-installed-p 'use-package)
-   (package-refresh-contents)
-   (package-install 'use-package))
- (eval-when-compile
-   (require 'use-package))
- (setq use-package-always-ensure t)
+ ;(unless (package-installed-p 'use-package)
+ ;  (package-refresh-contents)
+ ;  (package-install 'use-package))
+ ;(eval-when-compile
+ ;  (require 'use-package))
+ ;(setq use-package-always-ensure t)
 
  ;;; Useful Defaults
  (setq-default cursor-type 'bar)           ; Line-style cursor similar to other text editors
@@ -141,13 +186,15 @@ Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
 #+BEGIN_SRC emacs-lisp
     (setq custom-safe-themes t)
     (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-    (load-theme 'jazz t)
+    (load-theme my-theme t)
+    ;; (load-theme 'jazz t)
     ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
     ;; (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
 #+END_SRC
 ** [[https://www.emacswiki.org/emacs/SetFonts][default font]]
 #+BEGIN_SRC emacs-lisp
-    (set-face-attribute 'default nil :font "SourceCodePro" )
+    (set-face-attribute 'default nil :font my-generic-font )
+    ;; (set-face-attribute 'default nil :font "SourceCodePro" )
 #+END_SRC
 * Languages
 ** [[https://orgmode.org/worg/org-contrib/babel/][org-babel]]
@@ -166,18 +213,19 @@ Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
 #+END_SRC
 ** [[https://github.com/rust-lang/rust-mode][rust-mode]]
 #+BEGIN_SRC emacs-lisp
-    (add-to-list 'load-path "~/.emacs.d/lisp/rust-mode/")
-    (autoload 'rust-mode "rust-mode" nil t)
-    (require 'rust-mode)
+;; (add-to-list 'load-path "~/.emacs.d/lisp/rust-mode/")
+;; (autoload 'rust-mode "rust-mode" nil t)
+(require 'rust-mode)
 #+END_SRC
 ** [[https://github.com/immerrr/lua-mode][lua-mode]]
 #+BEGIN_SRC emacs-lisp
-  ;; This snippet enables lua-mode
-  ;; This line is not necessary, if lua-mode.el is already on your load-path
-  (add-to-list 'load-path "~/.emacs.d/lisp/lua-mode")
-  (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
-  (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
-  (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+;; This snippet enables lua-mode
+;; This line is not necessary, if lua-mode.el is already on your load-path
+;; (add-to-list 'load-path "~/.emacs.d/lisp/lua-mode")
+(require 'lua-mode)
+(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+(add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
 #+END_SRC
 ** emacs [[https://github.com/hvesalai/emacs-scala-mode][scala-mode]] & [[https://github.com/hvesalai/emacs-sbt-mode][sbt-mode]]
 #+BEGIN_SRC emacs-lisp
@@ -210,6 +258,13 @@ Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
 	    ;; binds (C-x) prefix
 	    (define-key ctl-x-map (kbd "<C-return>") 'multi-term)
 	    (define-key ctl-x-map (kbd "x") 'multi-term-dedicated-toggle)))
+#+END_SRC
+** exwm
+#+BEGIN_SRC emacs-lisp
+    ;; exwm ;..;
+    (require 'exwm)
+    (require 'exwm-config)
+    ;; (exwm-config-default)
 #+END_SRC
 * FAQ
   Q: How to install this?
