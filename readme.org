@@ -6,11 +6,21 @@
 #+property: header-args :comments yes :results silent
 #+html: <p align="center"><img src="assets/emacs-logo.png"/></p><p align="center"><a href="readme.org"><img src="assets/screenshot.png"/></a></p>
 yet another .emacs.d
-* DONE Requirements
-1. Close to vanilla uxp
-2. Slim Load times suitable for ancient hardware such as mine >:'[
-3. Resource efficient eye-candy-ness (eg: No doom-themes, doom-modeline, doom-\star  , spacemacs-\star)
-4. No source packages +(todo)+ for "batteries included" functionality.
+* DONE Requirements (or ... WHY?)
+1. UXP
+It needs to give a next to vanilla user experience.
+2. Load Times 
+It must load fast to be suitable for ancient hardware such as mine >:'[
+~time emacs --eval '(kill-emacs)'~ < 1''
+#+BEGIN_SRC shell
+time emacs --eval '(kill-emacs)'
+#+END_SRC
+3. eyecandy
+It needs to be moderately beautifull in a resource efficient manner
+(eg: No doom-themes, doom-modeline, doom-\star  , spacemacs-\star)
+4. Out of git clone
+It needs to work out of the box so no source packages +(todo)+ 
+for "batteries included" functionality.
 * Init
 ** some variables
 #+BEGIN_SRC emacs-lisp
