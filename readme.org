@@ -153,8 +153,10 @@ A minimal Emacs config that does just enough and nothing more.
 (display-battery-mode 1)
 #+END_SRC
 ** [[themes][themes]]
+Themes i can live with: 
+jazz tomorrow-night-paradise dracula doom-lazersynth doom-dracula 
+doom-one doom-outrun-electric xresources modus-vivendi
 #+BEGIN_SRC emacs-lisp
-;; Themes i can live with: jazz tomorrow-night-paradise dracula doom-lazersynth doom-dracula doom-one doom-outrun-electric xresources modus-vivendi
 (setq custom-safe-themes t)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'jazz t)
@@ -162,8 +164,11 @@ A minimal Emacs config that does just enough and nothing more.
 ;; (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
 #+END_SRC
 ** [[https://www.emacswiki.org/emacs/SetFonts][default font]]
+Font that work: 
+DejaVuSansMono DroidSansMonoDottedforPowerline FantasqueSansMono 
+FiraMono LiberationMonoforPowerline Monospace SourceCodePro 
+SpaceMono ShareTechMono Hack UbuntuMono IBM3270
 #+BEGIN_SRC emacs-lisp
-;; Font that worked: DejaVuSansMono DroidSansMonoDottedforPowerline FantasqueSansMono FiraMono LiberationMonoforPowerline Monospace SourceCodePro SpaceMono ShareTechMono Hack UbuntuMono IBM3270
 (set-face-attribute 'default nil :font "SourceCodePro" )
 #+END_SRC
 * Languages
