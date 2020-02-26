@@ -87,8 +87,8 @@ Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
  ;;; Offload the custom-set-variables to a separate file
  ;;; This keeps your init.el neater and you have the option
  ;;; to gitignore your custom.el if you see fit.
- (setq custom-file "~/.emacs.d/custom.el")
- ;;(setq custom-file "/dev/null")
+ ;; (setq custom-file "~/.emacs.d/custom.el")
+ (setq custom-file "/dev/null")
  (unless (file-exists-p custom-file)
    (write-region "" nil custom-file))
  ;;; Load custom file. Don't hide errors. Hide success message
@@ -123,116 +123,116 @@ Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
 ** [[https://github.com/domtronn/all-the-icons.el][all-the-icons]]
  Required by [[emacs-dashboard]]
  #+BEGIN_SRC emacs-lisp
-     ;; all the icons
-     (require 'all-the-icons)
-     (use-package all-the-icons :ensure t)
+   ;; all the icons
+   ;; (require 'all-the-icons)
+   ;; (use-package all-the-icons :ensure t)
  #+END_SRC
 ** [[https://github.com/emacs-dashboard/emacs-dashboard][emacs-dashboard]]
  An extensible emacs startup screen showing you what’s most important.
  #+BEGIN_SRC emacs-lisp
    ;; dashboard
-   (require 'dashboard)
-   (dashboard-setup-startup-hook)
+   ;; (require 'dashboard)
+   ;; (dashboard-setup-startup-hook)
    ;; Or if you use use-package
-   (use-package dashboard
-     :ensure t
-     :config
-     (dashboard-setup-startup-hook))
+   ;; (use-package dashboard
+   ;;     :ensure t
+   ;;     :config
+   ;;     (dashboard-setup-startup-hook))
 
    ;; emacs --daemon
-   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
+   ;; (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
 
    ;; Set the title
 
    ;; (setq dashboard-banner-logo-title "Welcome to Emacs Dashboard")
-   ;; (setq dashboard-banner-logo-title "M-x butterfly")
-   (setq dashboard-banner-logo-title "Welcome to the church of Emacs")
-   ;; Set the banner
-   ;; (setq dashboard-startup-banner "~/.emacs.d/assets/gnu.png")
-      (setq dashboard-startup-banner 4)
-   ;; Value can be
-   ;; 'official which displays the official emacs logo
-   ;; 'logo which displays an alternative emacs logo
-   ;; 1, 2 or 3 which displays one of the text banners
-   ;; "path/to/your/image.png" which displays whatever image you would prefer
+   ;; ;; (setq dashboard-banner-logo-title "M-x butterfly")
+   ;; (setq dashboard-banner-logo-title "Welcome to the church of Emacs")
+   ;; ;; Set the banner
+   ;; ;; (setq dashboard-startup-banner "~/.emacs.d/assets/gnu.png")
+   ;;    (setq dashboard-startup-banner 4)
+   ;; ;; Value can be
+   ;; ;; 'official which displays the official emacs logo
+   ;; ;; 'logo which displays an alternative emacs logo
+   ;; ;; 1, 2 or 3 which displays one of the text banners
+   ;; ;; "path/to/your/image.png" which displays whatever image you would prefer
 
-   ;; Content is not centered by default. To center, set
-   (setq dashboard-center-content t)
+   ;; ;; Content is not centered by default. To center, set
+   ;; (setq dashboard-center-content t)
 
-   ;; To disable shortcut "jump" indicators for each section, set
-   (setq dashboard-show-shortcuts nil)
+   ;; ;; To disable shortcut "jump" indicators for each section, set
+   ;; (setq dashboard-show-shortcuts nil)
 
-   ;;To customize which widgets are displayed, you can use the following snippet
-   (setq dashboard-items '((recents  . 4)))
+   ;; ;;To customize which widgets are displayed, you can use the following snippet
+   ;; (setq dashboard-items '((recents  . 4)))
 
-   ;;To add icons to the widget headings and their items:
+   ;; ;;To add icons to the widget headings and their items:
 
-   (setq dashboard-set-heading-icons t)
-   (setq dashboard-set-file-icons t)
+   ;; (setq dashboard-set-heading-icons t)
+   ;; (setq dashboard-set-file-icons t)
 
-   ;;To modify heading icons with another icon from all-the-icons octicons:
+   ;; ;;To modify heading icons with another icon from all-the-icons octicons:
 
-   (dashboard-modify-heading-icons '((recents . "file-text")
-       (bookmarks . "book")))
+   ;; (dashboard-modify-heading-icons '((recents . "file-text")
+   ;;     (bookmarks . "book")))
 
-   ;;To show navigator below the banner:
+   ;; ;;To show navigator below the banner:
 
-   (setq dashboard-set-navigator t)
+   ;; (setq dashboard-set-navigator t)
 
-   ;;To customize the buttons of the navigator like this:
+   ;; ;;To customize the buttons of the navigator like this:
 
+   ;; ;; (setq dashboard-navigator-buttons
+   ;; ;;       `(;; line1
+   ;; ;;         ((,(all-the-icons-octicon "mark-github" :height 1.1 :v-adjust 0.0)
+   ;; ;;          "Homepage"
+   ;; ;;          "Browse homepage"
+   ;; ;;          (lambda (&rest _) (browse-url "homepage")))
+   ;; ;;         ("★" "Star" "Show stars" (lambda (&rest _) (show-stars)) warning)
+   ;; ;;         ("?" "" "?/h" #'show-help nil "<" ">"))
+   ;; ;;          ;; line 2
+   ;; ;;         ((,(all-the-icons-faicon "linkedin" :height 1.1 :v-adjust 0.0)
+   ;; ;;           "Linkedin"
+   ;; ;;           ""
+   ;; ;;           (lambda (&rest _) (browse-url "homepage")))
+   ;; ;;          ("⚑" nil "Show flags" (lambda (&rest _) (message "flag")) error))))
+
+   ;; ;; Format: "(icon title help action face prefix suffix)"
    ;; (setq dashboard-navigator-buttons
-   ;;       `(;; line1
-   ;;         ((,(all-the-icons-octicon "mark-github" :height 1.1 :v-adjust 0.0)
-   ;;          "Homepage"
-   ;;          "Browse homepage"
-   ;;          (lambda (&rest _) (browse-url "homepage")))
-   ;;         ("★" "Star" "Show stars" (lambda (&rest _) (show-stars)) warning)
-   ;;         ("?" "" "?/h" #'show-help nil "<" ">"))
-   ;;          ;; line 2
-   ;;         ((,(all-the-icons-faicon "linkedin" :height 1.1 :v-adjust 0.0)
-   ;;           "Linkedin"
-   ;;           ""
-   ;;           (lambda (&rest _) (browse-url "homepage")))
-   ;;          ("⚑" nil "Show flags" (lambda (&rest _) (message "flag")) error))))
+   ;;     `(;; line1
+   ;; 	((,(all-the-icons-faicon "cloud" :height 1.1 :v-adjust 0.0) "Web" "Browse webpage"
+   ;; 	    (lambda (&rest _) (browse-url "https://michaeltd.netlify.com/")))
+   ;; 	(,(all-the-icons-octicon "mark-github" :height 1.1 :v-adjust 0.0) "Github" "Browse github"
+   ;; 	    (lambda (&rest _) (browse-url "https://github.com/michaeltd/")))
+   ;; 	(,(all-the-icons-faicon "twitter" :height 1.1 :v-adjust 0.0) "Twitter" "Browse twitter"
+   ;; 	    (lambda (&rest _) (browse-url "https://twitter.com/tsouchlarakismd/")))
+   ;; 	(,(all-the-icons-faicon "linkedin" :height 1.1 :v-adjust 0.0) "Linkedin" "Browse linkedin"
+   ;; 	    (lambda (&rest _) (browse-url "https://www.linkedin.com/in/michaeltd/"))))))
 
-   ;; Format: "(icon title help action face prefix suffix)"
-   (setq dashboard-navigator-buttons
-       `(;; line1
-	   ((,(all-the-icons-faicon "cloud" :height 1.1 :v-adjust 0.0) "Web" "Browse webpage"
-	       (lambda (&rest _) (browse-url "https://michaeltd.netlify.com/")))
-	   (,(all-the-icons-octicon "mark-github" :height 1.1 :v-adjust 0.0) "Github" "Browse github"
-	       (lambda (&rest _) (browse-url "https://github.com/michaeltd/")))
-	   (,(all-the-icons-faicon "twitter" :height 1.1 :v-adjust 0.0) "Twitter" "Browse twitter"
-	       (lambda (&rest _) (browse-url "https://twitter.com/tsouchlarakismd/")))
-	   (,(all-the-icons-faicon "linkedin" :height 1.1 :v-adjust 0.0) "Linkedin" "Browse linkedin"
-	       (lambda (&rest _) (browse-url "https://www.linkedin.com/in/michaeltd/"))))))
+   ;; ;;
+   ;; ;; To show info about the packages loaded and the init time:
 
-   ;;
-   ;; To show info about the packages loaded and the init time:
+   ;; (setq dashboard-set-init-info t)
 
-   (setq dashboard-set-init-info t)
+   ;; ;; Also, the message can be customized like this:
+   ;; ;; (setq dashboard-init-info "This is an init message!")
+   ;; ;; A randomly selected footnote will be displayed. To disable it:
+   ;; ;; (setq dashboard-set-footer nil)
+   ;; ;; To customize it and customize its icon;
+   ;; ;; (setq dashboard-footer "Dashboard is pretty cool!")
+   ;; (setq dashboard-footer-icon (all-the-icons-octicon "dashboard"
+   ;; 						   :height 1.1
+   ;; 						   :v-adjust -0.05
+   ;; 						   :face 'font-lock-keyword-face))
 
-   ;; Also, the message can be customized like this:
-   ;; (setq dashboard-init-info "This is an init message!")
-   ;; A randomly selected footnote will be displayed. To disable it:
-   ;; (setq dashboard-set-footer nil)
-   ;; To customize it and customize its icon;
-   ;; (setq dashboard-footer "Dashboard is pretty cool!")
-   (setq dashboard-footer-icon (all-the-icons-octicon "dashboard"
-						      :height 1.1
-						      :v-adjust -0.05
-						      :face 'font-lock-keyword-face))
-
-   ;; Org mode’s agenda
-   ;; To display today’s agenda items on the dashboard, add agenda to dashboard-items:
-   ;;(add-to-list 'dashboard-items '(agenda) t)
-   ;; To show agenda for the upcoming seven days set the variable show-week-agenda-p to t.
-   ;; (setq show-week-agenda-p t)
-   ;; Note that setting list-size for the agenda list is intentionally ignored; all agenda items for the current day will be displayed.
-   ;; To customize which categories from the agenda items should be visible in the dashboard set the dashboard-org-agenda-categories to the list of categories you need.
-   ;; (setq dashboard-org-agenda-categories '("Tasks" "Appointments"))
-   ;; end dashboard
+   ;; ;; Org mode’s agenda
+   ;; ;; To display today’s agenda items on the dashboard, add agenda to dashboard-items:
+   ;; ;;(add-to-list 'dashboard-items '(agenda) t)
+   ;; ;; To show agenda for the upcoming seven days set the variable show-week-agenda-p to t.
+   ;; ;; (setq show-week-agenda-p t)
+   ;; ;; Note that setting list-size for the agenda list is intentionally ignored; all agenda items for the current day will be displayed.
+   ;; ;; To customize which categories from the agenda items should be visible in the dashboard set the dashboard-org-agenda-categories to the list of categories you need.
+   ;; ;; (setq dashboard-org-agenda-categories '("Tasks" "Appointments"))
+   ;; ;; end dashboard
  #+END_SRC
 ** dired-mode
 #+BEGIN_SRC emacs-lisp
@@ -260,30 +260,29 @@ Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
  #+END_SRC
 *** [[https://github.com/kiennq/emacs-mini-modeline][mini-modeline]]
 #+BEGIN_SRC emacs-lisp
-  ;; (add-to-list 'load-path "~/.emacs.d/lisp/emacs-mini-modeline/")
-  ;; (require 'mini-modeline)
-  ;; (mini-modeline-mode t)
+    ;; (add-to-list 'load-path "~/.emacs.d/lisp/emacs-mini-modeline/")
+    ;; (require 'mini-modeline)
+    ;; (mini-modeline-mode t)
 #+END_SRC
 ** [[https://github.com/hlissner/emacs-doom-themes][doom-themes]] setup
  #+BEGIN_SRC emacs-lisp
    ;; (require 'doom-themes)
-   ;; ;; Global settings (defaults)
+   ;; Global settings (defaults)
    ;; (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-   ;;     doom-themes-enable-italic t) ; if nil, italics is universally disabled
-   ;; ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each
-   ;; ;; theme may have their own settings.
-   ;; ;; (load-theme 'doom-vibrant t)
-   ;; ;; Enable flashing mode-line on errors
+   ;;      doom-themes-enable-italic t) ; if nil, italics is universally disabled
+   ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each
+   ;; theme may have their own settings.
+   ;; (load-theme 'doom-vibrant t)
+   ;; Enable flashing mode-line on errors
    ;; (doom-themes-visual-bell-config)
-   ;; ;; Enable custom neotree theme
+   ;; Enable custom neotree theme
    ;; (doom-themes-neotree-config)  ; all-the-icons fonts must be installed!
-   ;; ;; or for treemacs users
+   ;; or for treemacs users
    ;; (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
    ;; (doom-themes-treemacs-config)
-   ;; ;; Corrects (and improves) org-mode's native fontification.
+   ;; Corrects (and improves) org-mode's native fontification.
    ;; (doom-themes-org-config)
  #+END_SRC
-** 
 ** [[themes][themes]]
 #+BEGIN_SRC emacs-lisp
   (setq custom-safe-themes t)
@@ -334,95 +333,35 @@ Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
 #+END_SRC
 ** [[https://github.com/rust-lang/rust-mode][rust-mode]]
 #+BEGIN_SRC emacs-lisp
-  ;; (add-to-list 'load-path "~/.emacs.d/lisp/rust-mode/")
-  ;; (autoload 'rust-mode "rust-mode" nil t)
-  ;; (require 'rust-mode)
+    (add-to-list 'load-path "~/.emacs.d/lisp/rust-mode/")
+    (autoload 'rust-mode "rust-mode" nil t)
+    (require 'rust-mode)
 #+END_SRC
 ** [[https://github.com/immerrr/lua-mode][lua-mode]]
 #+BEGIN_SRC emacs-lisp
-  ;;;; This snippet enables lua-mode
+  ;; This snippet enables lua-mode
   ;; This line is not necessary, if lua-mode.el is already on your load-path
-  ;; (add-to-list 'load-path "~/.emacs.d/lisp/lua-mode")
-  ;; (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
-  ;; (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
-  ;; (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+  (add-to-list 'load-path "~/.emacs.d/lisp/lua-mode")
+  (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+  (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+  (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
 #+END_SRC
 ** emacs [[https://github.com/hvesalai/emacs-scala-mode][scala-mode]] & [[https://github.com/hvesalai/emacs-sbt-mode][sbt-mode]]
 #+BEGIN_SRC emacs-lisp
-  ;; (use-package scala-mode
-  ;;   :interpreter
-  ;;   ("scala" . scala-mode))
+    (use-package scala-mode
+        :interpreter
+	("scala" . scala-mode))
 
-  ;; (use-package sbt-mode
-  ;;   :commands sbt-start sbt-command
-  ;;   :config
-  ;;   ;; WORKAROUND: allows using SPACE when in the minibuffer
-  ;;   (substitute-key-definition
-  ;;   'minibuffer-complete-word
-  ;;   'self-insert-command
-  ;;   minibuffer-local-completion-map))
+    (use-package sbt-mode
+        :commands sbt-start sbt-command
+	:config
+	;; WORKAROUND: allows using SPACE when in the minibuffer
+	(substitute-key-definition
+	    'minibuffer-complete-word
+	    'self-insert-command
+	    minibuffer-local-completion-map))
 #+END_SRC
 * Utilities
-** paredit
-#+BEGIN_SRC emacs-lisp
-  ;; (require 'paredit)
-  ;; (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-  ;; (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
-  ;; (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-  ;; (add-hook 'ielm-mode-hook             #'enable-paredit-mode)
-  ;; (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
-  ;; (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-  ;; (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
-  ;; (add-hook 'shell-mode-hook            #'enable-paredit-mode)
-  ;; (add-hook 'shell-mode-hook (lambda () (paredit-mode +1)))
-#+END_SRC
-** [[https://github.com/justbur/emacs-which-key][emacs-which-key]]
-#+BEGIN_SRC emacs-lisp
-  ;; (add-to-list 'load-path "~/.emacs.d/lisp/emacs-which-key/")
-  ;; (require 'which-key)
-  ;; (which-key-mode)
-#+END_SRC
-** [[https://github.com/abo-abo/swiper][swiper]]
-#+BEGIN_SRC emacs-lisp
-  ;; (add-to-list 'load-path "~/.emacs.d/lisp/swiper/")
-  ;; (require 'ivy)
-  ;; (ivy-mode 1)
-  ;; (setq ivy-use-virtual-buffers t)
-  ;; (setq enable-recursive-minibuffers t)
-  ;; ;; enable this if you want `swiper' to use it
-  ;; (setq search-default-mode #'char-fold-to-regexp)
-  ;; (global-set-key "\C-s" 'swiper)
-  ;; (global-set-key (kbd "C-c C-r") 'ivy-resume)
-  ;; (global-set-key (kbd "<f6>") 'ivy-resume)
-  ;; (global-set-key (kbd "M-x") 'counsel-M-x)
-  ;; (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-  ;; (global-set-key (kbd "<f1> f") 'counsel-describe-function)
-  ;; (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-  ;; (global-set-key (kbd "<f1> l") 'counsel-find-library)
-  ;; (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-  ;; (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-  ;; (global-set-key (kbd "C-c g") 'counsel-git)
-  ;; (global-set-key (kbd "C-c j") 'counsel-git-grep)
-  ;; (global-set-key (kbd "C-c k") 'counsel-ag)
-  ;; (global-set-key (kbd "C-x l") 'counsel-locate)
-  ;; (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
-  ;; (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
-
-  ;; (global-set-key (kbd "C-s") 'swiper-isearch)
-  ;; (global-set-key (kbd "M-x") 'counsel-M-x)
-  ;; (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-  ;; (global-set-key (kbd "M-y") 'counsel-yank-pop)
-  ;; (global-set-key (kbd "<f1> f") 'counsel-describe-function)
-  ;; (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-  ;; (global-set-key (kbd "<f1> l") 'counsel-find-library)
-  ;; (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-  ;; (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-  ;; (global-set-key (kbd "<f2> j") 'counsel-set-variable)
-  ;; (global-set-key (kbd "C-x b") 'ivy-switch-buffer)
-  ;; (global-set-key (kbd "C-c v") 'ivy-push-view)
-  ;; (global-set-key (kbd "C-c V") 'ivy-pop-view)
-#+END_SRC
-
 ** [[https://www.emacswiki.org/emacs/InteractivelyDoThings][ido-mode]]
 #+BEGIN_SRC emacs-lisp
   ;; (require 'ido)
@@ -432,10 +371,10 @@ Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
 #+END_SRC
 ** [[https://github.com/ch11ng/exwm/][exwm]]
 #+BEGIN_SRC emacs-lisp
-  ;; exwm :)
-  ;; (require 'exwm)
-  ;; (require 'exwm-config)
-  ;; (exwm-config-default)
+    ;; exwm :)
+    ;; (require 'exwm)
+    ;; (require 'exwm-config)
+    ;; (exwm-config-default)
 #+END_SRC
 ** terms
 *** multi-term
@@ -456,12 +395,12 @@ Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
  #+END_SRC
 *** [[https://github.com/akermu/emacs-libvterm][vterm]]
 #+BEGIN_SRC emacs-lisp
-  ;; (add-to-list 'load-path "~/.emacs.d/lisp/emacs-libvterm")
-  ;; (require 'vterm)
-  ;; Or, with use-package:
-  ;; (use-package vterm :load-path "~/.emacs.d/lisp/emacs-libvterm/")
-  ;; Or, install with melpa
-  ;; (use-package vterm :ensure t)
+    (add-to-list 'load-path "~/.emacs.d/lisp/emacs-libvterm")
+    (require 'vterm)
+    ;; Or, with use-package:
+    ;; (use-package vterm :load-path "~/.emacs.d/lisp/emacs-libvterm/")
+    ;; Or, install with melpa
+    ;; (use-package vterm :ensure t)
 #+END_SRC
 * [[https://www.reddit.com/r/emacs/comments/erzwaf/help_me_break_the_emacs_loop/][help me break the emacs loop]]
   - Whichkey
