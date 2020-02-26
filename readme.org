@@ -6,11 +6,11 @@
 #+property: header-args :comments yes :results silent
 #+html: <p align="center"><img src="assets/emacs-logo.png"/></p><p align="center"><a href="readme.org"><img src="assets/screenshot.png"/></a></p>
 yet another .emacs.d
-* TODO Requirements
+* DONE Requirements
 1. Close to vanilla u-xp
 2. Slim Load times suitable for ancient hardware such as mine >:'[
-3. Resource efficient eye-candy-ness (eg: No doom-themes, doom-modeline, doom-anything)
-4. No source packages (todo) for "batteries included" functionality.
+3. Resource efficient eye-candy-ness (eg: No doom-themes, doom-modeline, doom-\star  , spacemacs-\star)
+4. No source packages +(todo)+ for "batteries included" functionality.
 * Init
 ** some variables
 #+BEGIN_SRC emacs-lisp
@@ -25,9 +25,8 @@ yet another .emacs.d
     user-mail-address "tsouchlarakis@gmail.com"
     user-pgp-key "0x01063480")
 #+END_SRC
-** update-load-path, package-initialize
+** update-load-path
 Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
-Initialize use-package,
 #+BEGIN_SRC emacs-lisp
 ;; Load path
 ;; Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
@@ -46,31 +45,6 @@ Initialize use-package,
 (advice-add #'package-initialize :after #'add-subdirs-to-load-path)
 
 (update-load-path)
-
-;;; Setup package.el
-;; (require 'package)
-;; (setq package-enable-at-startup nil)
-
-;; ;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-;; (unless (assoc-default "melpa" package-archives)
-;;     (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
-;; (unless (assoc-default "org" package-archives)
-;;     (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t))
-
-;; (unless package--initialized (package-initialize))
-;; ;;; Setup use-package
-;; (unless (package-installed-p 'use-package)
-;;   (package-refresh-contents)
-;;   (package-install 'use-package))
-;; (eval-when-compile
-;;   (require 'use-package))
-;; (setq use-package-always-ensure t)
-
-;; (setq use-package-verbose t)
-;; (require 'use-package)
-;; (use-package auto-compile
-;;     :config (auto-compile-on-load-mode))
-;; (setq load-prefer-newer t)
 #+END_SRC
 ** [[https://sanemacs.com/][sanemacs]]
 A minimal Emacs config that does just enough and nothing more.
@@ -258,16 +232,51 @@ This package is for creating and managing multiple terminal buffers in Emacs.
 	(define-key ctl-x-map (kbd "x") 'multi-term-dedicated-toggle)))
 #+END_SRC
 ** exwm
+Emacs Window Manager [+.-]
 #+BEGIN_SRC emacs-lisp
-;; exwm ;..;
 (use-package exwm :ensure t)
 ;(require 'exwm)
 ;(require 'exwm-config)
 ;(exwm-config-default)
 #+END_SRC
 * FAQ
-Q: How to install this?
+- Q: How to install this?
+- A: Don't!
 
-A: Don't!
+  This is my personal .emacs.d and batteries may or may not be included! (depending on what I'm up to at any given time)
 
-This is my personal .emacs.d and batteries are not included!
+  If you'd like to experiment though the commands are as follows:
+
+  ~cd \tilde~
+
+  ~mv .emacs.d .emacs.d.bkp~ 
+
+  ~git clone https://github.com/michaeltd/.emacs.d~
+
+  ~emacs~
+
+  Whait a bit while melpa and org work their magic and in a matter of seconds your install will be complete.
+
+  If exwm appears "moody" during install, fire up emacs once more, chances are it's installed and working fine.
+
+  If not, fire up a ~M-x package-install R exwm R~ or comment out exwm entirely.
+
+  To use exwm you'll need to uncomment the requires/exwm-config-default elisp statements
+
+  and launch from your DM of choice a /usr/share/xsessions/exwm.desktop file that looks like that:
+
+  #+BEGIN_SRC ini
+  [Desktop Entry]
+  Name=exwm
+  Comment=exwm
+  TryExec=emacs --daemon -f exwm-enable
+  Exec=/usr/bin/emacs --daemon -f exwm-enable
+  Type=Application
+  #+END_SRC
+
+  Desktop selection shortcut is "s-w" and async shell command is "s-&". ("s" as in "Super" or Win key, not Shift)
+
+  All other keyboard shortcuts you'll need are the standard emacs shortcuts.
+
+  More on emacs window manager at https://github.com/ch11ng/exwm/wiki/EXWM-User-Guide
+
