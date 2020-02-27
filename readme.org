@@ -28,9 +28,9 @@ yet another .emacs.d
   (eg: No doom-themes, doom-modeline, doom-\star, spacemacs-\star)
 - Out of the clone
 
-  It needs to work out of the box so no source packages +(todo)+ 
+  It needs to work out of the box so no source packages +(todo)+,
 
-  for "batteries included" functionality.
+  for a more "batteries included" like experience.
 * Init
 ** some variables
 #+BEGIN_SRC emacs-lisp
@@ -295,7 +295,7 @@ Emacs Window Manager [+.-]
   Type=Application
   #+END_SRC
 
-  Desktop selection shortcut is "s-w" and async shell command is "s-&". ("s" as in "Super" or Win key, not Shift)
+  Desktop selection shortcut is ~s-w~ and async shell command is ~s-&~. ("s" as in "Super" or Win key, not Shift)
 
   All other keyboard shortcuts you'll need are the standard emacs shortcuts.
 
