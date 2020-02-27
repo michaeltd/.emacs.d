@@ -32,9 +32,11 @@ yet another .emacs.d
      Emacs standard Init file
   2. [[file:readme.org][readme.org]]
      This file
-  3. [[file:themes/jazz-theme.el][themes/jazz-theme.el]]
+  3. [[file:themes/gotham-theme.el][themes/gotham-theme.el]]
+     Gotham Theme
+  4. [[file:themes/jazz-theme.el][themes/jazz-theme.el]]
      Jazz Theme
-  4. [[file:themes/xresources-theme.el][themes/xresources-theme.el]]
+  5. [[file:themes/xresources-theme.el][themes/xresources-theme.el]]
      Xresources Theme
 * Load Sequence
 ** Init
