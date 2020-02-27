@@ -275,7 +275,7 @@ Emacs Window Manager [+.-]
 
   #+BEGIN_SRC ini
   [Desktop Entry]
-  Name=Emacs Window Manager
+  Name=EmaX Window Manager
   Comment=A Window Manager for the Emacs OS
   TryExec=emacs --daemon -f exwm-enable
   Exec=/usr/bin/emacs --daemon -f exwm-enable
