@@ -178,9 +178,9 @@ Themes i can live with: gotham jazz tomorrow-night-paradise dracula xresources m
 ;; (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
 #+END_SRC
 ** [[https://www.emacswiki.org/emacs/SetFonts][default font]]
-Fonts that work: DejaVuSansMono DroidSansMonoDottedforPowerline FantasqueSansMono FiraMono LiberationMonoforPowerline Monospace SourceCodePro SpaceMono ShareTechMono Hack UbuntuMono IBM3270
+Fonts that work: "DejaVu Sans Mono" "Droid Sans Mono Dotted for Powerline" "Fantasque Sans Mono" "Fira Mono" "Liberation Mono for Powerline" "Monospace" "Roboto Mono" "Source Code Pro" "Space Mono" "ShareTech Mono" Hack "Ubuntu Mono" IBM3270
 #+BEGIN_SRC emacs-lisp
-(set-face-attribute 'default nil :font "SourceCodePro" )
+(set-face-attribute 'default nil :font "DejaVu Sans Mono" )
 #+END_SRC
 * Languages
 ** [[https://orgmode.org/worg/org-contrib/babel/][org-babel]]
