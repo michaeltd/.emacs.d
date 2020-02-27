@@ -27,6 +27,15 @@ yet another .emacs.d
 - Out of the clone
 
   It needs to work out of the box so no source packages +(todo)+, for a more "batteries included" like experience.
+* Files
+  1. [[file:init.el][init.el]]
+     Emacs standard Init file
+  2. [[file:readme.org][readme.org]]
+     This file
+  3. [[file:themes/jazz-theme.el][themes/jazz-theme.el]]
+     Jazz Theme
+  4. [[file:themes/xresources-theme.el][themes/xresources-theme.el]]
+     Xresources Theme
 * Load Sequence
 ** Init
 *** some variables
@@ -244,7 +253,7 @@ yet another .emacs.d
 	 (define-key ctl-x-map (kbd "x") 'multi-term-dedicated-toggle)))
  #+END_SRC
 *** exwm
- Emacs Window Manager [+.-]
+ EmaX Window Manager [+.-]
  #+BEGIN_SRC emacs-lisp
  ;(use-package exwm :ensure t)
  ;(require 'exwm)
