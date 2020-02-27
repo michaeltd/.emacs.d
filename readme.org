@@ -15,7 +15,7 @@ yet another .emacs.d
   It must deliver lightning fast load times to be suitable for ancient hardware such as mine >:'[
 
   #+BEGIN_SRC shell
-  time emacs --eval '(kill-emacs)' # should yield -lt 1s
+  time emacs --eval='(kill-emacs)' # should yield -lt 1s
   #+END_SRC
 
   Resulting load times should render ~emacs --daemon~ a functional choice rather than a practical one.
