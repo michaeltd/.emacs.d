@@ -3,27 +3,30 @@
 #+date: <2019-12-24 Tue>
 #+options: toc:nil num:nil
 #+startup: overview
-#+property: header-args :comments yes :results silent
+#+property: header-args :comments yes
 #+html: <p align="center"><img src="assets/emacs-logo.png"/></p><p align="center"><a href="readme.org"><img src="assets/screenshot.png"/></a></p>
 yet another .emacs.d
 * DONE Requirements (or ... WHY?)
 - UXP
-   
-  It needs to deliver a next to vanilla user experience.
-- Load Times 
 
-  It must load fast to be suitable for ancient hardware such as mine >:'/
-   
+  It needs to deliver a next to vanilla user experience.
+- Load Times
+
+  It must deliver lightning fast load times to be suitable for ancient hardware such as mine >:'/
+  (buy me a coffee [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd.netlify.com][eur \20AC]], no seriously, even in [[bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs?amount=0.1][btc \20BF]])
+
+  # <!-- <p align="center">buy me coffee... &#x20AC; &#x20BF; --> 
+
   #+BEGIN_SRC shell
-  time emacs --eval '(kill-emacs)' # This should yield < 1''
+  time emacs --eval '(kill-emacs)' # This should yield < 1^s
   #+END_SRC
 
   Resoulting load times should render ~emacs --daemon~ a functional choice rather than a practical one.
 - eyecandy
 
   It needs to be moderately beautifull in a resource efficient manner.
- 
-  (eg: No doom-themes, doom-modeline, doom-\star  , spacemacs-\star)
+
+  (eg: No doom-themes, doom-modeline, doom-\star, spacemacs-\star)
 - Out of the clone
 
   It needs to work out of the box so no source packages +(todo)+ 
@@ -266,13 +269,15 @@ Emacs Window Manager [+.-]
 
   ~cd \tilde~
 
-  ~mv .emacs.d .emacs.d.bkp~ 
+  ~mv .emacs.d .emacs.d.bkp.$(date +%s)~ 
 
   ~git clone https://github.com/michaeltd/.emacs.d~
 
   ~emacs~
 
-  Whait a bit while melpa and org work their magic and in a matter of seconds your install will be complete.
+  Whait a bit and watch the message log scroll along while melpa and org work their magic 
+
+  and in a matter of seconds your install will be complete.
 
   If exwm appears "moody" during install, fire up emacs once more, chances are it's installed and working fine.
 
