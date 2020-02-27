@@ -10,7 +10,6 @@ yet another .emacs.d
 - UXP
    
   It needs to deliver a next to vanilla user experience.
-
 - Load Times 
 
   It must load fast to be suitable for ancient hardware such as mine >:'/
@@ -19,18 +18,17 @@ yet another .emacs.d
   time emacs --eval '(kill-emacs)' # This should yield < 1''
   #+END_SRC
 
+  Resoulting load times should render ~emacs --daemon~ a functional choice rather than a practical one.
 - eyecandy
 
-  It needs to be moderately beautifull in a resource efficient manner
+  It needs to be moderately beautifull in a resource efficient manner.
  
   (eg: No doom-themes, doom-modeline, doom-\star  , spacemacs-\star)
-
-- Out of git clone
+- Out of the clone
 
   It needs to work out of the box so no source packages +(todo)+ 
 
   for "batteries included" functionality.
-
 * Init
 ** some variables
 #+BEGIN_SRC emacs-lisp
