@@ -27,229 +27,230 @@ yet another .emacs.d
 - Out of the clone
 
   It needs to work out of the box so no source packages +(todo)+, for a more "batteries included" like experience.
-* Init
-** some variables
-#+BEGIN_SRC emacs-lisp
-(setq user-full-name "michaeltd"
-    user-mail-address "tsouchlarakis@gmail.com"
-    user-pgp-key "0x01063480")
-#+END_SRC
-** update-load-path
-Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
-#+BEGIN_SRC emacs-lisp
-;; Load path
-;; Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
-(defun update-load-path (&rest _)
-    "Update `load-path'."
-    (push (expand-file-name "site-lisp" user-emacs-directory) load-path)
-    (push (expand-file-name "lisp" user-emacs-directory) load-path))
+* Load Sequence
+** Init
+*** some variables
+ #+BEGIN_SRC emacs-lisp
+ (setq user-full-name "michaeltd"
+     user-mail-address "tsouchlarakis@gmail.com"
+     user-pgp-key "0x01063480")
+ #+END_SRC
+*** update-load-path
+ Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
+ #+BEGIN_SRC emacs-lisp
+ ;; Load path
+ ;; Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
+ (defun update-load-path (&rest _)
+     "Update `load-path'."
+     (push (expand-file-name "site-lisp" user-emacs-directory) load-path)
+     (push (expand-file-name "lisp" user-emacs-directory) load-path))
 
-(defun add-subdirs-to-load-path (&rest _)
-    "Add subdirectories to `load-path'."
-    (let ((default-directory
-    (expand-file-name "site-lisp" user-emacs-directory)))
-    (normal-top-level-add-subdirs-to-load-path)))
+ (defun add-subdirs-to-load-path (&rest _)
+     "Add subdirectories to `load-path'."
+     (let ((default-directory
+     (expand-file-name "site-lisp" user-emacs-directory)))
+     (normal-top-level-add-subdirs-to-load-path)))
 
-(advice-add #'package-initialize :after #'update-load-path)
-(advice-add #'package-initialize :after #'add-subdirs-to-load-path)
+ (advice-add #'package-initialize :after #'update-load-path)
+ (advice-add #'package-initialize :after #'add-subdirs-to-load-path)
 
-(update-load-path)
-#+END_SRC
-** [[https://sanemacs.com/][sanemacs]]
-A minimal Emacs config that does just enough and nothing more.
-#+BEGIN_SRC emacs-lisp
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Sanemacs version 0.2.5 ;;;
-;;; https://sanemacs.com   ;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ (update-load-path)
+ #+END_SRC
+*** [[https://sanemacs.com/][sanemacs]]
+ A minimal Emacs config that does just enough and nothing more.
+ #+BEGIN_SRC emacs-lisp
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;; Sanemacs version 0.2.5 ;;;
+ ;;; https://sanemacs.com   ;;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;; Disable menu-bar, tool-bar, and scroll-bar.
-(if (fboundp 'menu-bar-mode)
-    (menu-bar-mode -1))
-(if (fboundp 'tool-bar-mode)
-    (tool-bar-mode -1))
-(if (fboundp 'scroll-bar-mode)
-    (scroll-bar-mode -1))
+ ;;; Disable menu-bar, tool-bar, and scroll-bar.
+ (if (fboundp 'menu-bar-mode)
+     (menu-bar-mode -1))
+ (if (fboundp 'tool-bar-mode)
+     (tool-bar-mode -1))
+ (if (fboundp 'scroll-bar-mode)
+     (scroll-bar-mode -1))
 
-;;; Fix this bug:
-;;; https://www.reddit.com/r/emacs/comments/cueoug/the_failed_to_download_gnu_archive_is_a_pretty/
-(when (version< emacs-version "26.3")
-    (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
+ ;;; Fix this bug:
+ ;;; https://www.reddit.com/r/emacs/comments/cueoug/the_failed_to_download_gnu_archive_is_a_pretty/
+ (when (version< emacs-version "26.3")
+     (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
-;;; Setup package.el
-(require 'package)
-(setq package-enable-at-startup nil)
-;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(unless (assoc-default "melpa" package-archives)
-    (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
-(unless (assoc-default "org" package-archives)
-    (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t))
+ ;;; Setup package.el
+ (require 'package)
+ (setq package-enable-at-startup nil)
+ ;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+ (unless (assoc-default "melpa" package-archives)
+     (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
+ (unless (assoc-default "org" package-archives)
+     (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t))
 
-(unless package--initialized (package-initialize))
+ (unless package--initialized (package-initialize))
 
-;;; Setup use-package
-(unless (package-installed-p 'use-package)
-    (package-refresh-contents)
-    (package-install 'use-package))
-(eval-when-compile
-    (require 'use-package))
-(setq use-package-always-ensure t)
+ ;;; Setup use-package
+ (unless (package-installed-p 'use-package)
+     (package-refresh-contents)
+     (package-install 'use-package))
+ (eval-when-compile
+     (require 'use-package))
+ (setq use-package-always-ensure t)
 
-;;; Useful Defaults
-(setq-default cursor-type 'bar)           ; Line-style cursor similar to other text editors
-;(setq inhibit-startup-screen t)           ; Disable startup screen
-;(setq initial-scratch-message "")         ; Make *scratch* buffer blank
-(setq-default frame-title-format '("%b")) ; Make window title the buffer name
-(setq ring-bell-function 'ignore)         ; Disable bell sound
-(fset 'yes-or-no-p 'y-or-n-p)             ; y-or-n-p makes answering questions faster
-(show-paren-mode 1)                       ; Show closing parens by default
-(setq linum-format "%4d ")                ; Prettify line number format
-(add-hook 'prog-mode-hook                 ; Show line numbers in programming modes
-    (if (fboundp 'display-line-numbers-mode)
-        #'display-line-numbers-mode
-	#'linum-mode))
+ ;;; Useful Defaults
+ (setq-default cursor-type 'bar)           ; Line-style cursor similar to other text editors
+ ;(setq inhibit-startup-screen t)           ; Disable startup screen
+ ;(setq initial-scratch-message "")         ; Make *scratch* buffer blank
+ (setq-default frame-title-format '("%b")) ; Make window title the buffer name
+ (setq ring-bell-function 'ignore)         ; Disable bell sound
+ (fset 'yes-or-no-p 'y-or-n-p)             ; y-or-n-p makes answering questions faster
+ (show-paren-mode 1)                       ; Show closing parens by default
+ (setq linum-format "%4d ")                ; Prettify line number format
+ (add-hook 'prog-mode-hook                 ; Show line numbers in programming modes
+     (if (fboundp 'display-line-numbers-mode)
+         #'display-line-numbers-mode
+	 #'linum-mode))
 
-;;(use-package undo-tree                    ; Enable undo-tree, sane undo/redo behavior
-;;  :init (global-undo-tree-mode))
+ ;;(use-package undo-tree                    ; Enable undo-tree, sane undo/redo behavior
+ ;;  :init (global-undo-tree-mode))
 
-;;; Keybindings
-(global-set-key (kbd "C->") 'indent-rigidly-right-to-tab-stop) ; Indent selection by one tab length
-(global-set-key (kbd "C-<") 'indent-rigidly-left-to-tab-stop)  ; De-indent selection by one tab length
+ ;;; Keybindings
+ (global-set-key (kbd "C->") 'indent-rigidly-right-to-tab-stop) ; Indent selection by one tab length
+ (global-set-key (kbd "C-<") 'indent-rigidly-left-to-tab-stop)  ; De-indent selection by one tab length
 
-;;; Offload the custom-set-variables to a separate file
-;;; This keeps your init.el neater and you have the option
-;;; to gitignore your custom.el if you see fit.
-;; (setq custom-file "~/.emacs.d/custom.el")
-(setq custom-file "/dev/null")
-(unless (file-exists-p custom-file)
-    (write-region "" nil custom-file))
-;;; Load custom file. Don't hide errors. Hide success message
-(load custom-file nil t)
+ ;;; Offload the custom-set-variables to a separate file
+ ;;; This keeps your init.el neater and you have the option
+ ;;; to gitignore your custom.el if you see fit.
+ ;; (setq custom-file "~/.emacs.d/custom.el")
+ (setq custom-file "/dev/null")
+ (unless (file-exists-p custom-file)
+     (write-region "" nil custom-file))
+ ;;; Load custom file. Don't hide errors. Hide success message
+ (load custom-file nil t)
 
-;;; Avoid littering the user's filesystem with backups
-(setq
-    backup-by-copying t      ; don't clobber symlinks
-    backup-directory-alist
-    '((".*" . "~/.emacs.d/saves/"))    ; don't litter my fs tree
-    delete-old-versions t
-    kept-new-versions 6
-    kept-old-versions 2
-    version-control t)       ; use versioned backups
+ ;;; Avoid littering the user's filesystem with backups
+ (setq
+     backup-by-copying t      ; don't clobber symlinks
+     backup-directory-alist
+     '((".*" . "~/.emacs.d/saves/"))    ; don't litter my fs tree
+     delete-old-versions t
+     kept-new-versions 6
+     kept-old-versions 2
+     version-control t)       ; use versioned backups
 
-;;; Lockfiles unfortunately cause more pain than benefit
-(setq create-lockfiles nil)
+ ;;; Lockfiles unfortunately cause more pain than benefit
+ (setq create-lockfiles nil)
 
-;;; Load wheatgrass as the default theme if one is not loaded already
+ ;;; Load wheatgrass as the default theme if one is not loaded already
 
-;; (if (not custom-enabled-themes)
-;;     (load-theme 'wheatgrass t))
+ ;; (if (not custom-enabled-themes)
+ ;;     (load-theme 'wheatgrass t))
 
-;; (load "~/.emacs.d/sanemacs.el" nil t)
+ ;; (load "~/.emacs.d/sanemacs.el" nil t)
 
-;;; Your configuration goes below this line.
-;;; use-package is already loaded and ready to go!
-;;; use-package docs: https://github.com/jwiegley/use-package
-#+END_SRC
-* Looks
-** dired-mode
-#+BEGIN_SRC emacs-lisp
-(setq dired-listing-switches "-aBhl  --group-directories-first")
-#+END_SRC
-** [[https://www.emacswiki.org/emacs/ModeLineConfiguration][mode-line]]
-#+BEGIN_SRC emacs-lisp
-;; Enable the display of the current time, see DisplayTime
-(display-time-mode 1)
-;; Enable or disable the display of the current line number, see also LineNumbers
-(line-number-mode 1)
-;; Enable or disable the display of the current column number
-(column-number-mode 1)
-;; (for Emacs 22 and up) – Enable or disable the current buffer size, Emacs 22 and later, see size-indication-mode
-(size-indication-mode 1)
-;; Enable or disable laptop battery information, see DisplayBatteryMode.
-(display-battery-mode 1)
-#+END_SRC
-** [[themes][themes]]
-Themes i can live with: gotham jazz tomorrow-night-paradise dracula xresources modus-vivendi 
-#+BEGIN_SRC emacs-lisp
-(setq custom-safe-themes t)
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'gotham t)
-;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
-;; (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
-#+END_SRC
-** [[https://www.emacswiki.org/emacs/SetFonts][default font]]
-Fonts that work: "DejaVu Sans Mono" "Droid Sans Mono Dotted for Powerline" "Fantasque Sans Mono" "Fira Mono" "Liberation Mono for Powerline" "Monospace" "Roboto Mono" "Source Code Pro" "Space Mono" "ShareTech Mono" Hack "Ubuntu Mono" IBM3270
-#+BEGIN_SRC emacs-lisp
-(set-face-attribute 'default nil :font "DejaVu Sans Mono" )
-#+END_SRC
-* Languages
-** [[https://orgmode.org/worg/org-contrib/babel/][org-babel]]
-#+BEGIN_SRC emacs-lisp
-;; Org-Babel tangle
-(require 'ob-tangle)
-;; Setup Babel languages. Can now do Literate Programming
-(org-babel-do-load-languages 'org-babel-load-languages
-    '((python . t)
-        (shell . t)
-	(emacs-lisp . t)
-	(ledger . t)
-	(ditaa . t)
-	(js . t)
-	(C . t)))
-#+END_SRC
-** [[https://github.com/rust-lang/rust-mode][rust-mode]]
-#+BEGIN_SRC emacs-lisp
-(use-package rust-mode :ensure t)
-#+END_SRC
-** [[https://github.com/immerrr/lua-mode][lua-mode]]
-#+BEGIN_SRC emacs-lisp
-(use-package lua-mode :ensure t)
-(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
-(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
-(add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
-#+END_SRC
-** emacs [[https://github.com/hvesalai/emacs-scala-mode][scala-mode]] & [[https://github.com/hvesalai/emacs-sbt-mode][sbt-mode]]
-#+BEGIN_SRC emacs-lisp
-    (use-package scala-mode
-        :ensure t
-        :interpreter
-	("scala" . scala-mode))
+ ;;; Your configuration goes below this line.
+ ;;; use-package is already loaded and ready to go!
+ ;;; use-package docs: https://github.com/jwiegley/use-package
+ #+END_SRC
+** Looks
+*** dired-mode
+ #+BEGIN_SRC emacs-lisp
+ (setq dired-listing-switches "-aBhl  --group-directories-first")
+ #+END_SRC
+*** [[https://www.emacswiki.org/emacs/ModeLineConfiguration][mode-line]]
+ #+BEGIN_SRC emacs-lisp
+ ;; Enable the display of the current time, see DisplayTime
+ (display-time-mode 1)
+ ;; Enable or disable the display of the current line number, see also LineNumbers
+ (line-number-mode 1)
+ ;; Enable or disable the display of the current column number
+ (column-number-mode 1)
+ ;; (for Emacs 22 and up) – Enable or disable the current buffer size, Emacs 22 and later, see size-indication-mode
+ (size-indication-mode 1)
+ ;; Enable or disable laptop battery information, see DisplayBatteryMode.
+ (display-battery-mode 1)
+ #+END_SRC
+*** [[themes][themes]]
+ Themes i can live with: gotham jazz tomorrow-night-paradise dracula xresources modus-vivendi 
+ #+BEGIN_SRC emacs-lisp
+ (setq custom-safe-themes t)
+ (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+ (load-theme 'gotham t)
+ ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
+ ;; (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
+ #+END_SRC
+*** [[https://www.emacswiki.org/emacs/SetFonts][default font]]
+ Fonts that work: "DejaVu Sans Mono" "Droid Sans Mono Dotted for Powerline" "Fantasque Sans Mono" "Fira Mono" "Liberation Mono for Powerline" "Monospace" "Roboto Mono" "Source Code Pro" "Space Mono" "ShareTech Mono" Hack "Ubuntu Mono" IBM3270
+ #+BEGIN_SRC emacs-lisp
+ (set-face-attribute 'default nil :font "DejaVu Sans Mono" )
+ #+END_SRC
+** Languages
+*** [[https://orgmode.org/worg/org-contrib/babel/][org-babel]]
+ #+BEGIN_SRC emacs-lisp
+ ;; Org-Babel tangle
+ (require 'ob-tangle)
+ ;; Setup Babel languages. Can now do Literate Programming
+ (org-babel-do-load-languages 'org-babel-load-languages
+     '((python . t)
+         (shell . t)
+	 (emacs-lisp . t)
+	 (ledger . t)
+	 (ditaa . t)
+	 (js . t)
+	 (C . t)))
+ #+END_SRC
+*** [[https://github.com/rust-lang/rust-mode][rust-mode]]
+ #+BEGIN_SRC emacs-lisp
+ (use-package rust-mode :ensure t)
+ #+END_SRC
+*** [[https://github.com/immerrr/lua-mode][lua-mode]]
+ #+BEGIN_SRC emacs-lisp
+ (use-package lua-mode :ensure t)
+ (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+ (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+ (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+ #+END_SRC
+*** emacs [[https://github.com/hvesalai/emacs-scala-mode][scala-mode]] & [[https://github.com/hvesalai/emacs-sbt-mode][sbt-mode]]
+ #+BEGIN_SRC emacs-lisp
+     (use-package scala-mode
+         :ensure t
+         :interpreter
+	 ("scala" . scala-mode))
 
-    (use-package sbt-mode
-        :ensure t
-        :commands sbt-start sbt-command
-	:config
-	;; WORKAROUND: allows using SPACE when in the minibuffer
-	(substitute-key-definition
-	    'minibuffer-complete-word
-	    'self-insert-command
-	    minibuffer-local-completion-map))
-#+END_SRC
-* Utilities
-** multi-term
-This package is for creating and managing multiple terminal buffers in Emacs.
-#+BEGIN_SRC emacs-lisp
-(when (require 'multi-term nil t)
-    (progn
-        ;; custom
-	;; (customize-set-variable 'multi-term-program "/usr/local/bin/fish")
-	(customize-set-variable 'multi-term-program "bash")
-	;; focus terminal window after you open dedicated window
-	(customize-set-variable 'multi-term-dedicated-select-after-open-p t)
-	;; the buffer name of term buffer.
-	(customize-set-variable 'multi-term-buffer-name "multi-term")
-	;; binds (C-x) prefix
-	(define-key ctl-x-map (kbd "<C-return>") 'multi-term)
-	(define-key ctl-x-map (kbd "x") 'multi-term-dedicated-toggle)))
-#+END_SRC
-** exwm
-Emacs Window Manager [+.-]
-#+BEGIN_SRC emacs-lisp
-;(use-package exwm :ensure t)
-;(require 'exwm)
-;(require 'exwm-config)
-;(exwm-config-default)
-#+END_SRC
+     (use-package sbt-mode
+         :ensure t
+         :commands sbt-start sbt-command
+	 :config
+	 ;; WORKAROUND: allows using SPACE when in the minibuffer
+	 (substitute-key-definition
+	     'minibuffer-complete-word
+	     'self-insert-command
+	     minibuffer-local-completion-map))
+ #+END_SRC
+** Utilities
+*** multi-term
+ This package is for creating and managing multiple terminal buffers in Emacs.
+ #+BEGIN_SRC emacs-lisp
+ (when (require 'multi-term nil t)
+     (progn
+         ;; custom
+	 ;; (customize-set-variable 'multi-term-program "/usr/local/bin/fish")
+	 (customize-set-variable 'multi-term-program "bash")
+	 ;; focus terminal window after you open dedicated window
+	 (customize-set-variable 'multi-term-dedicated-select-after-open-p t)
+	 ;; the buffer name of term buffer.
+	 (customize-set-variable 'multi-term-buffer-name "multi-term")
+	 ;; binds (C-x) prefix
+	 (define-key ctl-x-map (kbd "<C-return>") 'multi-term)
+	 (define-key ctl-x-map (kbd "x") 'multi-term-dedicated-toggle)))
+ #+END_SRC
+*** exwm
+ Emacs Window Manager [+.-]
+ #+BEGIN_SRC emacs-lisp
+ ;(use-package exwm :ensure t)
+ ;(require 'exwm)
+ ;(require 'exwm-config)
+ ;(exwm-config-default)
+ #+END_SRC
 * FAQ
 - Q: How to install this?
 - A: Don't!
@@ -261,7 +262,7 @@ Emacs Window Manager [+.-]
   # or exit emacs via any other appropriate means.
   # ~/.emacs.d should be moveable/erasable without 
   # lock/save/temp stale artifacts, or git will complain.
-  cd
+  cd 
   mv .emacs.d .emacs.d.bkp.$(date +%s)
   git clone https://github.com/michaeltd/.emacs.d
   emacs
