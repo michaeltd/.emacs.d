@@ -258,11 +258,10 @@ Emacs Window Manager [+.-]
 - Q: How to install this?
 - A: Don't!
 
-  This is my personal .emacs.d and batteries may or may not be included! (depending on what I'm up to at any given time)
-
-  If you'd like to experiment though the commands are as follows:
+  This is my personal .emacs.d and batteries may or may not be included, depending on what I'm up to at any given time. If you'd like to experiment though the commands are as follows:
 
   #+BEGIN_SRC shell
+  pkill -TERM -u "${USER}" emacs # or exit emacs via any other appropriate means (~/.emacs.d/ should be moveable/erasable)
   cd
   mv .emacs.d .emacs.d.bkp.$(date +%s)
   git clone https://github.com/michaeltd/.emacs.d
@@ -271,11 +270,9 @@ Emacs Window Manager [+.-]
 
   Whait a bit and watch the message log scroll along while melpa and org work their magic and in a matter of seconds your install will be complete.
 
-  If exwm appears "moody" during install, fire up emacs once more, chances are it's installed and working fine.
+  If exwm appears "moody" during install, fire up emacs once more, chances are it's installed and working fine. If not, fire up a ~M-x package-install R exwm R~ or comment out exwm entirely.
 
-  If not, fire up a ~M-x package-install R exwm R~ or comment out exwm entirely.
-
-  To use exwm you'll need to uncomment the requires/exwm-config-default elisp statements and launch from your DM of choice a /usr/share/xsessions/exwm.desktop file that looks like this:
+  To use exwm you'll need to uncomment the requires/exwm-config-default elisp statements and launch from your DM of choice a /usr/share/xsessions/exwm.desktop file similar to the following:
 
   #+BEGIN_SRC ini
   [Desktop Entry]
@@ -286,8 +283,6 @@ Emacs Window Manager [+.-]
   Type=Application
   #+END_SRC
 
-  Desktop selection shortcut is ~s-w~ and async shell command is ~s-&~. ("s" as in "Super" or Win key, not Shift)
-
-  All other keyboard shortcuts you'll need are the standard emacs shortcuts.
+  Desktop selection shortcut is ~s-w~ and async shell command is ~s-&~. (~s~ as in ~Super~ or ~Win key~, not ~Shift~) All other keyboard shortcuts you'll need are the standard window/buffer emacs shortcuts.
 
   More on emacs window manager at [[https://github.com/ch11ng/exwm/wiki/EXWM-User-Guide][EXWM wiki]]
