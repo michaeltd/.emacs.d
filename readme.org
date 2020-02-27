@@ -40,15 +40,15 @@ Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
 ;; Load path
 ;; Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
 (defun update-load-path (&rest _)
-"Update `load-path'."
-(push (expand-file-name "site-lisp" user-emacs-directory) load-path)
-(push (expand-file-name "lisp" user-emacs-directory) load-path))
+    "Update `load-path'."
+    (push (expand-file-name "site-lisp" user-emacs-directory) load-path)
+    (push (expand-file-name "lisp" user-emacs-directory) load-path))
 
 (defun add-subdirs-to-load-path (&rest _)
-"Add subdirectories to `load-path'."
-(let ((default-directory
-(expand-file-name "site-lisp" user-emacs-directory)))
-(normal-top-level-add-subdirs-to-load-path)))
+    "Add subdirectories to `load-path'."
+    (let ((default-directory
+    (expand-file-name "site-lisp" user-emacs-directory)))
+    (normal-top-level-add-subdirs-to-load-path)))
 
 (advice-add #'package-initialize :after #'update-load-path)
 (advice-add #'package-initialize :after #'add-subdirs-to-load-path)
@@ -89,10 +89,10 @@ A minimal Emacs config that does just enough and nothing more.
 
 ;;; Setup use-package
 (unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+    (package-refresh-contents)
+    (package-install 'use-package))
 (eval-when-compile
-  (require 'use-package))
+    (require 'use-package))
 (setq use-package-always-ensure t)
 
 ;;; Useful Defaults
