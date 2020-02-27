@@ -14,11 +14,7 @@ yet another .emacs.d
 
   It must deliver lightning fast load times to be suitable for ancient hardware such as mine >:'/
 
-  Buy me some coffee [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]], no seriously, even in [[bitcoin://3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs?amount=0.1][btc]]
-
-  # \x20AC \x20BF
-
-  # <!-- <p align="center">buy me coffee... &#x20AC; &#x20BF; --> 
+  Buy me some coffee [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro eur]], no seriously, even in ₿ btc (3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs)
 
   #+BEGIN_SRC shell
   time emacs --eval '(kill-emacs)' # This should yield < 1''
