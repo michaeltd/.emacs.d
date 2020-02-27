@@ -6,7 +6,7 @@
 #+property: header-args :comments yes
 #+html: <p align="center"><img src="assets/emacs-logo.png"/></p><p align="center"><a href="readme.org"><img src="assets/screenshot.png"/></a></p>
 yet another .emacs.d
-* DONE Requirements (or ... WHY?)
+* DONE Use Case (or... WHY?)
 - UXP
 
   It needs to deliver a next to vanilla user experience.
@@ -21,11 +21,11 @@ yet another .emacs.d
   Resulting load times should render ~emacs --daemon~ a functional choice rather than a practical one.
 
   So buy me some coffee in [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]] or ₿ (bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs) so I can up my game.
-- eyecandy
+- Eye Candy
 
   It needs to be moderately beautifull in a resource efficient manner.
 
-  (eg: No doom-themes, doom-modeline, doom-\star, spacemacs-\star)
+  (reads: No doom-themes, doom-modeline, doom-\star, spacemacs-\star)
 - Out of the clone
 
   It needs to work out of the box so no source packages +(todo)+,
