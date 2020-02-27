@@ -23,14 +23,10 @@ yet another .emacs.d
   So buy me some coffee in [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]] or ₿ (bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs) so I can up my game.
 - Eye Candy
 
-  It needs to be moderately beautifull in a resource efficient manner.
-
-  (reads: No doom-themes, doom-modeline, doom-\star, spacemacs-\star)
+  It needs to be moderately beautifull in a resource efficient manner. (reads: No doom-themes, doom-modeline, doom-\star, spacemacs-\star)
 - Out of the clone
 
-  It needs to work out of the box so no source packages +(todo)+,
-
-  for a more "batteries included" like experience.
+  It needs to work out of the box so no source packages +(todo)+, for a more "batteries included" like experience.
 * Init
 ** some variables
 #+BEGIN_SRC emacs-lisp
@@ -266,25 +262,20 @@ Emacs Window Manager [+.-]
 
   If you'd like to experiment though the commands are as follows:
 
-  ~cd \tilde~
+  #+BEGIN_SRC shell
+  cd
+  mv .emacs.d .emacs.d.bkp.$(date +%s)
+  git clone https://github.com/michaeltd/.emacs.d
+  emacs
+  #+END_SRC
 
-  ~mv .emacs.d .emacs.d.bkp.$(date +%s)~ 
-
-  ~git clone https://github.com/michaeltd/.emacs.d~
-
-  ~emacs~
-
-  Whait a bit and watch the message log scroll along while melpa and org work their magic 
-
-  and in a matter of seconds your install will be complete.
+  Whait a bit and watch the message log scroll along while melpa and org work their magic and in a matter of seconds your install will be complete.
 
   If exwm appears "moody" during install, fire up emacs once more, chances are it's installed and working fine.
 
   If not, fire up a ~M-x package-install R exwm R~ or comment out exwm entirely.
 
-  To use exwm you'll need to uncomment the requires/exwm-config-default elisp statements
-
-  and launch from your DM of choice a /usr/share/xsessions/exwm.desktop file that looks like that:
+  To use exwm you'll need to uncomment the requires/exwm-config-default elisp statements and launch from your DM of choice a /usr/share/xsessions/exwm.desktop file that looks like this:
 
   #+BEGIN_SRC ini
   [Desktop Entry]
