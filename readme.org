@@ -20,7 +20,7 @@ yet another .emacs.d
   time emacs --eval '(kill-emacs)' # This should yield < 1''
   #+END_SRC
 
-  Resoulting load times should render ~emacs --daemon~ a functional choice rather than a practical one.
+  Resulting load times should render ~emacs --daemon~ a functional choice rather than a practical one.
 - eyecandy
 
   It needs to be moderately beautifull in a resource efficient manner.
