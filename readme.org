@@ -169,20 +169,16 @@ A minimal Emacs config that does just enough and nothing more.
 (display-battery-mode 1)
 #+END_SRC
 ** [[themes][themes]]
-Themes i can live with: 
-jazz tomorrow-night-paradise dracula xresources modus-vivendi
+Themes i can live with: gotham jazz tomorrow-night-paradise dracula xresources modus-vivendi 
 #+BEGIN_SRC emacs-lisp
 (setq custom-safe-themes t)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'jazz t)
+(load-theme 'gotham t)
 ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
 ;; (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
 #+END_SRC
 ** [[https://www.emacswiki.org/emacs/SetFonts][default font]]
-Fonts that work: 
-DejaVuSansMono DroidSansMonoDottedforPowerline FantasqueSansMono 
-FiraMono LiberationMonoforPowerline Monospace SourceCodePro 
-SpaceMono ShareTechMono Hack UbuntuMono IBM3270
+Fonts that work: DejaVuSansMono DroidSansMonoDottedforPowerline FantasqueSansMono FiraMono LiberationMonoforPowerline Monospace SourceCodePro SpaceMono ShareTechMono Hack UbuntuMono IBM3270
 #+BEGIN_SRC emacs-lisp
 (set-face-attribute 'default nil :font "SourceCodePro" )
 #+END_SRC
@@ -261,10 +257,10 @@ Emacs Window Manager [+.-]
   This is my personal .emacs.d and batteries may or may not be included, depending on what I'm up to at any given time. If you'd like to experiment though the commands are as follows:
 
   #+BEGIN_SRC shell
-  pkill -TERM -u "${USER}" emacs 
+  # pkill -TERM -u "${USER}" emacs 
   # or exit emacs via any other appropriate means.
   # ~/.emacs.d should be moveable/erasable without 
-  # lock/save/temp stale artifacts.
+  # lock/save/temp stale artifacts, or git will complain.
   cd
   mv .emacs.d .emacs.d.bkp.$(date +%s)
   git clone https://github.com/michaeltd/.emacs.d
