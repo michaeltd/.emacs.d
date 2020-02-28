@@ -36,7 +36,11 @@ yet another .emacs.d
      This file
   3. [[file:themes][themes]]
 
-     Various interesting themes
+     Various tried and true themes, namely:
+     1) gotham
+     2) jazz
+     3) ujelly
+     4) xresources
 * Load Sequence
 ** Init
 *** some variables
