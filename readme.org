@@ -35,10 +35,10 @@ yet another .emacs.d
   3. [[file:themes][themes]]
 
      Various tried and true themes, namely:
-     1) gotham
-     2) jazz
-     3) ujelly
-     4) xresources
+     1) [[file:themes/gotham-theme.el][gotham]]
+     2) [[file:themes/jazz-theme.el][jazz]]
+     3) [[file:themes/ujelly-theme.el][ujelly]]
+     4) [[file:themes/xresources-theme.el][xresources]]
 * Load Sequence
 ** Init
 *** some variables
