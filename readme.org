@@ -7,26 +7,24 @@
 #+html: <p align="center"><img src="assets/emacs-logo.png"/></p><p align="center"><a href="readme.org"><img src="assets/screenshot.png"/></a></p>
 yet another .emacs.d
 * DONE Use Case (or... WHY?)
-- UXP
+  - UXP
 
-  It needs to deliver a next to vanilla user experience.
-- Load Times
+    It needs to deliver a next to vanilla user experience.
+  - Load Times
 
-  It must deliver lightning fast load times to be suitable for ancient hardware such as mine >:'[
+    It must deliver lightning fast load times to be suitable for ancient hardware such as mine >:'[
+    #+BEGIN_SRC shell
+    time emacs --eval='(kill-emacs)' # should yield -lt 1s
+    #+END_SRC
+    Resulting load times should render ~emacs --daemon~ a functional choice rather than a practical one.
 
-  #+BEGIN_SRC shell
-  time emacs --eval='(kill-emacs)' # should yield -lt 1s
-  #+END_SRC
+    So buy me some coffee in [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]] or ₿ (bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs) so I can up my game.
+  - Eye Candy
 
-  Resulting load times should render ~emacs --daemon~ a functional choice rather than a practical one.
+    It needs to be moderately beautifull in a resource efficient manner. (reads: No doom-themes, doom-modeline, doom-\star, spacemacs-\star)
+  - Out of the clone
 
-  So buy me some coffee in [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]] or ₿ (bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs) so I can up my game.
-- Eye Candy
-
-  It needs to be moderately beautifull in a resource efficient manner. (reads: No doom-themes, doom-modeline, doom-\star, spacemacs-\star)
-- Out of the clone
-
-  It needs to work out of the box for a more "batteries included" like experience. reads: no source packages +(todo)+.
+    It needs to work out of the box for a more "batteries included" like experience. reads: no source packages +(todo)+.
 * Files
   1. [[file:init.el][init.el]]
 
@@ -161,36 +159,46 @@ yet another .emacs.d
  #+END_SRC
 ** Looks
 *** dired-mode
- #+BEGIN_SRC emacs-lisp
- (setq dired-listing-switches "-aBhl  --group-directories-first")
- #+END_SRC
+    #+BEGIN_SRC emacs-lisp
+    (setq dired-listing-switches "-aBhl  --group-directories-first")
+    #+END_SRC
 *** [[https://www.emacswiki.org/emacs/ModeLineConfiguration][mode-line]]
- #+BEGIN_SRC emacs-lisp
- ;; Enable the display of the current time, see DisplayTime
- (display-time-mode 1)
- ;; Enable or disable the display of the current line number, see also LineNumbers
- (line-number-mode 1)
- ;; Enable or disable the display of the current column number
- (column-number-mode 1)
- ;; (for Emacs 22 and up) – Enable or disable the current buffer size, Emacs 22 and later, see size-indication-mode
- (size-indication-mode 1)
- ;; Enable or disable laptop battery information, see DisplayBatteryMode.
- (display-battery-mode 1)
- #+END_SRC
-*** [[themes][themes]]
- Themes i can live with: gotham jazz tomorrow-night-paradise dracula xresources ujelly modus-vivendi 
- #+BEGIN_SRC emacs-lisp
- (setq custom-safe-themes t)
- (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes"))
- (load-theme 'ujelly t)
- ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
- ;; (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
- #+END_SRC
+    #+BEGIN_SRC emacs-lisp
+    ;; Enable the display of the current time, see DisplayTime
+    (display-time-mode 1)
+    ;; Enable or disable the display of the current line number, see also LineNumbers
+    (line-number-mode 1)
+    ;; Enable or disable the display of the current column number
+    (column-number-mode 1)
+    ;; (for Emacs 22 and up) – Enable or disable the current buffer size, Emacs 22 and later, see size-indication-mode
+    (size-indication-mode 1)
+    ;; Enable or disable laptop battery information, see DisplayBatteryMode.
+    (display-battery-mode 1)
+    #+END_SRC
+*** purrrdy symbols
+    #+BEGIN_SRC emacs-lisp
+    (global-prettify-symbols-mode t)
+    #+END_SRC
+*** scrolling behavior
+    #+BEGIN_SRC emacs-lisp
+    (setq scroll-conservatively 100)
+    #+END_SRC
+*** global-hl-line-mode
+    #+BEGIN_SRC emacs-lisp
+    (global-hl-line-mode)
+    #+END_SRC
 *** [[https://www.emacswiki.org/emacs/SetFonts][default font]]
- Fonts that work: "DejaVu Sans Mono" "Droid Sans Mono Dotted for Powerline" "Fantasque Sans Mono" "Fira Mono" "Liberation Mono for Powerline" "Monospace" "Roboto Mono" "Source Code Pro" "Space Mono" "ShareTech Mono" Hack "Ubuntu Mono" IBM3270
- #+BEGIN_SRC emacs-lisp
- (set-face-attribute 'default nil :font "DejaVu Sans Mono" )
- #+END_SRC
+    #+BEGIN_SRC emacs-lisp
+    (set-face-attribute 'default nil :font "DejaVu Sans Mono" )
+    #+END_SRC
+*** [[themes][themes]]
+    #+BEGIN_SRC emacs-lisp
+    (setq custom-safe-themes t)
+    (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes"))
+    (load-theme 'ujelly t)
+    ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
+    ;; (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
+    #+END_SRC
 ** Languages
 *** [[https://orgmode.org/worg/org-contrib/babel/][org-babel]]
  #+BEGIN_SRC emacs-lisp
@@ -304,4 +312,5 @@ yet another .emacs.d
   + [[https://pages.sachachua.com/.emacs.d/Sacha.html][sasha chua dot emacs]]
   + [[https://spacemacs.org/][spacemacs]]
   + [[https://github.com/hlissner/doom-emacs][doom-emacs]]
+  + [[https://github.com/hrs/dotfiles/blob/master/emacs/.emacs.d/configuration.org][Harry R. Schwartz]]
 
