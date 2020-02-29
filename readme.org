@@ -35,10 +35,11 @@ yet another .emacs.d
   3. [[file:themes][themes]]
 
      Various tried and true themes, namely:
-     1) [[file:themes/gotham-theme.el][gotham]]
-     2) [[file:themes/jazz-theme.el][jazz]]
-     3) [[file:themes/ujelly-theme.el][ujelly]]
-     4) [[file:themes/xresources-theme.el][xresources]]
+     1) [[file:themes/dracula-theme.el][dracula]]
+     2) [[file:themes/gotham-theme.el][gotham]]
+     3) [[file:themes/jazz-theme.el][jazz]]
+     4) [[file:themes/ujelly-theme.el][ujelly]]
+     5) [[file:themes/xresources-theme.el][xresources]]
 * Load Sequence
 ** Init
 *** some variables
@@ -142,7 +143,9 @@ yet another .emacs.d
     ;;; Avoid littering the user's filesystem with backups
     (setq
         backup-by-copying t      ; don't clobber symlinks
-	backup-directory-alist
+	backup-directory-alist 
+	    ;; '((".*" . (concat user-emacs-directory "saves/")))    ; don't litter my fs tree
+	    ;; '((".*" . (expand-file-name "saves/" user-emacs-directory))) 
             '((".*" . "~/.emacs.d/saves/"))    ; don't litter my fs tree
 	delete-old-versions t
 	kept-new-versions 6
@@ -189,13 +192,13 @@ yet another .emacs.d
     #+END_SRC
 *** [[https://www.emacswiki.org/emacs/SetFonts][default font]]
     #+BEGIN_SRC emacs-lisp
-    (set-face-attribute 'default nil :font "DejaVu Sans Mono" )
+    (set-face-attribute 'default nil :font "Source Code Pro" )
     #+END_SRC
 *** [[themes][themes]]
     #+BEGIN_SRC emacs-lisp
     (setq custom-safe-themes t)
-    (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes"))
-    (load-theme 'ujelly t)
+    (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
+    (load-theme 'twilight t)
     ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
     ;; (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
     #+END_SRC
