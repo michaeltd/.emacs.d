@@ -119,7 +119,7 @@ yet another .emacs.d
     (setq linum-format "%4d ")                ; Prettify line number format
     (add-hook 'prog-mode-hook                 ; Show line numbers in programming modes
         (if (fboundp 'display-line-numbers-mode)
-	    #'difsplay-line-numbers-mode
+	    #'display-line-numbers-mode
 	    #'linum-mode))
 
     ;;(use-package undo-tree                    ; Enable undo-tree, sane undo/redo behavior
@@ -132,7 +132,7 @@ yet another .emacs.d
     ;;; Offload the custom-set-variables to a separate file
     ;;; This keeps your init.el neater and you have the option
     ;;; to gitignore your custom.el if you see fit.
-    ;; (setq custom-file (concat user-emacs-directory "custom.el"))
+    ;; (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
     (setq custom-file "/dev/null")
     (unless (file-exists-p custom-file)
         (write-region "" nil custom-file))
@@ -143,7 +143,7 @@ yet another .emacs.d
     (setq
         backup-by-copying t      ; don't clobber symlinks
 	backup-directory-alist
-            '((".*" . (concat user-emacs-directory "saves")))    ; don't litter my fs tree
+            '((".*" . "~/.emacs.d/saves/"))    ; don't litter my fs tree
 	delete-old-versions t
 	kept-new-versions 6
 	kept-old-versions 2
