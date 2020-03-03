@@ -222,7 +222,7 @@ yet another .emacs.d
     ;(setq dashboard-show-shortcuts nil)
 
     ;; To customize which widgets are displayed, you can use the following snippet
-    (setq dashboard-items '((recents  . 5)))
+    (setq dashboard-items '((recents  . 4)))
     ;;    (bookmarks . 5)
     ;;    (projects . 5)
     ;;    (agenda . 5)
@@ -251,10 +251,10 @@ yet another .emacs.d
     ;;(setq dashboard-navigator-buttons
     ;;    `(;; line1
     ;;        ((,(all-the-icons-octicon "mark-github" :height 1.1 :v-adjust 0.0)
-    ;; "Homepage"
-    ;; "Browse homepage"
-    ;; (lambda (&rest _) (browse-url "homepage")))
-    ;; ("★" "Star" "Show stars" (lambda (&rest _) (show-stars)) warning)
+    ;;            "Homepage"
+    ;;            "Browse homepage"
+    ;;            (lambda (&rest _) (browse-url "homepage")))
+    ;; ("★" "Stars" "Show stars" (lambda (&rest _) (show-stars)) warning)
     ;; ("?" "" "?/h" #'show-help nil "<" ">"))
     ;; line 2
     ;; ((,(all-the-icons-faicon "linkedin" :height 1.1 :v-adjust 0.0)
@@ -265,10 +265,24 @@ yet another .emacs.d
 
     (setq dashboard-navigator-buttons
         `(;; line1
-            ((,(all-the-icons-octicon "mark-github" :height 1.1 :v-adjust 0.0)
-	        "Homepage"
-		"Browse homepage"
-		(lambda (&rest _) (browse-url "homepage"))))))
+            ((,(all-the-icons-octicon "mark-github" :height 1.1 :v-adjust 0.0) 
+	        "GitHub" 
+		"Browse GitHub"
+		(lambda (&rest _) (browse-url "https://github.com/michaeltd")))
+	    (,(all-the-icons-faicon "cloud" :height 1.1 :v-adjust 0.0)
+	        "Homepage" 
+		"Browse Homepage"
+		(lambda (&rest _) (browse-url "https://michaeltd.netlify.com/")))
+            (,(all-the-icons-faicon "twitter" :height 1.1 :v-adjust 0.0) 
+	        "Twitter" 
+		"Browse Twitter"
+		(lambda (&rest _) (browse-url "https://www.twitter.com/tsouchlarakismd")))
+	    
+	    (,(all-the-icons-faicon "linkedin" :height 1.1 :v-adjust 0.0) 
+	        "LinkedIn" 
+		"Browse LinkedIn"
+		(lambda (&rest _) (browse-url "https://www.linkedin.com/in/michaeltd"))))))
+
     ;;("★" "Star" "Show stars" (lambda (&rest _) (show-stars)) warning)
     ;;("?" "" "?/h" #'show-help nil "<" ">"))
     ;; line 2
