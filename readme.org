@@ -194,6 +194,12 @@ yet another .emacs.d
     ;; or
     (use-package all-the-icons)
     #+END_SRC
+*** emacs-dashboard-hackernews
+    #+BEGIN_SRC emacs-lisp
+    (use-package dashboard-hackernews :ensure t)
+    ;; (require 'dashboard-hackernews)
+    ;; (add-to-list dashboard-items (hackernews . 5))
+    #+END_SRC
 *** [[https://github.com/emacs-dashboard/emacs-dashboard][emacs-dashboard]]
     #+BEGIN_SRC emacs-lisp
     (use-package dashboard
@@ -204,7 +210,8 @@ yet another .emacs.d
     (setq dashboard-banner-logo-title "Welcome to the Church of Emacs")
     (setq dashboard-startup-banner 4)
     (setq dashboard-center-content t)
-    (setq dashboard-items '((recents  . 5)))
+    (setq dashboard-items '((recents  . 5)
+                            (hackernews . 5)))
     (setq dashboard-set-heading-icons t)
     (setq dashboard-set-file-icons t)
     (setq dashboard-set-navigator t)
