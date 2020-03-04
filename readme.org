@@ -47,6 +47,11 @@ yet another .emacs.d
     (setq user-full-name "michaeltd"
         user-mail-address "tsouchlarakis@gmail.com"
 	user-pgp-key "0x01063480")
+    (defun my-laptop-p ()
+        (and (equal (system-name) "genbox") (equal user-login-name "paperjam")))
+    (defun my-reload-emacs-configuration ()
+        (interactive)
+	(load-file (concat user-emacs-directory "init.el")))
     #+END_SRC
 *** update-load-path
     Add [[file:lisp][lisp]] & [[file:site-lisp][site-lisp]] to load path
@@ -312,6 +317,14 @@ yet another .emacs.d
 	    ;; binds (C-x) prefix
 	    (define-key ctl-x-map (kbd "<C-return>") 'multi-term)
 	    (define-key ctl-x-map (kbd "x") 'multi-term-dedicated-toggle)))
+    #+END_SRC
+*** [[https://github.com/akermu/emacs-libvterm][emacs-libvterm]]
+    #+BEGIN_SRC emacs-lisp
+    (when (my-laptop-p)
+        (add-to-list 'load-path (concat user-emacs-directory "lisp/emacs-libvterm"))
+        (require 'vterm))
+    ;; Or, with use-package:
+    ;; (use-package vterm :ensure t)
     #+END_SRC
 *** [[https://github.com/ch11ng/exwm/wiki/EXWM-User-Guide][exwm]]
     EmaX Window Manager [+.-]
