@@ -254,9 +254,9 @@ yet another .emacs.d
     #+BEGIN_SRC emacs-lisp
     (setq custom-safe-themes t)
     (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
-    (load-theme 'dracula t)
+    ;; (load-theme 'dracula t)
     ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
-    ;; (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
+    (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
     #+END_SRC
 ** Languages
 *** [[https://orgmode.org/worg/org-contrib/babel/][org-babel]]
