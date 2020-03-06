@@ -320,9 +320,9 @@ yet another .emacs.d
     #+END_SRC
 *** [[https://github.com/akermu/emacs-libvterm][emacs-libvterm]]
     #+BEGIN_SRC emacs-lisp
-    ;;(when (my-laptop-p)
-    ;;    (add-to-list 'load-path (concat user-emacs-directory "lisp/emacs-libvterm"))
-    ;;    (require 'vterm))
+    (when (my-laptop-p)
+        (add-to-list 'load-path (concat user-emacs-directory "lisp/emacs-libvterm"))
+        (require 'vterm))
     ;; Or, with use-package:
     ;; (use-package vterm :ensure t)
     #+END_SRC
