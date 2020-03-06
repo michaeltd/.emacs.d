@@ -355,7 +355,7 @@ yet another .emacs.d
     emacs
     #+END_SRC
 
-    Whait a bit and watch the message log scroll along while melpa and org work their magic and in a matter of seconds your install will be complete.
+    Wait a bit and watch the message log scroll along while melpa and org work their magic and in a matter of seconds your install will be complete.
 
     If exwm appears "moody" during install, fire up emacs once more, chances are it's installed and working fine. If not, fire up a ~M-x package-install R exwm R~ or comment out exwm entirely.
 
