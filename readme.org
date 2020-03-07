@@ -34,11 +34,12 @@ yet another .emacs.d
   3. [[file:themes][themes]]
 
      Various tried and true themes, namely:
-     1) [[file:themes/dracula-theme.el][dracula]]
-     2) [[file:themes/gotham-theme.el][gotham]]
-     3) [[file:themes/jazz-theme.el][jazz]]
-     4) [[file:themes/ujelly-theme.el][ujelly]]
-     5) [[file:themes/xresources-theme.el][xresources]]
+     1) [[themes/cyberpunk-theme.el][cyberpunk]]
+     2) [[file:themes/dracula-theme.el][dracula]]
+     3) [[file:themes/gotham-theme.el][gotham]]
+     4) [[file:themes/jazz-theme.el][jazz]]
+     5) [[file:themes/ujelly-theme.el][ujelly]]
+     6) [[file:themes/xresources-theme.el][xresources]]
 * Load Sequence
 ** Init
 *** some variables
@@ -253,9 +254,9 @@ yet another .emacs.d
     #+BEGIN_SRC emacs-lisp
       (setq custom-safe-themes t)
       (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
-      ;; (load-theme 'dracula t)
+      (load-theme 'cyberpunk t)
       ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
-      (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
+      ;; (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
 
       ;; ample-themes
       ;; then in your init you can load all of the themes
