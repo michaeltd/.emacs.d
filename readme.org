@@ -251,11 +251,30 @@ yet another .emacs.d
     #+END_SRC
 *** [[themes][themes]]
     #+BEGIN_SRC emacs-lisp
-    (setq custom-safe-themes t)
-    (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
-    ;; (load-theme 'dracula t)
-    ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
-    (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
+      (setq custom-safe-themes t)
+      (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
+      ;; (load-theme 'dracula t)
+      ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
+      (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
+
+      ;; ample-themes
+      ;; then in your init you can load all of the themes
+      ;; without enabling theme (or just load one)
+      ;; (load-theme 'ample t t)
+      ;;(load-theme 'ample-flat t t)
+      ;;(load-theme 'ample-light t t)
+      ;; choose one to enable
+      ;;(enable-theme 'ample)
+      ;; (enable-theme 'ample-flat)
+      ;; (enable-theme 'ample-light)
+      ;; Or, if you use `use-package', do something like this:
+      ;; (use-package ample-theme
+      ;;     :init (progn (load-theme 'ample t t)
+      ;;     (load-theme 'ample-flat t t)
+      ;;     (load-theme 'ample-light t t))
+      ;;     ;;(enable-theme 'ample-flat))
+      ;;     :defer t
+      ;;     :ensure t)
     #+END_SRC
 ** Languages
 *** [[https://orgmode.org/worg/org-contrib/babel/][org-babel]]
@@ -384,5 +403,6 @@ yet another .emacs.d
   + [[https://github.com/hlissner/doom-emacs][doom-emacs]]
   + [[https://github.com/hrs/dotfiles/blob/master/emacs/.emacs.d/configuration.org][Harry R. Schwartz]]
   + [[https://github.com/PythonNut/quark-emacs][quark-emacs]]
+  + [[https://github.com/emacs-tw/awesome-emacs][awesome-emacs]]
 * Contributing
   Buy me some coffee in [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]] or ₿ (bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs) so I can up my game.
