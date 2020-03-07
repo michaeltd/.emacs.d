@@ -15,7 +15,6 @@ yet another .emacs.d
      #+END_SRC
      Resulting load times should render ~emacs --daemon~ a functional choice rather than a practical one.
 
-     So buy me some coffee in [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]] or ₿ (bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs) so I can up my game.
   2) Out of the clone
 
      It needs to work out of the box for a more "batteries included" like experience. reads: no source packages.
@@ -385,3 +384,5 @@ yet another .emacs.d
   + [[https://github.com/hlissner/doom-emacs][doom-emacs]]
   + [[https://github.com/hrs/dotfiles/blob/master/emacs/.emacs.d/configuration.org][Harry R. Schwartz]]
   + [[https://github.com/PythonNut/quark-emacs][quark-emacs]]
+* Contributing
+  Buy me some coffee in [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]] or ₿ (bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs) so I can up my game.
