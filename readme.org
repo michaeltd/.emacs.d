@@ -184,6 +184,12 @@ yet another .emacs.d
     ;; Enable or disable laptop battery information, see DisplayBatteryMode.
     (display-battery-mode 1)
     #+END_SRC
+*** doom-mode-line
+    #+BEGIN_SRC emacs-lisp
+      ;; (add-to-list 'load-path (concat user-emacs-directory "lisp/doom-modeline"))
+      ;; (require 'doom-modeline)
+      ;; (doom-modeline-mode 1)
+    #+END_SRC
 *** [[https://github.com/purcell/page-break-lines][page-break-lines]]
     #+BEGIN_SRC emacs-lisp
     (require 'page-break-lines)
@@ -256,20 +262,14 @@ yet another .emacs.d
       (setq custom-safe-themes t)
       (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
       ;; (load-theme 'cyberpunk t)
-      ;; (load-theme 'grandshell t)
+      (load-theme 'grandshell t)
       ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
       ;; (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
 
-      (add-to-list 'load-path (concat user-emacs-directory "lisp/emacs-doom-themes"))
-      (require 'doom-themes)
-      (load-theme 'doom-outrun-electric t)
+      ;; (add-to-list 'load-path (concat user-emacs-directory "lisp/emacs-doom-themes"))
+      ;; (require 'doom-themes)
+      ;; (load-theme 'doom-outrun-electric t)
 
-    #+END_SRC
-*** mode-line
-    #+BEGIN_SRC emacs-lisp
-    (add-to-list 'load-path (concat user-emacs-directory "lisp/doom-modeline"))
-    (require 'doom-modeline)
-    (doom-modeline-mode 1)
     #+END_SRC
 ** Languages
 *** [[https://orgmode.org/worg/org-contrib/babel/][org-babel]]
@@ -343,9 +343,9 @@ yet another .emacs.d
     EmaX Window Manager [+.-]
     #+BEGIN_SRC emacs-lisp
     ;(use-package exwm :ensure t)
-    (require 'exwm)
-    (require 'exwm-config)
-    (exwm-config-default)
+    ;(require 'exwm)
+    ;(require 'exwm-config)
+    ;(exwm-config-default)
     #+END_SRC
 *** [[https://github.com/dougm/bats-mode][bats-mode]]
     #+BEGIN_SRC emacs-lisp
