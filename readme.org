@@ -238,6 +238,12 @@ yet another .emacs.d
 		(lambda (&rest _) (browse-url "https://www.linkedin.com/in/michaeltd"))))))
     (setq dashboard-set-init-info t)
     #+END_SRC
+*** [[https://github.com/Fanael/rainbow-delimiters][rainbow-delimiters]]
+    #+BEGIN_SRC emacs-lisp
+    (require 'rainbow-delimiters)
+    (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+    (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+    #+END_SRC
 *** [[themes][themes]]
     #+BEGIN_SRC emacs-lisp
     (setq custom-safe-themes t)
@@ -254,17 +260,11 @@ yet another .emacs.d
     (when (not (tdm/laptop-p))
         (load-theme 'cyberpunk t))
     #+END_SRC
-*** [[https://github.com/Fanael/rainbow-delimiters][rainbow-delimiters]]
-    #+BEGIN_SRC emacs-lisp
-    (require 'rainbow-delimiters)
-    (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
-    (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-    #+END_SRC
 *** various
     Trivial adjustments
 **** [[https://www.emacswiki.org/emacs/SetFonts][default font]]
      #+BEGIN_SRC emacs-lisp
-     (set-face-attribute 'default nil :font "Source Code Pro" )
+     (when (tdm/laptop-p) (set-face-attribute 'default nil :font "Source Code Pro" ))
      #+END_SRC
 **** dired-mode
      #+BEGIN_SRC emacs-lisp
