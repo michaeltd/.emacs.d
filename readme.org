@@ -48,7 +48,7 @@ yet another .emacs.d
     (setq user-full-name "michaeltd"
         user-mail-address "tsouchlarakis@gmail.com"
 	user-pgp-key "0x01063480")
-    (defun tdm/laptop ()
+    (defun tdm/laptop-p ()
         (and (equal (system-name) "genbox") (equal user-login-name "paperjam")))
     (defun tdm/reload-emacs-configuration ()
         (interactive)
@@ -167,10 +167,6 @@ yet another .emacs.d
 	;;     (load-theme 'wheatgrass t))
     #+END_SRC
 ** Looks
-*** dired-mode
-    #+BEGIN_SRC emacs-lisp
-    (setq dired-listing-switches "-aBhl  --group-directories-first")
-    #+END_SRC
 *** [[https://www.emacswiki.org/emacs/ModeLineConfiguration][mode-line]]
     #+BEGIN_SRC emacs-lisp
     ;; Enable the display of the current time, see DisplayTime
@@ -186,9 +182,10 @@ yet another .emacs.d
     #+END_SRC
 *** doom-mode-line
     #+BEGIN_SRC emacs-lisp
-      ;; (add-to-list 'load-path (concat user-emacs-directory "lisp/doom-modeline"))
-      ;; (require 'doom-modeline)
-      ;; (doom-modeline-mode 1)
+    (when (tdm/laptop-p)
+        (add-to-list 'load-path (concat user-emacs-directory "lisp/doom-modeline"))
+	(require 'doom-modeline)
+	(doom-modeline-mode 1))
     #+END_SRC
 *** [[https://github.com/purcell/page-break-lines][page-break-lines]]
     #+BEGIN_SRC emacs-lisp
@@ -201,6 +198,10 @@ yet another .emacs.d
     ;; or
     (use-package all-the-icons)
     #+END_SRC
+*** emacs-dashboard-hackernews
+    #+BEGIN_SRC emacs-lisp
+    (require 'dashboard-hackernews)
+    #+END_SRC
 *** [[https://github.com/emacs-dashboard/emacs-dashboard][emacs-dashboard]]
     #+BEGIN_SRC emacs-lisp
     (use-package dashboard
@@ -211,7 +212,9 @@ yet another .emacs.d
     (setq dashboard-banner-logo-title "Welcome to the Church of Emacs")
     (setq dashboard-startup-banner 4)
     (setq dashboard-center-content t)
-    (setq dashboard-items '((recents  . 5)))
+    (setq dashboard-items 
+        '((recents  . 5) 
+	(hackernews . 5)))
     (setq dashboard-set-heading-icons t)
     (setq dashboard-set-file-icons t)
     (setq dashboard-set-navigator t)
@@ -235,9 +238,21 @@ yet another .emacs.d
 		(lambda (&rest _) (browse-url "https://www.linkedin.com/in/michaeltd"))))))
     (setq dashboard-set-init-info t)
     #+END_SRC
-*** purrrdy symbols
+*** [[themes][themes]]
     #+BEGIN_SRC emacs-lisp
-    (global-prettify-symbols-mode t)
+    (setq custom-safe-themes t)
+    (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
+    ;; (load-theme 'cyberpunk t)
+    ;; (load-theme 'grandshell t)
+    ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
+    ;; (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
+    ;; doom-themes
+    (when (tdm/laptop-p)
+        (add-to-list 'load-path (concat user-emacs-directory "lisp/emacs-doom-themes"))
+        (require 'doom-themes)
+        (load-theme 'doom-outrun-electric t))
+    (when (not (tdm/laptop-p))
+        (load-theme 'cyberpunk t))
     #+END_SRC
 *** [[https://github.com/Fanael/rainbow-delimiters][rainbow-delimiters]]
     #+BEGIN_SRC emacs-lisp
@@ -245,32 +260,28 @@ yet another .emacs.d
     (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
     (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
     #+END_SRC
-*** scrolling behavior
-    #+BEGIN_SRC emacs-lisp
-    (setq scroll-conservatively 100)
-    #+END_SRC
-*** global-hl-line-mode
-    #+BEGIN_SRC emacs-lisp
-    (global-hl-line-mode)
-    #+END_SRC
-*** [[https://www.emacswiki.org/emacs/SetFonts][default font]]
-    #+BEGIN_SRC emacs-lisp
-    (set-face-attribute 'default nil :font "Source Code Pro" )
-    #+END_SRC
-*** [[themes][themes]]
-    #+BEGIN_SRC emacs-lisp
-      (setq custom-safe-themes t)
-      (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
-      ;; (load-theme 'cyberpunk t)
-      (load-theme 'grandshell t)
-      ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
-      ;; (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
-
-      ;; (add-to-list 'load-path (concat user-emacs-directory "lisp/emacs-doom-themes"))
-      ;; (require 'doom-themes)
-      ;; (load-theme 'doom-outrun-electric t)
-
-    #+END_SRC
+*** various
+    Trivial adjustments
+**** [[https://www.emacswiki.org/emacs/SetFonts][default font]]
+     #+BEGIN_SRC emacs-lisp
+     (set-face-attribute 'default nil :font "Source Code Pro" )
+     #+END_SRC
+**** dired-mode
+     #+BEGIN_SRC emacs-lisp
+     (setq dired-listing-switches "-aBhl  --group-directories-first")
+     #+END_SRC
+**** purrrdy symbols
+     #+BEGIN_SRC emacs-lisp
+     (global-prettify-symbols-mode t)
+     #+END_SRC
+**** scrolling behavior
+     #+BEGIN_SRC emacs-lisp
+     (setq scroll-conservatively 100)
+     #+END_SRC
+**** global-hl-line-mode
+     #+BEGIN_SRC emacs-lisp
+     (global-hl-line-mode)
+     #+END_SRC
 ** Languages
 *** [[https://orgmode.org/worg/org-contrib/babel/][org-babel]]
     #+BEGIN_SRC emacs-lisp
@@ -333,8 +344,9 @@ yet another .emacs.d
     #+END_SRC
 *** [[https://github.com/akermu/emacs-libvterm][emacs-libvterm]]
     #+BEGIN_SRC emacs-lisp
-    (when (tdm/laptop)
-        (add-to-list 'load-path (concat user-emacs-directory "lisp/emacs-libvterm"))
+    (when (tdm/laptop-p)
+        (add-to-list 'load-path 
+	    (concat user-emacs-directory "lisp/emacs-libvterm"))
         (require 'vterm))
     ;; Or, with use-package:
     ;; (use-package vterm :ensure t)
@@ -342,10 +354,12 @@ yet another .emacs.d
 *** [[https://github.com/ch11ng/exwm/wiki/EXWM-User-Guide][exwm]]
     EmaX Window Manager [+.-]
     #+BEGIN_SRC emacs-lisp
-    ;(use-package exwm :ensure t)
-    ;(require 'exwm)
-    ;(require 'exwm-config)
-    ;(exwm-config-default)
+    (when (tdm/laptop-p)
+        (use-package exwm :ensure t)
+	;;(require 'exwm)
+	;;(require 'exwm-config)
+	;;(exwm-config-default)
+	)
     #+END_SRC
 *** [[https://github.com/dougm/bats-mode][bats-mode]]
     #+BEGIN_SRC emacs-lisp
