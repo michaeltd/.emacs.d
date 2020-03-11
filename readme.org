@@ -253,12 +253,11 @@ yet another .emacs.d
     ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
     ;; (add-hook 'emacs-startup-hook(lambda () (load-theme 'xresources)))
     ;; doom-themes
-    (when (tdm/laptop-p)
-        (add-to-list 'load-path (concat user-emacs-directory "lisp/emacs-doom-themes"))
-        (require 'doom-themes)
-        (load-theme 'doom-outrun-electric t))
-    (when (not (tdm/laptop-p))
-        (load-theme 'cyberpunk t))
+    (if (tdm/laptop-p)
+        (progn (add-to-list 'load-path (concat user-emacs-directory "lisp/emacs-doom-themes"))
+            (require 'doom-themes)
+            (load-theme 'doom-outrun-electric t))
+	(progn (load-theme 'cyberpunk t)))
     #+END_SRC
 *** various
     Trivial adjustments
