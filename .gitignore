@@ -1,6 +1,6 @@
 *
 !assets/*
-!banners/michaeltd.txt
+!banners/*
 !lisp/.gitkeep
 !site-lisp/.gitkeep
 !themes/.gitkeep
