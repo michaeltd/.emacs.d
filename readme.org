@@ -404,4 +404,4 @@ yet another .emacs.d
   + [[https://github.com/PythonNut/quark-emacs][quark-emacs]]
   + [[https://github.com/emacs-tw/awesome-emacs][awesome-emacs]]
 * Contributing
-  Buy me some coffee in [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]] or ₿ (bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs) so I can up my game.
+  Buy me some coffee in [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]] or [[bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs][₿]] so I can up my game.
