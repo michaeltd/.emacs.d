@@ -34,7 +34,7 @@ yet another .emacs.d
   3. [[file:themes][themes]]
 
      Various tried and true themes, namely:
-     1) [[themes/cyberpunk-theme.el][cyberpunk]]
+     1) [[file:themes/cyberpunk-theme.el][cyberpunk]]
      2) [[file:themes/dracula-theme.el][dracula]]
      3) [[file:themes/gotham-theme.el][gotham]]
      3) [[file:themes/grandshell-theme.el][grandshell]]
@@ -404,4 +404,4 @@ yet another .emacs.d
   + [[https://github.com/PythonNut/quark-emacs][quark-emacs]]
   + [[https://github.com/emacs-tw/awesome-emacs][awesome-emacs]]
 * Contributing
-  Buy me some coffee in [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]] or [[bitcoin://3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs][₿]] so I can up my game.
+  Buy me some coffee in [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]] or [[bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs][₿]] (bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs) so I can up my game.
