@@ -204,7 +204,8 @@ yet another .emacs.d
 	(dashboard-setup-startup-hook))
     (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
     (setq dashboard-banner-logo-title "Welcome to the Church of Emacs")
-    (setq dashboard-startup-banner (concat user-emacs-directory "assets/gnu.png"))
+    ;; (setq dashboard-startup-banner (concat user-emacs-directory "assets/gnu.png"))
+    (setq dashboard-startup-banner 'logo)
     (setq dashboard-center-content t)
     (setq dashboard-items '((recents  . 5)))
     (setq dashboard-set-heading-icons t)
@@ -229,6 +230,12 @@ yet another .emacs.d
 		"Browse LinkedIn"
 		(lambda (&rest _) (browse-url "https://www.linkedin.com/in/michaeltd"))))))
     (setq dashboard-set-init-info t)
+    #+END_SRC
+*** [[https://github.com/jaypei/emacs-neotree/][neotree]]
+    #+BEGIN_SRC emacs-lisp
+    (use-package neotree :ensure t)
+    (global-set-key [f8] 'neotree-toggle)
+    (neotree)
     #+END_SRC
 *** [[https://github.com/Fanael/rainbow-delimiters][rainbow-delimiters]]
     #+BEGIN_SRC emacs-lisp
