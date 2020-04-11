@@ -27,7 +27,7 @@ yet another .emacs.d
 * Files
   1. [[file:init.el][init.el]]
 
-     Standard Emacs Init file (with a twist).
+     Standard Emacs Init file (with a couple of twists).
   2. [[file:readme.org][readme.org]]
 
      This file
