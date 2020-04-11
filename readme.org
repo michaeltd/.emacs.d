@@ -235,7 +235,7 @@ yet another .emacs.d
     #+BEGIN_SRC emacs-lisp
     (use-package neotree :ensure t)
     (global-set-key [f8] 'neotree-toggle)
-    (neotree)
+    ;; (neotree)
     #+END_SRC
 *** [[https://github.com/Fanael/rainbow-delimiters][rainbow-delimiters]]
     #+BEGIN_SRC emacs-lisp
@@ -361,6 +361,25 @@ yet another .emacs.d
 *** [[https://github.com/dougm/bats-mode][bats-mode]]
     #+BEGIN_SRC emacs-lisp
     (use-package bats-mode :ensure t)
+    #+END_SRC
+*** [[https://blog.binchen.org/posts/what-s-the-best-spell-check-set-up-in-emacs.html][aspell-hunspell]]
+    #+BEGIN_SRC emacs-lisp
+    ;; find aspell and hunspell automatically
+    (cond
+        ;; try hunspell at first
+	;; if hunspell does NOT exist, use aspell
+	((executable-find "hunspell")
+	    (setq ispell-program-name "hunspell")
+	    (setq ispell-local-dictionary "en_US")
+	    (setq ispell-local-dictionary-alist
+	    ;; Please note the list `("-d" "en_US")` contains ACTUAL parameters passed to hunspell
+	    ;; You could use `("-d" "en_US,en_US-med")` to check with multiple dictionaries
+	    '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8))))
+
+	((executable-find "aspell")
+	(setq ispell-program-name "aspell")
+	;; Please note ispell-extra-args contains ACTUAL parameters passed to aspell
+	(setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))))
     #+END_SRC
 * FAQ
   - Q: How to install this?
