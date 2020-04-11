@@ -20,7 +20,7 @@ yet another .emacs.d
      It needs to work out of the box for a more "batteries included" like experience. reads: no source packages.
   3) Eye Candy
 
-     It needs to be moderately beautifull in a resource efficient manner. (reads: No doom-themes, doom-modeline, doom-\star, spacemacs-\star)
+     It needs to be moderately beautifull in a resource efficient manner.
   4) UXP
 
      It needs to deliver a next to vanilla user experience.
