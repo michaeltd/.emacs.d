@@ -310,17 +310,17 @@ yet another .emacs.d
     (use-package scala-mode
         :ensure t
         :interpreter
-	("scala" . scala-mode))
+        ("scala" . scala-mode))
 
     (use-package sbt-mode
         :ensure t
         :commands sbt-start sbt-command
-	:config
-	;; WORKAROUND: allows using SPACE when in the minibuffer
-	(substitute-key-definition
-	    'minibuffer-complete-word
-	    'self-insert-command
-	    minibuffer-local-completion-map))
+        :config
+            ;; WORKAROUND: allows using SPACE when in the minibuffer
+            (substitute-key-definition
+	        'minibuffer-complete-word
+		'self-insert-command
+		minibuffer-local-completion-map))
     #+END_SRC
 ** Utilities
 *** multi-term
