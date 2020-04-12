@@ -4,6 +4,7 @@
 !lisp/.gitkeep
 !site-lisp/.gitkeep
 !themes/.gitkeep
+!themes/clues-theme.el
 !themes/cyberpunk-theme.el
 !themes/dracula-theme.el
 !themes/grandshell-theme.el

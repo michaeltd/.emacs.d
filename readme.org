@@ -34,13 +34,14 @@ yet another .emacs.d
   3. [[file:themes][themes]]
 
      Various tried and true themes, namely:
-     1) [[file:themes/cyberpunk-theme.el][cyberpunk]]
-     2) [[file:themes/dracula-theme.el][dracula]]
-     3) [[file:themes/gotham-theme.el][gotham]]
-     3) [[file:themes/grandshell-theme.el][grandshell]]
-     4) [[file:themes/jazz-theme.el][jazz]]
-     5) [[file:themes/ujelly-theme.el][ujelly]]
-     6) [[file:themes/xresources-theme.el][xresources]]
+     1) [[file:themes/clues-theme.el][clues]]
+     2) [[file:themes/cyberpunk-theme.el][cyberpunk]]
+     3) [[file:themes/dracula-theme.el][dracula]]
+     4) [[file:themes/gotham-theme.el][gotham]]
+     5) [[file:themes/grandshell-theme.el][grandshell]]
+     6) [[file:themes/jazz-theme.el][jazz]]
+     7) [[file:themes/ujelly-theme.el][ujelly]]
+     8) [[file:themes/xresources-theme.el][xresources]]
 * Load Sequence
 ** Init
 *** some variables/functions
@@ -239,7 +240,7 @@ yet another .emacs.d
     #+BEGIN_SRC emacs-lisp
     (setq custom-safe-themes t)
     (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
-    (load-theme 'dracula t)
+    (load-theme 'clues t)
     ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
     ;; (add-hook 'emacs-startup-hook (lambda () (load-theme 'xresources)))
     #+END_SRC
