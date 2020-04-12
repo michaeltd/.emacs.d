@@ -410,5 +410,4 @@ yet another .emacs.d
   Typos, syntactics welcomed, other than that, PR and we'll take it from there...
   
   You can also buy me some coffee in [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]] or [[bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs][₿]] (bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs) so I can up my game.
-* [[file:license][License]] 
-  [[https://opensource.org/licenses/ISC][https://img.shields.io/badge/License-ISC-blue.svg]]
+* [[file:license][License]] [[https://opensource.org/licenses/ISC][https://img.shields.io/badge/License-ISC-blue.svg]]
