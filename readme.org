@@ -9,7 +9,7 @@ yet another .emacs.d
 * Use Case
   1) Load Times
 
-     It must deliver lightning fast load times to be suitable for ancient hardware such as mine >:'[
+     It must deliver swift load times to be suitable for ancient hardware such as mine >:'[
      #+BEGIN_SRC shell
      time emacs --eval='(kill-emacs)' # should yield -lt 1s
      #+END_SRC
@@ -409,4 +409,4 @@ yet another .emacs.d
 * Contributing
   Buy me some coffee in [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]] or [[bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs][₿]] (bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs) so I can up my game.
 * License
-  [[file:license][ISC License]] [[https://opensource.org/licenses/ISC][(ISC)]] [[https://img.shields.io/badge/License-ISC-blue.svg]]
+  [[https://opensource.org/licenses/ISC][(ISC)]] [[file:license][License]] [[https://img.shields.io/badge/License-ISC-blue.svg]]
