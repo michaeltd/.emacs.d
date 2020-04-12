@@ -407,7 +407,7 @@ yet another .emacs.d
   + [[https://github.com/PythonNut/quark-emacs][quark-emacs]]
   + [[https://github.com/emacs-tw/awesome-emacs][awesome-emacs]]
 * Contributing
-  Typos, syntactics welcomed, other than that, PR and we'll take it from there...
+  Typos, syntactics and grammar welcomed, other than that, PR and we'll take it from there...
   
   You can also buy me some coffee in [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]] or [[bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs][₿]] (bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs) so I can up my game.
 * [[file:license][License]] [[https://opensource.org/licenses/ISC][https://img.shields.io/badge/License-ISC-blue.svg]]
