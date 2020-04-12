@@ -197,8 +197,13 @@ yet another .emacs.d
 	(dashboard-setup-startup-hook))
     (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
     (setq dashboard-banner-logo-title "Welcome to the Church of Emacs")
+    ;; Value can be
+    ;; 'official which displays the official emacs logo
+    ;; 'logo which displays an alternative emacs logo
+    ;; 1, 2 or 3 which displays one of the text banners
+    ;; "path/to/your/image.png" which displays whatever image you would prefer
     ;; (setq dashboard-startup-banner (concat user-emacs-directory "assets/gnu.png"))
-    (setq dashboard-startup-banner 'logo)
+    (setq dashboard-startup-banner 4)
     (setq dashboard-center-content t)
     (setq dashboard-items '((recents  . 5)))
     (setq dashboard-set-heading-icons t)
@@ -403,4 +408,5 @@ yet another .emacs.d
   + [[https://github.com/emacs-tw/awesome-emacs][awesome-emacs]]
 * Contributing
   Buy me some coffee in [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]] or [[bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs][₿]] (bitcoin:3KCPkfTWqanYfgNvoUKP1S4bFXTDpaReUs) so I can up my game.
-* [[file:license][ISC License (ISC)]]
+* License
+  [[file:license][ISC License]] [[https://opensource.org/licenses/ISC][(ISC)]] [[https://img.shields.io/badge/License-ISC-blue.svg]]
