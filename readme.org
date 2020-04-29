@@ -263,7 +263,7 @@ yet another .emacs.d
       #+END_SRC
     - global-hl-line-mode
       #+BEGIN_SRC emacs-lisp
-      (global-hl-line-mode)
+      ;; (global-hl-line-mode)
       #+END_SRC
 ** Languages
 *** [[https://orgmode.org/worg/org-contrib/babel/][org-babel]]
@@ -361,7 +361,7 @@ yet another .emacs.d
 *** spell-fu
     #+BEGIN_SRC emacs-lisp
     (use-package spell-fu)
-    (global-spell-fu-mode)
+    ;; (global-spell-fu-mode)
     #+END_SRC
 * FAQ
   - Q: How to install this?
