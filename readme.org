@@ -5,7 +5,7 @@
 #+startup: overview
 #+property: header-args :comments yes
 #+html: <p align="center"><img src="assets/emacs-logo.png"/></p>
-#+html: <p align="center"><img style="width:99%;radius:50%" src="assets/screenshot.png"/></p>
+#+html: <p align="center"><img style="width:99%;border-radius:50%" src="assets/screenshot.png"/></p>
 yet another .emacs.d
 * Use Case
   1) Load Times
