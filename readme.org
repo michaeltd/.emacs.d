@@ -47,9 +47,9 @@ yet another .emacs.d
     (setq user-full-name "michaeltd"
         user-mail-address "tsouchlarakis@gmail.com"
 	user-pgp-key "0x01063480")
-    (defun tdm/laptop-p ()
+    (defun mtd/laptop-p ()
         (and (equal (system-name) "genbox") (equal user-login-name "paperjam")))
-    (defun tdm/reload-emacs-configuration ()
+    (defun mtd/reload-emacs-configuration ()
         (interactive)
 	(load-file (concat user-emacs-directory "init.el")))
     #+END_SRC
@@ -181,7 +181,7 @@ yet another .emacs.d
     #+END_SRC
 *** [[https://github.com/seagle0128/doom-modeline][doom-modeline]]
     #+BEGIN_SRC emacs-lisp
-    (when (tdm/laptop-p)
+    (when (mtd/laptop-p)
         (use-package doom-modeline
             :ensure t
             :init (doom-modeline-mode 1)))
@@ -202,14 +202,15 @@ yet another .emacs.d
 	:config
 	(dashboard-setup-startup-hook))
     (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
-    (setq dashboard-banner-logo-title "Welcome to the Church of Emacs")
+    (setq dashboard-banner-logo-title "m-x butterfly ret") ;; https://xkcd.com/378/ 
     ;; Value can be
     ;; 'official which displays the official emacs logo
     ;; 'logo which displays an alternative emacs logo
     ;; 1, 2 or 3 which displays one of the text banners
     ;; "path/to/your/image.png" which displays whatever image you would prefer
     ;; (setq dashboard-startup-banner (concat user-emacs-directory "assets/gnu.png"))
-    (setq dashboard-startup-banner 4)
+    ;; (setq dashboard-startup-banner 4)
+    (setq dashboard-startup-banner 'logo)
     (setq dashboard-center-content t)
     (setq dashboard-items '((recents  . 5)))
     (setq dashboard-set-heading-icons t)
@@ -245,13 +246,13 @@ yet another .emacs.d
     #+BEGIN_SRC emacs-lisp
     (setq custom-safe-themes t)
     (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
-    (when (not (tdm/laptop-p)) (load-theme 'dracula t))
+    (when (not (mtd/laptop-p)) (load-theme 'dracula t))
     ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
     ;; (add-hook 'emacs-startup-hook (lambda () (load-theme 'xresources)))
     #+END_SRC
 *** [[https://github.com/hlissner/emacs-doom-themes][doom-temes]]
     #+BEGIN_SRC emacs-lisp
-    (when (tdm/laptop-p)
+    (when (mtd/laptop-p)
         (use-package doom-themes
 	    :config
 	    ;; Global settings (defaults)
@@ -274,7 +275,7 @@ yet another .emacs.d
 *** various trivial adjustments
     - [[https://www.emacswiki.org/emacs/SetFonts][default font]]
       #+BEGIN_SRC emacs-lisp
-      (when (tdm/laptop-p) (set-face-attribute 'default nil :font "Source Code Pro" ))
+      (when (mtd/laptop-p) (set-face-attribute 'default nil :font "Source Code Pro" ))
       #+END_SRC
     - dired-mode
       #+BEGIN_SRC emacs-lisp
@@ -355,7 +356,7 @@ yet another .emacs.d
 *** [[https://github.com/ch11ng/exwm/wiki/EXWM-User-Guide][exwm]]
     EmaX Window Manager [+.-]
     #+BEGIN_SRC emacs-lisp
-    (when (tdm/laptop-p)
+    (when (mtd/laptop-p)
         (use-package exwm :ensure t))
 	;;(require 'exwm)
 	;;(require 'exwm-config)
