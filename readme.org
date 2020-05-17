@@ -337,6 +337,12 @@ yet another .emacs.d
 		minibuffer-local-completion-map))
     #+END_SRC
 ** Utilities
+*** [[https://github.com/jaypei/emacs-neotree][emacs-neotree]]
+    #+BEGIN_SRC emacs-lisp
+    (use-package neotree :ensure t)
+    (global-set-key [f8] 'neotree-toggle)
+    (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+    #+END_SRC
 *** multi-term
     This package is for creating and managing multiple terminal buffers in Emacs.
     #+BEGIN_SRC emacs-lisp
@@ -356,11 +362,11 @@ yet another .emacs.d
 *** [[https://github.com/ch11ng/exwm/wiki/EXWM-User-Guide][exwm]]
     EmaX Window Manager [+.-]
     #+BEGIN_SRC emacs-lisp
-    (when (mtd/laptop-p)
-        (use-package exwm :ensure t))
-	;;(require 'exwm)
-	;;(require 'exwm-config)
-	;;(exwm-config-default)
+      (when (mtd/laptop-p)
+	  (use-package exwm :ensure t))
+	  ;; (require 'exwm)
+	  ;; (require 'exwm-config)
+	  ;; (exwm-config-default)
     #+END_SRC
 *** [[https://github.com/dougm/bats-mode][bats-mode]]
     #+BEGIN_SRC emacs-lisp
