@@ -36,6 +36,7 @@ yet another .emacs.d
      2) [[file:themes/gotham-theme.el][gotham]]
      3) [[file:themes/jazz-theme.el][jazz]]
      4) [[file:themes/xresources-theme.el][xresources]]
+
 * Load Sequence
 ** Init
 *** some variables/functions
@@ -244,7 +245,7 @@ yet another .emacs.d
     (setq custom-safe-themes t)
     (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
     ;; (when (not (mtd/laptop-p)) (load-theme 'dracula t))
-    ;; (load-theme 'dracula t)
+    (load-theme 'gotham t)
     ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
     ;; (add-hook 'emacs-startup-hook (lambda () (load-theme 'xresources)))
     #+END_SRC
