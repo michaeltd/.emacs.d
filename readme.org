@@ -245,7 +245,7 @@ yet another .emacs.d
     (setq custom-safe-themes t)
     (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
     ;; (when (not (mtd/laptop-p)) (load-theme 'dracula t))
-    (load-theme 'gotham t)
+    (load-theme 'twilight t)
     ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
     ;; (add-hook 'emacs-startup-hook (lambda () (load-theme 'xresources)))
     #+END_SRC
