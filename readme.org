@@ -35,7 +35,8 @@ yet another .emacs.d
      1) [[file:themes/dracula-theme.el][dracula]]
      2) [[file:themes/gotham-theme.el][gotham]]
      3) [[file:themes/jazz-theme.el][jazz]]
-     4) [[file:themes/xresources-theme.el][xresources]]
+     4) [[file:themes/twilight-theme.el][twilight]]
+     5) [[file:themes/xresources-theme.el][xresources]]
 
 * Load Sequence
 ** Init
