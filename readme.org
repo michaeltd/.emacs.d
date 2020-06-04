@@ -394,7 +394,7 @@ yet another .emacs.d
     #+END_SRC
 *** spell-fu
     #+BEGIN_SRC emacs-lisp
-    (use-package spell-fu)
+    ;; (use-package spell-fu)
     ;; (global-spell-fu-mode)
     #+END_SRC
 * FAQ
