@@ -4,14 +4,6 @@
 !lisp/.gitkeep
 !site-lisp/.gitkeep
 !themes/.gitkeep
-!themes/clues-theme.el
-!themes/cyberpunk-theme.el
-!themes/dracula-theme.el
-!themes/grandshell-theme.el
-!themes/gotham-theme.el
-!themes/jazz-theme.el
-!themes/ujelly-theme.el
-!themes/xresources-theme.el
 !.gitignore
 !init.el
 !readme.org
