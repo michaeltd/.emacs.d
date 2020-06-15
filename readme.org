@@ -253,25 +253,25 @@ yet another .emacs.d
     #+END_SRC
 *** [[https://github.com/hlissner/emacs-doom-themes][doom-temes]]
     #+BEGIN_SRC emacs-lisp
-    (when false
-        (use-package doom-themes
-	    :config
-	    ;; Global settings (defaults)
-	    (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-            doom-themes-enable-italic t) ; if nil, italics is universally disabled
-	    (load-theme 'doom-outrun-electric t)
+      ;; (when false
+      ;;     (use-package doom-themes
+      ;; 	:config
+      ;; 	;; Global settings (defaults)
+      ;; 	(setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+      ;;         doom-themes-enable-italic t) ; if nil, italics is universally disabled
+      ;; 	(load-theme 'doom-outrun-electric t)
 
-	    ;; Enable flashing mode-line on errors
-	    (doom-themes-visual-bell-config)
-  
-	    ;; Enable custom neotree theme (all-the-icons must be installed!)
-	    (doom-themes-neotree-config)
-	    ;; or for treemacs users
-	    (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-	    (doom-themes-treemacs-config)
-  
-	    ;; Corrects (and improves) org-mode's native fontification.
-	    (doom-themes-org-config)))
+      ;; 	;; Enable flashing mode-line on errors
+      ;; 	(doom-themes-visual-bell-config)
+
+      ;; 	;; Enable custom neotree theme (all-the-icons must be installed!)
+      ;; 	(doom-themes-neotree-config)
+      ;; 	;; or for treemacs users
+      ;; 	(setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+      ;; 	(doom-themes-treemacs-config)
+
+      ;; 	;; Corrects (and improves) org-mode's native fontification.
+      ;; 	(doom-themes-org-config)))
     #+END_SRC
 *** various trivial adjustments
     - [[https://www.emacswiki.org/emacs/SetFonts][default font]]
@@ -340,9 +340,9 @@ yet another .emacs.d
 ** Utilities
 *** [[https://github.com/jaypei/emacs-neotree][emacs-neotree]]
     #+BEGIN_SRC emacs-lisp
-    (use-package neotree :ensure t)
-    (global-set-key [f8] 'neotree-toggle)
-    (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+      ;; (use-package neotree :ensure t)
+      ;; (global-set-key [f8] 'neotree-toggle)
+      ;; (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
     #+END_SRC
 *** multi-term
     This package is for creating and managing multiple terminal buffers in Emacs.
