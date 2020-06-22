@@ -36,8 +36,9 @@ yet another .emacs.d
      2) [[file:themes/dracula-theme.el][dracula]]
      3) [[file:themes/gotham-theme.el][gotham]]
      4) [[file:themes/jazz-theme.el][jazz]]
-     5) [[file:themes/twilight-theme.el][twilight]]
-     6) [[file:themes/xresources-theme.el][xresources]]
+     5) [[file:themes/tomorrow-night-paradise-theme.el][tomorrow-night-paradise]]
+     6) [[file:themes/twilight-theme.el][twilight]]
+     7) [[file:themes/xresources-theme.el][xresources]]
 
 * Load Sequence
 ** Init
@@ -247,7 +248,7 @@ yet another .emacs.d
     (setq custom-safe-themes t)
     (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
     ;; (when (not (mtd/laptop-p)) (load-theme 'dracula t))
-    (load-theme 'ample-zen t)
+    (load-theme 'tomorrow-night-paradise t)
     ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
     ;; (add-hook 'emacs-startup-hook (lambda () (load-theme 'xresources)))
     #+END_SRC
