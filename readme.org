@@ -249,12 +249,14 @@ yet another .emacs.d
     (setq custom-safe-themes t)
     (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
     ;; (when (not (mtd/laptop-p)) (load-theme 'dracula t))
+    (when (not (mtd/laptop-p)) (load-theme 'tron-legacy t))
     ;; (load-theme 'tron-legacy t)
     ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
     ;; (add-hook 'emacs-startup-hook (lambda () (load-theme 'xresources)))
     #+END_SRC
 *** [[https://github.com/hlissner/emacs-doom-themes][doom-temes]]
     #+BEGIN_SRC emacs-lisp
+    (when (mtd/laptop-p)
         (use-package doom-themes
        	    :config
        	    ;; Global settings (defaults)
@@ -273,6 +275,7 @@ yet another .emacs.d
 
 		;; Corrects (and improves) org-mode's native fontification.
 		(doom-themes-org-config))
+    )
     #+END_SRC
 *** various trivial adjustments
     - [[https://www.emacswiki.org/emacs/SetFonts][default font]]
