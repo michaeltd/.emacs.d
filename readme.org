@@ -50,7 +50,9 @@ yet another .emacs.d
 	user-pgp-key "0x01063480"
 	false nil)
     (defun mtd/laptop-p ()
-        (and (equal (system-name) "genbox") (equal user-login-name "paperjam")))
+        (and (equal (system-name) "genbox") 
+	    (equal user-login-name "paperjam") 
+	    (equal (getenv "USER") "paperjam")))
     (defun mtd/reload-emacs-configuration ()
         (interactive)
 	(load-file (concat user-emacs-directory "init.el")))
@@ -367,8 +369,8 @@ yet another .emacs.d
      #+END_SRC
 **** [[https://github.com/akermu/emacs-libvterm][vterm]]
      #+BEGIN_SRC emacs-lisp
-     (when (mtd/laptop-p)
-         (use-package vterm :ensure t))
+       ;; (when (mtd/laptop-p)
+       ;;     (use-package vterm :ensure t))
      #+END_SRC     
 *** [[https://github.com/ch11ng/exwm/wiki/EXWM-User-Guide][exwm]]
     EmaX Window Manager [+.-]
