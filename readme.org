@@ -185,10 +185,10 @@ yet another .emacs.d
     #+END_SRC
 *** [[https://github.com/seagle0128/doom-modeline][doom-modeline]]
     #+BEGIN_SRC emacs-lisp
-    (when (mtd/laptop-p)
-        (use-package doom-modeline
-            :ensure t
-            :init (doom-modeline-mode 1)))
+      ;; (when (mtd/laptop-p)
+      ;;     (use-package doom-modeline
+      ;;         :ensure t
+      ;;         :init (doom-modeline-mode 1)))
     #+END_SRC
 *** [[https://github.com/purcell/page-break-lines][page-break-lines]]
     #+BEGIN_SRC emacs-lisp
@@ -251,33 +251,33 @@ yet another .emacs.d
     (setq custom-safe-themes t)
     (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
     ;; (when (not (mtd/laptop-p)) (load-theme 'dracula t))
-    (when (not (mtd/laptop-p)) (load-theme 'tron-legacy t))
-    ;; (load-theme 'tron-legacy t)
+    ;; (when (mtd/laptop-p) (load-theme 'tron-legacy t))
+    (load-theme 'dracula t)
     ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
     ;; (add-hook 'emacs-startup-hook (lambda () (load-theme 'xresources)))
     #+END_SRC
 *** [[https://github.com/hlissner/emacs-doom-themes][doom-temes]]
     #+BEGIN_SRC emacs-lisp
-    (when (mtd/laptop-p)
-        (use-package doom-themes
-       	    :config
-       	    ;; Global settings (defaults)
-       	    (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-                doom-themes-enable-italic t) ; if nil, italics is universally disabled
-       		(load-theme 'doom-outrun-electric t)
+      ;; (when (mtd/laptop-p)
+      ;;     (use-package doom-themes
+      ;;        	:config
+      ;;        	;; Global settings (defaults)
+      ;;        	(setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+      ;;             doom-themes-enable-italic t) ; if nil, italics is universally disabled
+      ;;        	    (load-theme 'doom-outrun-electric t)
 
-       		;; Enable flashing mode-line on errors
-       		(doom-themes-visual-bell-config)
+      ;;        	    ;; Enable flashing mode-line on errors
+      ;;        	    (doom-themes-visual-bell-config)
 
-       		;; Enable custom neotree theme (all-the-icons must be installed!)
-       		(doom-themes-neotree-config)
-       		;; or for treemacs users
-       		(setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-       		(doom-themes-treemacs-config)
+      ;;        	    ;; Enable custom neotree theme (all-the-icons must be installed!)
+      ;;        	    (doom-themes-neotree-config)
+      ;;        	    ;; or for treemacs users
+      ;;        	    (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+      ;;        	    (doom-themes-treemacs-config)
 
-		;; Corrects (and improves) org-mode's native fontification.
-		(doom-themes-org-config))
-    )
+      ;; 	    ;; Corrects (and improves) org-mode's native fontification.
+      ;; 	    (doom-themes-org-config))
+      ;;)
     #+END_SRC
 *** various trivial adjustments
     - [[https://www.emacswiki.org/emacs/SetFonts][default font]]
@@ -375,12 +375,12 @@ yet another .emacs.d
 *** [[https://github.com/ch11ng/exwm/wiki/EXWM-User-Guide][exwm]]
     EmaX Window Manager [+.-]
     #+BEGIN_SRC emacs-lisp
-        (when (mtd/laptop-p)
-	  ;;  (use-package exwm :ensure t)
-	  (require 'exwm)
-	  (require 'exwm-config)
-	  ;; (exwm-config-default)
-	)
+      ;; (when (mtd/laptop-p)
+      ;;   ;;  (use-package exwm :ensure t)
+      ;;   (require 'exwm)
+      ;;   (require 'exwm-config)
+      ;;   ;; (exwm-config-default)
+      ;; )
     #+END_SRC
 *** [[https://github.com/dougm/bats-mode][bats-mode]]
     #+BEGIN_SRC emacs-lisp
