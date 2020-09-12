@@ -280,26 +280,26 @@ yet another .emacs.d
       )
     #+END_SRC
 *** various trivial adjustments
-    - [[https://www.emacswiki.org/emacs/SetFonts][default font]]
-      #+BEGIN_SRC emacs-lisp
-      (when (mtd/laptop-p) (set-face-attribute 'default nil :font "Source Code Pro" ))
-      #+END_SRC
-    - dired-mode
-      #+BEGIN_SRC emacs-lisp
-      (setq dired-listing-switches "-aBhl  --group-directories-first")
-      #+END_SRC
-    - purrrdy symbols
-      #+BEGIN_SRC emacs-lisp
-      (global-prettify-symbols-mode t)
-      #+END_SRC
-    - scrolling behavior
-      #+BEGIN_SRC emacs-lisp
-      (setq scroll-conservatively 100)
-      #+END_SRC
-    - global-hl-line-mode
-      #+BEGIN_SRC emacs-lisp
-      ;; (global-hl-line-mode)
-      #+END_SRC
+**** [[https://www.emacswiki.org/emacs/SetFonts][default font]]
+       #+BEGIN_SRC emacs-lisp
+       (when (mtd/laptop-p) (set-face-attribute 'default nil :font "Source Code Pro" ))
+       #+END_SRC
+**** dired-mode
+       #+BEGIN_SRC emacs-lisp
+       (setq dired-listing-switches "-aBhl  --group-directories-first")
+       #+END_SRC
+**** purrrdy symbols
+       #+BEGIN_SRC emacs-lisp
+       (global-prettify-symbols-mode t)
+       #+END_SRC
+**** scrolling behavior
+       #+BEGIN_SRC emacs-lisp
+       (setq scroll-conservatively 100)
+       #+END_SRC
+**** global-hl-line-mode
+       #+BEGIN_SRC emacs-lisp
+       ;; (global-hl-line-mode)
+       #+END_SRC
 ** Languages
 *** [[https://orgmode.org/worg/org-contrib/babel/][org-babel]]
     #+BEGIN_SRC emacs-lisp
