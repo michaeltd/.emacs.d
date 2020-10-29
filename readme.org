@@ -51,7 +51,7 @@ yet another .emacs.d
 	false nil)
     (defun mtd/laptop-p ()
         (and (equal (system-name) "genbox") 
-	    (equal user-login-name "paperjam") 
+	    ;;(equal user-login-name "paperjam") 
 	    (equal (getenv "USER") "paperjam")))
     (defun mtd/reload-emacs-configuration ()
         (interactive)
@@ -88,7 +88,7 @@ yet another .emacs.d
 
     ;;; Disable menu-bar, tool-bar, and scroll-bar.
     (if (fboundp 'menu-bar-mode)
-        (menu-bar-mode 1))
+        (menu-bar-mode -1))
     (if (fboundp 'tool-bar-mode)
         (tool-bar-mode -1))
     (if (fboundp 'scroll-bar-mode)
@@ -248,23 +248,24 @@ yet another .emacs.d
     #+END_SRC
 *** [[themes][themes]]
     #+BEGIN_SRC emacs-lisp
-    (setq custom-safe-themes t)
-    (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
-    (when (not (mtd/laptop-p)) (load-theme 'dracula t))
-    ;; (when (mtd/laptop-p) (load-theme 'tron-legacy t))
-    ;; (load-theme 'dracula t)
-    ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
-    ;; (add-hook 'emacs-startup-hook (lambda () (load-theme 'xresources)))
+      (setq custom-safe-themes t)
+      (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
+      (when (not (mtd/laptop-p)) (load-theme 'dracula t))
+      (when (mtd/laptop-p) (load-theme 'dracula t))
+      ;; (when (mtd/laptop-p) (load-theme 'tron-legacy t))
+      ;; (load-theme 'dracula t)
+      ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
+      ;; (add-hook 'emacs-startup-hook (lambda () (load-theme 'xresources)))
     #+END_SRC
-*** [[https://github.com/hlissner/emacs-doom-themes][doom-temes]]
+*** [[https://github.com/hlissner/emacs-doom-themes][doom-themes]]
     #+BEGIN_SRC emacs-lisp
-      (when (mtd/laptop-p)
+      (when (not (mtd/laptop-p))
           (use-package doom-themes
               	:config
              	;; Global settings (defaults)
              	(setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
                   doom-themes-enable-italic t) ; if nil, italics is universally disabled
-             	    (load-theme 'doom-outrun-electric t)
+             	    ;; (load-theme 'doom-outrun-electric t)
 
              	    ;; Enable flashing mode-line on errors
              	    (doom-themes-visual-bell-config)
@@ -276,37 +277,8 @@ yet another .emacs.d
              	    (doom-themes-treemacs-config)
 
       	    ;; Corrects (and improves) org-mode's native fontification.
-      	    (doom-themes-org-config))
-      )
+      	    (doom-themes-org-config)))
     #+END_SRC
-*** wallpaper
-    #+begin_src emacs-lisp
-    ;; This is an example `use-package' configuration
-    ;; It is not tangled into wallpaper.el
-    (use-package wallpaper
-        :ensure t
-	:hook ((exwm-randr-screen-change . wallpaper-set-wallpaper)
-	    (after-init . wallpaper-cycle-mode))
-	        :custom ((wallpaper-cycle-single t)
-		    (wallpaper-scaling 'scale)
-		    (wallpaper-cycle-interval 45)
-		    (wallpaper-cycle-directory "~/Pictures/dPic/r")))
-    
-    ;;Ensure that you have feh installed before use.
-    (unless (executable-find "feh")
-        (display-warning 'wallpaper "External command `feh' not found!"))
-
-    (defun wallpaper-per-workspace-i3-get ()
-        "Get the current i3 workspace."
-	(if (= (shell-command "pgrep i3") 0)
-	    (if (executable-find "jq")
-	        (string-to-number
-		    (shell-command-to-string
-		        (concat "i3-msg -t get_workspaces | "
-			    "jq -r '.[] | select(.focused==true).name'")))
-		(error "External command `jq' is missing!"))
-	    (error "Window manager `i3' is not in use!")))
-    #+end_src
 *** various trivial adjustments
 **** [[https://www.emacswiki.org/emacs/SetFonts][default font]]
        #+BEGIN_SRC emacs-lisp
@@ -437,6 +409,10 @@ yet another .emacs.d
     #+BEGIN_SRC emacs-lisp
     ;; (use-package spell-fu)
     ;; (global-spell-fu-mode)
+    #+END_SRC
+*** org-mode trunc. lines
+    #+BEGIN_SRC emacs-lisp
+    (setq org-startup-truncated nil)
     #+END_SRC
 * FAQ
   - Q: How to install this?
