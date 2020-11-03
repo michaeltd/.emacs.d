@@ -372,6 +372,12 @@ yet another .emacs.d
        (when (mtd/laptop-p)
            (use-package vterm :ensure t))
      #+END_SRC     
+**** eterm-256color
+     #+begin_src emacs-lisp
+         (use-package eterm-256color 
+	     :ensure t
+             :hook (term-mode . eterm-256color-mode))
+     #+end_src
 *** [[https://github.com/ch11ng/exwm/wiki/EXWM-User-Guide][exwm]]
     EmaX Window Manager [+.-]
     #+BEGIN_SRC emacs-lisp
