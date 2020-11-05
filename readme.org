@@ -325,10 +325,10 @@ yet another .emacs.d
     #+END_SRC
 *** [[https://github.com/immerrr/lua-mode][lua-mode]]
     #+BEGIN_SRC emacs-lisp
-    (use-package lua-mode :ensure t)
-    (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
-    (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
-    (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+      ;; (use-package lua-mode :ensure t)
+      ;; (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+      ;; (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+      ;; (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
     #+END_SRC
 *** emacs [[https://github.com/hvesalai/emacs-scala-mode][scala-mode]] & [[https://github.com/hvesalai/emacs-sbt-mode][sbt-mode]]
     #+BEGIN_SRC emacs-lisp
