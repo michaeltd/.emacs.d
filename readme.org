@@ -259,50 +259,50 @@ yet another .emacs.d
     #+END_SRC
 *** [[https://github.com/hlissner/emacs-doom-themes][doom-themes]]
     #+BEGIN_SRC emacs-lisp
-      (when (not (mtd/laptop-p))
-          (use-package doom-themes
-              	:config
-             	;; Global settings (defaults)
-             	(setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-                  doom-themes-enable-italic t) ; if nil, italics is universally disabled
-             	    ;; (load-theme 'doom-outrun-electric t)
+      ;; (when (not (mtd/laptop-p))
+      ;;     (use-package doom-themes
+      ;;           :config
+      ;;           ;; Global settings (defaults)
+      ;;           (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+      ;;             doom-themes-enable-italic t) ; if nil, italics is universally disabled
+      ;;               ;; (load-theme 'doom-outrun-electric t)
 
-             	    ;; Enable flashing mode-line on errors
-             	    (doom-themes-visual-bell-config)
+      ;;               ;; Enable flashing mode-line on errors
+      ;;               (doom-themes-visual-bell-config)
 
-             	    ;; Enable custom neotree theme (all-the-icons must be installed!)
-             	    (doom-themes-neotree-config)
-             	    ;; or for treemacs users
-             	    (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-             	    (doom-themes-treemacs-config)
+      ;;               ;; Enable custom neotree theme (all-the-icons must be installed!)
+      ;;               (doom-themes-neotree-config)
+      ;;               ;; or for treemacs users
+      ;;               (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+      ;;               (doom-themes-treemacs-config)
 
-      	    ;; Corrects (and improves) org-mode's native fontification.
-      	    (doom-themes-org-config)))
+      ;;       ;; Corrects (and improves) org-mode's native fontification.
+      ;;       (doom-themes-org-config)))
     #+END_SRC
 *** various trivial adjustments
 **** [[https://www.emacswiki.org/emacs/SetFonts][default font]]
-       #+BEGIN_SRC emacs-lisp
-       (when (mtd/laptop-p) (set-face-attribute 'default nil :font "Source Code Pro" ))
-       #+END_SRC
+     #+BEGIN_SRC emacs-lisp
+         (when (mtd/laptop-p) (set-face-attribute 'default nil :font "Source Code Pro" ))
+     #+END_SRC
 **** dired-mode
-       #+BEGIN_SRC emacs-lisp
-       (setq dired-listing-switches "-aBhl  --group-directories-first")
-       #+END_SRC
+     #+BEGIN_SRC emacs-lisp
+         (setq dired-listing-switches "-aBhl  --group-directories-first")
+     #+END_SRC
 **** purrrdy symbols
-       #+BEGIN_SRC emacs-lisp
-       (global-prettify-symbols-mode t)
-       #+END_SRC
+     #+BEGIN_SRC emacs-lisp
+         (global-prettify-symbols-mode t)
+     #+END_SRC
 **** scrolling behavior
-       #+BEGIN_SRC emacs-lisp
-       (setq scroll-conservatively 100)
-       #+END_SRC
+     #+BEGIN_SRC emacs-lisp
+         (setq scroll-conservatively 100)
+     #+END_SRC
 **** global-hl-line-mode
-       #+BEGIN_SRC emacs-lisp
+     #+BEGIN_SRC emacs-lisp
        ;; (global-hl-line-mode)
-       #+END_SRC
-**** init buffer
+     #+END_SRC
+**** Startup screen
      #+begin_src emacs-lisp
-     (setq ns-pop-up-frames nil)
+         (setq inhibit-startup-screen t)
      #+end_src
 ** Languages
 *** [[https://orgmode.org/worg/org-contrib/babel/][org-babel]]
@@ -321,31 +321,7 @@ yet another .emacs.d
     #+END_SRC
 *** [[https://github.com/rust-lang/rust-mode][rust-mode]]
     #+BEGIN_SRC emacs-lisp
-    (use-package rust-mode :ensure t)
-    #+END_SRC
-*** [[https://github.com/immerrr/lua-mode][lua-mode]]
-    #+BEGIN_SRC emacs-lisp
-      ;; (use-package lua-mode :ensure t)
-      ;; (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
-      ;; (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
-      ;; (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
-    #+END_SRC
-*** emacs [[https://github.com/hvesalai/emacs-scala-mode][scala-mode]] & [[https://github.com/hvesalai/emacs-sbt-mode][sbt-mode]]
-    #+BEGIN_SRC emacs-lisp
-    (use-package scala-mode
-        :ensure t
-        :interpreter
-        ("scala" . scala-mode))
-
-    (use-package sbt-mode
-        :ensure t
-        :commands sbt-start sbt-command
-        :config
-            ;; WORKAROUND: allows using SPACE when in the minibuffer
-            (substitute-key-definition
-	        'minibuffer-complete-word
-		'self-insert-command
-		minibuffer-local-completion-map))
+        (use-package rust-mode :ensure t)
     #+END_SRC
 ** Utilities
 *** [[https://github.com/jaypei/emacs-neotree][emacs-neotree]]
@@ -372,10 +348,10 @@ yet another .emacs.d
 	     (define-key ctl-x-map (kbd "x") 'multi-term-dedicated-toggle)))
      #+END_SRC
 **** [[https://github.com/akermu/emacs-libvterm][vterm]]
-     #+BEGIN_SRC emacs-lisp
-       (when (mtd/laptop-p)
-           (use-package vterm :ensure t))
-     #+END_SRC     
+     #+begin_src emacs-lisp
+         (when (mtd/laptop-p)
+             (use-package vterm :ensure t))
+     #+end_src
 **** eterm-256color
      #+begin_src emacs-lisp
          (use-package eterm-256color 
@@ -394,7 +370,7 @@ yet another .emacs.d
     #+END_SRC
 *** [[https://github.com/dougm/bats-mode][bats-mode]]
     #+BEGIN_SRC emacs-lisp
-    (use-package bats-mode :ensure t)
+        (use-package bats-mode :ensure t)
     #+END_SRC
 *** [[https://blog.binchen.org/posts/what-s-the-best-spell-check-set-up-in-emacs.html][aspell-hunspell]]
     #+BEGIN_SRC emacs-lisp
@@ -422,7 +398,7 @@ yet another .emacs.d
     #+END_SRC
 *** org-mode trunc. lines
     #+BEGIN_SRC emacs-lisp
-    (setq org-startup-truncated nil)
+        (setq org-startup-truncated nil)
     #+END_SRC
 * FAQ
   - Q: How to install this?
