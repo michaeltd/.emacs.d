@@ -1,7 +1,7 @@
 #+title: .emacs.d
 #+author: michaeltd
 #+date: <2019-12-24 Tue>
-#+html: <p align="center"><img src="assets/emacs-logo.png"/></p>
+#+html: <p align="center"><img src="assets/emacs-logo-alt.png"/></p>
 #+html: <p align="center"><img src="assets/screenshot.png"/></p>
 yet another .emacs.d
 * Use Case
@@ -250,8 +250,8 @@ yet another .emacs.d
     #+BEGIN_SRC emacs-lisp
       (setq custom-safe-themes t)
       (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
-      (when (not (mtd/laptop-p)) (load-theme 'dracula t))
-      (when (mtd/laptop-p) (load-theme 'dracula t))
+      ;; (when (not (mtd/laptop-p)) (load-theme 'dracula t))
+      (when (mtd/laptop-p) (load-theme 'gotham t))
       ;; (when (mtd/laptop-p) (load-theme 'tron-legacy t))
       ;; (load-theme 'dracula t)
       ;; (add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
