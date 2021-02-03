@@ -450,6 +450,5 @@ yet another .emacs.d
   + [[https://github.com/emacs-tw/awesome-emacs][awesome-emacs]]
 * Contributing
   Typos, syntactics and grammar welcomed, other than that, PR and we'll take it from there...
-  
   Or you could buy me some coffee in [[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3THXBFPG9H3YY&source=michaeltd/.emacs.d][\euro]] or [[bitcoin:19TznUEx2QZF6hQxL64bf3x15VWNy8Xitm][₿]] (bitcoin:19TznUEx2QZF6hQxL64bf3x15VWNy8Xitm).
 * [[file:license][License]] [[https://opensource.org/licenses/ISC][https://img.shields.io/badge/License-ISC-blue.svg]]
