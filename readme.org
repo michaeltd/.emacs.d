@@ -192,8 +192,8 @@ yet another .emacs.d
     #+END_SRC
 *** [[https://github.com/purcell/page-break-lines][page-break-lines]]
     #+BEGIN_SRC emacs-lisp
-    (use-package page-break-lines :ensure t)
-    (turn-on-page-break-lines-mode)
+    ;;(use-package page-break-lines :ensure t)
+    ;;(turn-on-page-break-lines-mode)
     #+END_SRC
 *** [[https://github.com/domtronn/all-the-icons.el][all-the-icons]]
     #+BEGIN_SRC emacs-lisp
@@ -314,7 +314,7 @@ yet another .emacs.d
         '((python . t)
             (shell . t)
 	    (emacs-lisp . t)
-	    (ledger . t)
+	    ;;(ledger . t)
 	    (ditaa . t)
 	    (js . t)
 	    (C . t)))
